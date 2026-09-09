@@ -1,0 +1,18 @@
+{
+  "source": "https://www.kit-projectone.mnsithub.com/home/?storefront=envato-elements",
+  "method": "live computed-style extraction (getComputedStyle over DOM), not pixel sampling — page is a rendered Elementor site, not a static exportable image",
+  "tokens": {
+    "background": "#FFFFFF",
+    "accent": "#007AFF",
+    "navy": "#011A65",
+    "sectionTint": "#EAF2F4",
+    "border": "#CCD6DF",
+    "textMuted": "#7E7E7A",
+    "amberAccent": "#F0AD4E"
+  },
+  "typography": {
+    "heading": "Playfair Display, weight 500",
+    "body": "DM Sans"
+  },
+  "note": "Brand name is inconsistent on the source page itself: nav logo reads 'CleanCore', footer copyright reads 'PureClean'. Treat as a template artifact, not a deliberate two-brand system."
+}
