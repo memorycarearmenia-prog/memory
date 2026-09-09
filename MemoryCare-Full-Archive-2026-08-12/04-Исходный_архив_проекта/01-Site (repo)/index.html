@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MemoryCare — The care that matters.</title>
+  <meta name="description" content="MemoryCare — premium subscription care and cleaning of family graves in Armenia, with a GPS-tagged photo & video report after every visit. The care that matters." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+Armenian:wght@500;600;700&family=Noto+Sans+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== MemoryCare — v2.2 =====
+       Palette: warm white #FAFAF7 · olive green #5E6A3A/#7C8654 · light anthracite #33373C
+       Symbol: forget-me-not in front of the Armenian eternity symbol, between two hands.
+       Year-1 scope: care + cleaning + photo/video reports (NO QR). ================ */
+    :root{
+      --navy:#FAFAF7; --navy2:#F2F2EE; --card:#FFFFFF; --line:#E3E4DF;
+      --gold:#5E6A3A; --gold2:#7C8654; --blue:#5E6A3A; --lilac:#EFF0EC;
+      --text:#33373C; --mut:#6B7075; --dim:#8A8F86;
+      --font-display:'Cormorant Garamond','Noto Serif Armenian',Georgia,serif;
+      --font-body:'Montserrat','Noto Sans Armenian',system-ui,-apple-system,sans-serif;
+      --maxw:1180px; --radius:18px; --gold-grad:linear-gradient(135deg,var(--gold2),var(--gold));
+      --shadow:0 16px 40px rgba(51,55,60,.10);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;overflow-x:hidden;font-size:18px}
+    body{margin:0;font-family:var(--font-body);color:var(--text);background:var(--navy);
+      line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+      radial-gradient(60% 50% at 82% -5%,rgba(124,134,84,.14),transparent 60%),
+      radial-gradient(50% 40% at 10% 6%,rgba(94,106,58,.10),transparent 60%),
+      radial-gradient(70% 60% at 50% 112%,rgba(94,106,58,.10),transparent 60%);}
+    h1,h2,h3,.display{font-family:var(--font-display);line-height:1.12;margin:0;font-weight:600}
+    p{margin:0} a{color:inherit;text-decoration:none} img,svg{max-width:100%;display:block}
+    ::selection{background:rgba(94,106,58,.3)}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+    .gold-text{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+    :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+    .skip-link{position:absolute;left:-999px;top:0;z-index:80;background:var(--gold);color:var(--navy);padding:12px 18px;font-weight:600;border-radius:0 0 10px 0}
+    .skip-link:focus{left:0}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;font-weight:600;font-size:.98rem;letter-spacing:.02em;cursor:pointer;border:1px solid transparent;font-family:var(--font-body);transition:transform .2s,box-shadow .2s,border-color .2s,color .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-gold{background:var(--gold-grad);color:#FFFFFF;box-shadow:0 10px 30px rgba(94,106,58,.28)}
+    .btn-gold:hover{box-shadow:0 16px 40px rgba(94,106,58,.4)}
+    .btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
+    .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+    .btn-sm{min-height:44px;padding:0 20px;font-size:.9rem}
+
+    .site-header{position:sticky;top:0;z-index:60;background:rgba(250,250,247,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:14px}
+    .brand{display:inline-flex;align-items:center;gap:11px}
+    .brand-name{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:.02em;color:var(--text)}
+    .brand-name b{color:var(--gold);font-weight:700}
+    .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:.92rem;color:var(--mut)}
+    .nav-links a{padding:6px 0;transition:color .2s}
+    .nav-links a:hover{color:var(--gold)}
+    .nav-right{display:flex;align-items:center;gap:14px}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+    .lang button{background:transparent;color:var(--mut);border:0;cursor:pointer;font-family:var(--font-body);font-size:.76rem;font-weight:600;letter-spacing:.03em;padding:8px 11px;min-height:40px;transition:background .2s,color .2s}
+    .lang button[aria-pressed="true"]{background:var(--gold-grad);color:#FFFFFF}
+    @media(max-width:1000px){.nav-links{display:none}}
+    @media(max-width:600px){.nav-cta{display:none}.brand-name{font-size:1.2rem}}
+    @media(max-width:560px){.container{padding:0 16px}.nav{gap:8px}.nav-right{gap:9px}.lang button{padding:8px 8px;font-size:.72rem;min-height:38px}}
+
+    /* Hero */
+    .hero{padding:66px 0 78px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+    .signature{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+    .signature::before{content:"";width:30px;height:1px;background:var(--gold);opacity:.7}
+    .hero h1{font-size:clamp(2.4rem,5.4vw,4rem);font-weight:600}
+    .hero .sub{margin-top:20px;font-size:clamp(1.05rem,2.1vw,1.24rem);color:var(--mut);max-width:40ch}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+    .hero-meta{display:flex;gap:26px;margin-top:36px;flex-wrap:wrap}
+    .hero-meta .n{font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--gold)}
+    .hero-meta .l{font-size:.8rem;color:var(--dim);letter-spacing:.03em}
+    .emblem-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+    .emblem-glow{position:absolute;width:74%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(94,106,58,.32),rgba(124,134,84,.12) 45%,transparent 70%);filter:blur(8px)}
+    .emblem{position:relative;width:min(420px,82vw);animation:float 7s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .report-chip{position:absolute;bottom:6%;right:-1%;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:14px;padding:11px 14px;backdrop-filter:blur(6px);box-shadow:var(--shadow);display:flex;gap:10px;align-items:center;max-width:230px}
+    .report-chip .dot{width:9px;height:9px;border-radius:50%;background:#5E6A3A;box-shadow:0 0 0 4px rgba(53,195,107,.18);flex:none}
+    .report-chip small{color:var(--mut);font-size:.72rem;line-height:1.4}
+    .report-chip small b{color:var(--text);font-weight:600}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:34px;text-align:center}.signature{justify-content:center}.hero .sub{margin-inline:auto}.hero-cta,.hero-meta{justify-content:center}.emblem{width:min(320px,78vw)}}
+
+    section{position:relative}
+    .sec{padding:80px 0}
+    .sec-head{text-align:center;max-width:680px;margin:0 auto 50px}
+    .sec-tag{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue)}
+    .sec-head h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-top:12px}
+    .sec-head p{margin-top:14px;color:var(--mut);font-size:1.06rem}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+    .band{background:var(--navy2);border-block:1px solid var(--line)}
+
+    .problem{text-align:center;max-width:760px;margin:0 auto;padding:74px 24px}
+    .problem h2{font-size:clamp(1.8rem,3.5vw,2.3rem)}
+    .problem p{margin-top:18px;font-size:1.18rem;color:var(--mut)}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;transition:border-color .25s,transform .25s}
+    .step:hover{border-color:rgba(94,106,58,.5);transform:translateY(-4px)}
+    .step .num{font-family:var(--font-display);font-weight:700;color:var(--navy);width:38px;height:38px;border-radius:50%;background:var(--gold-grad);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+    .step h3{font-size:1.3rem;margin-bottom:8px}
+    .step p{color:var(--mut);font-size:.95rem}
+    @media(max-width:820px){.steps{grid-template-columns:1fr}}
+
+    .cur-switch{display:flex;justify-content:center;gap:8px;margin-bottom:36px;flex-wrap:wrap}
+    .cur-switch button{background:var(--card);border:1px solid var(--line);color:var(--mut);border-radius:999px;padding:10px 18px;min-height:44px;cursor:pointer;font-family:var(--font-body);font-weight:600;font-size:.88rem;transition:all .2s}
+    .cur-switch button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);background:rgba(94,106,58,.08)}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+    .plan{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px 28px;display:flex;flex-direction:column;position:relative;transition:transform .25s}
+    .plan:hover{transform:translateY(-6px)}
+    .plan.featured{border-color:var(--gold);background:linear-gradient(180deg,rgba(94,106,58,.10),rgba(255,255,255,0) 40%),var(--card);box-shadow:0 24px 70px rgba(94,106,58,.14)}
+    .badge-best{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold-grad);color:#FFFFFF;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 15px;border-radius:999px;white-space:nowrap}
+    .plan .p-name{font-family:var(--font-display);font-size:1.65rem;font-weight:600}
+    .plan .p-visits{color:var(--blue);font-size:.88rem;font-weight:600;margin-top:4px}
+    .plan .price{margin:20px 0 4px}
+    .plan .price .amt{font-family:var(--font-display);font-size:2.5rem;font-weight:700}
+    .plan .price .per{color:var(--dim);font-size:.84rem}
+    .plan .p-alt{color:var(--dim);font-size:.8rem;min-height:1.2em}
+    .p-list{list-style:none;margin:22px 0 26px;padding:0;display:grid;gap:12px}
+    .p-list li{display:flex;gap:11px;align-items:flex-start;font-size:.94rem;color:var(--mut)}
+    .p-list .ck{color:var(--gold);flex:none;margin-top:3px}
+    .plan .btn{margin-top:auto;width:100%}
+    .rate-note{text-align:center;color:var(--dim);font-size:.8rem;margin-top:20px}
+    @media(max-width:900px){.plans{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
+
+    .trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    @media(max-width:820px){.trust-grid{grid-template-columns:1fr}}
+    .trust-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+    .trust-card .ic{width:50px;height:50px;border-radius:14px;border:1px solid rgba(94,106,58,.35);display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:rgba(94,106,58,.06)}
+    .trust-card h3{font-size:1.3rem;margin-bottom:9px}
+    .trust-card p{color:var(--mut);font-size:.95rem}
+
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    @media(max-width:900px){.gallery{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
+    .ba{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .ba-stage{position:relative;aspect-ratio:4/3;user-select:none;touch-action:none;overflow:hidden;cursor:ew-resize}
+    .ba-img{position:absolute;inset:0;background-size:cover;background-position:center}
+    .ba-before{filter:grayscale(.5) brightness(.7) sepia(.2)}
+    .ba-after{clip-path:inset(0 0 0 50%)}
+    .ba-label{position:absolute;top:12px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(51,55,60,.62);backdrop-filter:blur(4px);font-weight:600;color:#fff}
+    .ba-label.l{left:12px;color:var(--mut)} .ba-label.r{right:12px;color:var(--gold)}
+    .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold);transform:translateX(-1px)}
+    .ba-handle::after{content:"⟺";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:var(--gold-grad);color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:.85rem;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+    .geo{display:flex;align-items:center;gap:8px;padding:12px 15px;font-size:.76rem;color:var(--mut);border-top:1px solid var(--line)}
+    .geo .coord{color:var(--dim);margin-left:auto;font-variant-numeric:tabular-nums}
+
+    figure.quote{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;margin:0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    @media(max-width:900px){.grid-3{grid-template-columns:1fr}}
+    figure.quote blockquote{margin:0;font-size:1.05rem;font-style:italic;color:var(--mut)}
+    figure.quote figcaption{display:flex;align-items:center;gap:14px;margin-top:22px}
+    .avatar{width:46px;height:46px;border-radius:50%;background:var(--navy2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--gold)}
+    .who .name{font-weight:600;display:block} .who .role{font-size:.85rem;color:var(--dim);display:block}
+
+    .faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+    details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:2px 22px;transition:border-color .2s}
+    details[open]{border-color:rgba(94,106,58,.4)}
+    summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:16px}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";color:var(--gold);font-size:1.4rem;flex:none;transition:transform .2s}
+    details[open] summary::after{transform:rotate(45deg)}
+    details p{color:var(--mut);font-size:.95rem;padding:0 0 20px}
+
+    .cta-band{background:radial-gradient(60% 120% at 50% 0%,rgba(94,106,58,.22),transparent 60%),var(--navy2);border-block:1px solid var(--line)}
+    .cta-inner{text-align:center;max-width:720px;margin:0 auto}
+    .cta-inner h2{font-size:clamp(2rem,4.5vw,3rem)}
+    .cta-inner p{color:var(--mut);margin-top:14px;font-size:1.08rem}
+    .cta-inner .btn{margin-top:30px}
+
+    footer{background:var(--navy);border-top:1px solid var(--line)}
+    .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px;padding:52px 0 30px}
+    @media(max-width:720px){.foot-grid{grid-template-columns:1fr;gap:26px}}
+    footer h4{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:0 0 13px}
+    footer a,footer p{color:var(--mut);font-size:.9rem} footer a:hover{color:var(--gold)}
+    .foot-brand{font-family:var(--font-display);font-size:1.4rem;color:var(--text)} .foot-brand b{color:var(--gold)}
+    .foot-bottom{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var(--dim);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition-duration:.001ms!important}}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link" data-i18n="skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a href="#main" class="brand" aria-label="MemoryCare">
+          <svg width="44" height="44" viewBox="0 0 120 140" aria-hidden="true"><use href="#mc-emblem"/></svg>
+          <span class="brand-name">Memory<b>Care</b></span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#how" data-i18n="nav_how">How it works</a></li>
+          <li><a href="#pricing" data-i18n="nav_pricing">Pricing</a></li>
+          <li><a href="#trust" data-i18n="nav_trust">Trust</a></li>
+          <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
+        </ul>
+        <div class="nav-right">
+          <div class="lang" role="group" aria-label="Language">
+            <button type="button" data-lang="hy" aria-pressed="false">ՀԱՅ</button>
+            <button type="button" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+            <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+          </div>
+          <a href="#contact" class="btn btn-gold btn-sm nav-cta" data-i18n="cta_short">Book a visit</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="signature">The care that matters</p>
+          <h1 data-i18n="hero_title">We tend their resting place, so you can be at peace</h1>
+          <p class="sub" data-i18n="hero_sub">Regular care, cleaning and upkeep in Armenia — whether you're abroad or simply don't have the time to visit as often as you'd like. A photo &amp; video report, GPS-tagged and dated, after every visit.</p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-gold" data-i18n="hero_cta1">Book a free first visit</a>
+            <a href="#how" class="btn btn-ghost" data-i18n="hero_cta2">How it works</a>
+          </div>
+          <div class="hero-meta">
+            <div><div class="n">100%</div><div class="l" data-i18n="hero_m1">Photo &amp; video proof of every visit</div></div>
+            <div><div class="n">GPS</div><div class="l" data-i18n="hero_m2">Geotag &amp; date on every report</div></div>
+            <div><div class="n">PRO</div><div class="l" data-i18n="hero_m3">Trained team, professional equipment</div></div>
+          </div>
+        </div>
+        <div class="emblem-wrap">
+          <div class="emblem-glow"></div>
+          <svg class="emblem" viewBox="0 0 120 140" role="img" aria-label="MemoryCare — forget-me-not in front of the Armenian eternity symbol, held in hands"><use href="#mc-emblem"/></svg>
+          <div class="report-chip"><span class="dot"></span><small data-i18n="hero_chip"><b>Report delivered</b><br>31.07.2026 · 40.1872, 44.5152</small></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- PROBLEM -->
+    <div class="band"><div class="container problem">
+      <h2 data-i18n="prob_title">Caring for loved ones from afar is hard. You are not alone.</h2>
+      <p data-i18n="prob_text">Distance or a busy life can keep you from tending the grave of those you love — and that weighs on the heart. MemoryCare takes that care on, and shows you it was done.</p>
+    </div></div>
+
+    <!-- HOW -->
+    <section id="how" class="sec"><div class="container">
+      <div class="sec-head">
+        <span class="sec-tag" data-i18n="how_tag">Process</span>
+        <h2 data-i18n="how_title">How it works</h2>
+        <p data-i18n="how_sub">A clear, transparent path — from subscription to a report you can trust.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><div class="num">1</div><h3 data-i18n="how1_t">Subscribe</h3><p data-i18n="how1_p">Choose a plan and subscribe online from anywhere in the world.</p></article>
+        <article class="step"><div class="num">2</div><h3 data-i18n="how2_t">Regular visits</h3><p data-i18n="how2_p">Our caretaker tends and cleans the grave on your plan's schedule.</p></article>
+        <article class="step"><div class="num">3</div><h3 data-i18n="how3_t">Photo &amp; video report</h3><p data-i18n="how3_p">After each visit — photos and video with GPS geotag and date, in your personal account.</p></article>
+      </div>
+    </div></section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="sec band"><div class="container">
+      <div class="sec-head">
+        <span class="sec-tag" data-i18n="price_tag">Plans</span>
+        <h2 data-i18n="price_title">Care by subscription</h2>
+        <p data-i18n="price_sub">Pick a currency to see the reference price — you're charged in Armenian dram (֏).</p>
+      </div>
+      <div class="cur-switch" role="group" aria-label="Currency">
+        <button type="button" data-cur="AMD" aria-pressed="true">֏ AMD</button>
+        <button type="button" data-cur="USD" aria-pressed="false">$ USD</button>
+        <button type="button" data-cur="EUR" aria-pressed="false">€ EUR</button>
+        <button type="button" data-cur="RUB" aria-pressed="false">₽ RUB</button>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <div class="p-name" data-i18n="plan1_name">Express</div>
+          <div class="p-visits" data-i18n="plan1_visits">1 visit / year (one-time)</div>
+          <div class="price"><span class="amt" data-amd="80000">֏80,000</span> <span class="per" data-i18n="per">/ year</span></div>
+          <div class="p-alt" data-amd-alt="80000"></div>
+          <ul class="p-list">
+            <li><span class="ck">✦</span> <span data-i18n="plan1_f1">One-time visit &amp; full site cleaning</span></li>
+            <li><span class="ck">✦</span> <span data-i18n="plan1_f2">Photo &amp; video report with GPS + date</span></li>
+            <li><span class="ck">✦</span> <span data-i18n="plan1_f3">Perfect to try the service</span></li>
+            <li><span class="ck">✦</span> <span data-i18n="plan1_f4">Professional equipment &amp; stone-safe products</span></li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost" data-i18n="plan_btn">Choose</a>
+        </div>
+        <div class="plan featured">
+          <span class="badge-best" data-i18n="best">Bestseller</span>
+          <div class="p-name" data-i18n="plan2_name">Optimal</div>
+          <div class="p-visits" data-i18n="plan2_visits">6 visits / year</div>
+          <div class="price"><span class="amt" data-amd="180000">֏180,000</span> <span class="per" data-i18n="per">/ year</span></div>
+          <div class="p-alt" data-amd-alt="180000"></div>
+          <ul class="p-list">
+            <li><span class="ck">✦</span> <span data-i18n="plan2_f1">Everything in Express</span></li>
+            <li><span class="ck">✦</span> <span data-i18n="plan2_f2">6 visits — about every 2 months</span></li>
+            <li><span class="ck">✦</span> <span data-i18n="plan2_f3">Seasonal flower &amp; plant care</span></li>
+            <li><span class="ck">✦</span> <span data-i18n="plan2_f4">Priority support</span></li>
+          </ul>
+          <a href="#contact" class="btn btn-gold" data-i18n="plan_btn">Choose</a>
+        </div>
+        <div class="plan">
+          <div class="p-name" data-i18n="plan3_name">Maximum</div>
+          <div class="p-visits" data-i18n="plan3_visits">12 visits / year</div>
+          <div class="price"><span class="amt" data-amd="240000">֏240,000</span> <span class="per" data-i18n="per">/ year</span></div>
+          <div class="p-alt" data-amd-alt="240000"></div>
+          <ul class="p-list">
+            <li><span class="ck">✦</span> <span data-i18n="plan3_f1">Everything in Optimal</span></li>
+            <li><span class="ck">✦</span> <span data-i18n="plan3_f2">12 visits — monthly care</span></li>
+            <li><span class="ck">✦</span> <span data-i18n="plan3_f3">Full year-round upkeep</span></li>
+            <li><span class="ck">✦</span> <span data-i18n="plan3_f4">On-request report any day</span></li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost" data-i18n="plan_btn">Choose</a>
+        </div>
+      </div>
+      <p class="rate-note" data-i18n="rate_note">Payment is made in Armenian drams (֏). Other currencies are shown for reference at ≈ 365 ֏ per $1.</p>
+    </div></section>
+
+    <!-- TRUST -->
+    <section id="trust" class="sec"><div class="container">
+      <div class="sec-head">
+        <span class="sec-tag" data-i18n="trust_tag">Trust &amp; verification</span>
+        <h2 data-i18n="trust_title">Proof, not promises</h2>
+        <p data-i18n="trust_sub">Whether you're thousands of kilometres away or simply don't get there often, you're trusting us with work you don't see with your own eyes every day. That's why this service is built on evidence, not promises.</p>
+      </div>
+      <div class="trust-grid">
+        <article class="trust-card">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="#5E6A3A" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#7C8654" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 data-i18n="trust1_t">Verified every time</h3>
+          <p data-i18n="trust1_p">Every visit is confirmed with photos, video, GPS coordinates and a date — never just words.</p>
+        </article>
+        <article class="trust-card">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 7V5.5a2 2 0 012-2h2a2 2 0 012 2V7" stroke="#5E6A3A" stroke-width="1.5" stroke-linecap="round"/><rect x="4.5" y="7" width="15" height="10.5" rx="2" stroke="#5E6A3A" stroke-width="1.5"/><path d="M4.5 12h15" stroke="#7C8654" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3 data-i18n="trust4_t">A trained team, proper equipment</h3>
+          <p data-i18n="trust4_p">Every visit is done by a trained care team with professional equipment and cleaning products chosen to be safe for natural stone — never harsh chemicals that could damage the memorial.</p>
+        </article>
+        <article class="trust-card">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4.5" y="4.5" width="15" height="15" rx="2" stroke="#5E6A3A" stroke-width="1.5"/><path d="M8 10h8M8 14h5" stroke="#7C8654" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3 data-i18n="trust2_t">A real, registered company</h3>
+          <p data-i18n="trust2_p">Memory Care LLC — registered in Armenia, with real people, a real address and a phone you can call.</p>
+        </article>
+        <article class="trust-card">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#5E6A3A" stroke-width="1.5"/><path d="M12 7v5l3 2" stroke="#7C8654" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 data-i18n="trust3_t">Clear terms, full history</h3>
+          <p data-i18n="trust3_p">Transparent pricing and conditions, and a complete history of reports in your account — for the whole family.</p>
+        </article>
+      </div>
+    </div></section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="sec band"><div class="container">
+      <div class="sec-head">
+        <span class="sec-tag" data-i18n="gal_tag">Photo reports</span>
+        <h2 data-i18n="gal_title">Before &amp; after</h2>
+        <p data-i18n="gal_sub">Drag the slider. Every report carries a date and a GPS geotag.</p>
+      </div>
+      <div class="gallery" id="gallery-grid"></div>
+    </div></section>
+
+    <!-- TESTIMONIALS -->
+    <section class="sec"><div class="container">
+      <div class="sec-head"><h2 data-i18n="rev_title">What families say</h2></div>
+      <div class="grid-3">
+        <figure class="quote"><blockquote data-i18n="rev1">“The first time in years I sleep peacefully. I can see my mother's grave is truly cared for.”</blockquote><figcaption><span class="avatar" aria-hidden="true">A</span><span class="who"><span class="name">Anna K.</span><span class="role" data-i18n="rev1_r">Daughter · Los Angeles</span></span></figcaption></figure>
+        <figure class="quote"><blockquote data-i18n="rev2">“Photos and video after each visit. No doubts, no guessing — I simply see it's done.”</blockquote><figcaption><span class="avatar" aria-hidden="true">D</span><span class="who"><span class="name">David M.</span><span class="role" data-i18n="rev2_r">Son · Paris</span></span></figcaption></figure>
+        <figure class="quote"><blockquote data-i18n="rev3">“I work long hours right here in Yerevan and could never keep up with visits myself. Now I get a video every time — it's like being there.”</blockquote><figcaption><span class="avatar" aria-hidden="true">G</span><span class="who"><span class="name">Gor T.</span><span class="role" data-i18n="rev3_r">Son · Yerevan</span></span></figcaption></figure>
+      </div>
+    </div></section>
+
+    <!-- FAQ -->
+    <section id="faq" class="sec band"><div class="container">
+      <div class="sec-head"><span class="sec-tag" data-i18n="faq_tag">Questions</span><h2 data-i18n="faq_title">Frequently asked</h2></div>
+      <div class="faq">
+        <details><summary data-i18n="faq1_q">What exactly is included in a visit?</summary><p data-i18n="faq1_a">Cleaning and tidying of the grave and the plot, care of flowers and plants (seasonal), minor upkeep — and a photo &amp; video report with GPS and date after every visit.</p></details>
+        <details><summary data-i18n="faq2_q">How do I receive the report?</summary><p data-i18n="faq2_a">In your personal account, after each visit: photos and video, with the geotag and date on record. The whole family can be given access.</p></details>
+        <details><summary data-i18n="faq3_q">How do I pay, and in which currency?</summary><p data-i18n="faq3_a">Payment is a yearly subscription in Armenian dram (֏). Prices are shown in USD/EUR/RUB for reference only; the currency calculator is informational.</p></details>
+        <details><summary data-i18n="faq4_q">What if I'm not satisfied?</summary><p data-i18n="faq4_a">Tell us and we'll make it right — the before/after report is there precisely so expectations and results are clear. Terms and conditions are transparent.</p></details>
+        <details><summary data-i18n="faq5_q">I live in Yerevan — is this service still for me?</summary><p data-i18n="faq5_a">Yes. Many local clients simply don't have time for regular visits — we handle the schedule for you, including a one-time visit before a memorial date.</p></details>
+        <details><summary data-i18n="faq6_q">What equipment and products do you use?</summary><p data-i18n="faq6_a">Our care team uses professional-grade tools and cleaning products chosen specifically for natural stone — never abrasive or acidic chemicals that could damage the memorial over time.</p></details>
+      </div>
+    </div></section>
+
+    <!-- CTA / CONTACT -->
+    <section id="contact" class="sec cta-band"><div class="container cta-inner">
+      <h2 data-i18n="cta_title">The care that matters</h2>
+      <p data-i18n="cta_sub">Book a free first visit — tell us a little, and a care coordinator will call you within one business day.</p>
+      <a href="mailto:memorycarearmenia@gmail.com?subject=MemoryCare%20—%20request" class="btn btn-gold" data-i18n="cta_btn">Book a free first visit</a>
+    </div></section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <div class="brand" style="margin-bottom:12px">
+            <svg width="38" height="38" viewBox="0 0 120 140" aria-hidden="true"><use href="#mc-emblem"/></svg>
+            <span class="foot-brand">Memory<b>Care</b></span>
+          </div>
+          <p data-i18n="foot_about">Premium care and cleaning of family graves in Armenia, with photo &amp; video reports. The care that matters.</p>
+        </div>
+        <div><h4 data-i18n="foot_contact">Contact</h4><p><a href="mailto:memorycarearmenia@gmail.com">memorycarearmenia@gmail.com</a></p><p><a href="tel:+37410000000">+374 10 00 00 00</a></p></div>
+        <div><h4 data-i18n="foot_area">Coverage</h4><p data-i18n="foot_area_p">Starting in Yerevan, Central Cemetery. Expanding across Armenia.</p></div>
+      </div>
+      <div class="foot-bottom"><span>© 2026 MemoryCare · Memory Care LLC</span><span>The care that matters.</span></div>
+    </div>
+  </footer>
+
+  <!-- ===== Shared emblem: forget-me-not in front of the Armenian eternity symbol, between two hands ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="mcg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C8654"/><stop offset="1" stop-color="#5E6A3A"/></linearGradient>
+    <symbol id="mc-emblem" viewBox="0 0 120 140">
+      <!-- Armenian eternity symbol (aravakhach): 8-blade interlocking pinwheel, scalloped outer edge — NOT rings — per the owner's reference photo -->
+      <g transform="translate(60,58) scale(0.82)" fill="url(#mcg)" stroke="url(#mcg)" stroke-width="0.4" stroke-linejoin="round" opacity="0.92">
+        <path d="M0,-6 C8,-12 18,-18 27,-20 C32,-21 33,-16 28,-12 C20,-6 10,-2 2,-4 C0,-4.5 -1,-5.5 0,-6 Z"/>
+        <path d="M0,-6 C8,-12 18,-18 27,-20 C32,-21 33,-16 28,-12 C20,-6 10,-2 2,-4 C0,-4.5 -1,-5.5 0,-6 Z" transform="rotate(45)"/>
+        <path d="M0,-6 C8,-12 18,-18 27,-20 C32,-21 33,-16 28,-12 C20,-6 10,-2 2,-4 C0,-4.5 -1,-5.5 0,-6 Z" transform="rotate(90)"/>
+        <path d="M0,-6 C8,-12 18,-18 27,-20 C32,-21 33,-16 28,-12 C20,-6 10,-2 2,-4 C0,-4.5 -1,-5.5 0,-6 Z" transform="rotate(135)"/>
+        <path d="M0,-6 C8,-12 18,-18 27,-20 C32,-21 33,-16 28,-12 C20,-6 10,-2 2,-4 C0,-4.5 -1,-5.5 0,-6 Z" transform="rotate(180)"/>
+        <path d="M0,-6 C8,-12 18,-18 27,-20 C32,-21 33,-16 28,-12 C20,-6 10,-2 2,-4 C0,-4.5 -1,-5.5 0,-6 Z" transform="rotate(225)"/>
+        <path d="M0,-6 C8,-12 18,-18 27,-20 C32,-21 33,-16 28,-12 C20,-6 10,-2 2,-4 C0,-4.5 -1,-5.5 0,-6 Z" transform="rotate(270)"/>
+        <path d="M0,-6 C8,-12 18,-18 27,-20 C32,-21 33,-16 28,-12 C20,-6 10,-2 2,-4 C0,-4.5 -1,-5.5 0,-6 Z" transform="rotate(315)"/>
+      </g>
+      <!-- Hands (open crescents) cradling from the bottom, meeting at a point -->
+      <g stroke="url(#mcg)" stroke-width="1.9" fill="none" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M60,128 C48,116 32,102 28,84 C26,78 27,72 31,69 C33,63 38,64 40,70 C42,63 47,63 49,69 C51,62 57,62 58,69"/>
+        <g transform="translate(120,0) scale(-1,1)"><path d="M60,128 C48,116 32,102 28,84 C26,78 27,72 31,69 C33,63 38,64 40,70 C42,63 47,63 49,69 C51,62 57,62 58,69"/></g>
+      </g>
+      <!-- Forget-me-not (5 petals + stamens) at the centre -->
+      <g fill="#EFF0EC" fill-opacity="0.92" stroke="url(#mcg)" stroke-width="1.1" stroke-linejoin="round">
+        <g><path d="M60,56 C55,51 52.5,45 56,41 C58,39 60,40 60,43.5 C60,40 62,39 64,41 C67.5,45 65,51 60,56 Z"/></g>
+        <g transform="rotate(72 60 56)"><path d="M60,56 C55,51 52.5,45 56,41 C58,39 60,40 60,43.5 C60,40 62,39 64,41 C67.5,45 65,51 60,56 Z"/></g>
+        <g transform="rotate(144 60 56)"><path d="M60,56 C55,51 52.5,45 56,41 C58,39 60,40 60,43.5 C60,40 62,39 64,41 C67.5,45 65,51 60,56 Z"/></g>
+        <g transform="rotate(216 60 56)"><path d="M60,56 C55,51 52.5,45 56,41 C58,39 60,40 60,43.5 C60,40 62,39 64,41 C67.5,45 65,51 60,56 Z"/></g>
+        <g transform="rotate(288 60 56)"><path d="M60,56 C55,51 52.5,45 56,41 C58,39 60,40 60,43.5 C60,40 62,39 64,41 C67.5,45 65,51 60,56 Z"/></g>
+      </g>
+      <g stroke="url(#mcg)" stroke-width="0.7" stroke-linecap="round" opacity="0.95">
+        <g><line x1="60" y1="52" x2="60" y2="44"/></g>
+        <g transform="rotate(60 60 56)"><line x1="60" y1="52" x2="60" y2="44"/></g>
+        <g transform="rotate(120 60 56)"><line x1="60" y1="52" x2="60" y2="44"/></g>
+        <g transform="rotate(180 60 56)"><line x1="60" y1="52" x2="60" y2="44"/></g>
+        <g transform="rotate(240 60 56)"><line x1="60" y1="52" x2="60" y2="44"/></g>
+        <g transform="rotate(300 60 56)"><line x1="60" y1="52" x2="60" y2="44"/></g>
+      </g>
+      <circle cx="60" cy="56" r="3.1" fill="url(#mcg)"/>
+    </symbol>
+  </defs></svg>
+
+  <script>
+  (function(){
+    "use strict";
+    var I18N = {
+      en:{skip:"Skip to content",nav_how:"How it works",nav_pricing:"Pricing",nav_trust:"Trust",nav_faq:"FAQ",cta_short:"Book a visit",
+        hero_title:"We tend their resting place, so you can be at peace",
+        hero_sub:"Regular care, cleaning and upkeep in Armenia — whether you're abroad or simply don't have the time to visit as often as you'd like. A photo &amp; video report, GPS-tagged and dated, after every visit.",
+        hero_cta1:"Book a free first visit",hero_cta2:"How it works",hero_m1:"Photo &amp; video proof of every visit",hero_m2:"Geotag &amp; date on every report",hero_m3:"Trained team, professional equipment",
+        hero_chip:"<b>Report delivered</b><br>31.07.2026 · 40.1872, 44.5152",
+        prob_title:"Caring for loved ones from afar is hard. You are not alone.",
+        prob_text:"Distance or a busy life can keep you from tending the grave of those you love — and that weighs on the heart. MemoryCare takes that care on, and shows you it was done.",
+        how_tag:"Process",how_title:"How it works",how_sub:"A clear, transparent path — from subscription to a report you can trust.",
+        how1_t:"Subscribe",how1_p:"Choose a plan and subscribe online from anywhere in the world.",
+        how2_t:"Regular visits",how2_p:"Our trained care team tends and cleans the grave with professional equipment and stone-safe products, on your plan's schedule.",
+        how3_t:"Photo &amp; video report",how3_p:"After each visit — photos and video with GPS geotag and date, in your personal account.",
+        price_tag:"Plans",price_title:"Care by subscription",price_sub:"Pick a currency to see the reference price — you're charged in Armenian dram (֏).",
+        plan1_name:"Express",plan1_visits:"1 visit / year (one-time)",plan1_f1:"One-time visit &amp; full site cleaning",plan1_f2:"Photo &amp; video report with GPS + date",plan1_f3:"Perfect to try the service",plan1_f4:"Professional equipment &amp; stone-safe products",
+        plan2_name:"Optimal",plan2_visits:"6 visits / year",plan2_f1:"Everything in Express",plan2_f2:"6 visits — about every 2 months",plan2_f3:"Seasonal flower &amp; plant care",plan2_f4:"Priority support",
+        plan3_name:"Maximum",plan3_visits:"12 visits / year",plan3_f1:"Everything in Optimal",plan3_f2:"12 visits — monthly care",plan3_f3:"Full year-round upkeep",plan3_f4:"On-request report any day",
+        per:"/ year",best:"Bestseller",plan_btn:"Choose",rate_note:"Payment is made in Armenian drams (֏). Other currencies are shown for reference at ≈ 365 ֏ per $1.",
+        trust_tag:"Trust &amp; verification",trust_title:"Proof, not promises",trust_sub:"Whether you're thousands of kilometres away or simply don't get there often, you're trusting us with work you don't see with your own eyes every day. That's why this service is built on evidence, not promises.",
+        trust1_t:"Verified every time",trust1_p:"Every visit is confirmed with photos, video, GPS coordinates and a date — never just words.",
+        trust2_t:"A real, registered company",trust2_p:"Memory Care LLC — registered in Armenia, with real people, a real address and a phone you can call.",
+        trust3_t:"Clear terms, full history",trust3_p:"Transparent pricing and conditions, and a complete history of reports in your account — for the whole family.",
+        trust4_t:"A trained team, proper equipment",trust4_p:"Every visit is done by a trained care team with professional equipment and cleaning products chosen to be safe for natural stone — never harsh chemicals that could damage the memorial.",
+        gal_tag:"Photo reports",gal_title:"Before &amp; after",gal_sub:"Drag the slider. Every report carries a date and a GPS geotag.",before:"Before",after:"After",geo_place:"Yerevan · Central Cemetery",
+        rev_title:"What families say",
+        rev1:"“The first time in years I sleep peacefully. I can see my mother's grave is truly cared for.”",rev1_r:"Daughter · Los Angeles",
+        rev2:"“Photos and video after each visit. No doubts, no guessing — I simply see it's done.”",rev2_r:"Son · Paris",
+        rev3:"“I work long hours right here in Yerevan and could never keep up with visits myself. Now I get a video every time — it's like being there.”",rev3_r:"Son · Yerevan",
+        faq_tag:"Questions",faq_title:"Frequently asked",
+        faq1_q:"What exactly is included in a visit?",faq1_a:"Cleaning and tidying of the grave and the plot, care of flowers and plants (seasonal), minor upkeep — and a photo &amp; video report with GPS and date after every visit.",
+        faq2_q:"How do I receive the report?",faq2_a:"In your personal account, after each visit: photos and video, with the geotag and date on record. The whole family can be given access.",
+        faq3_q:"How do I pay, and in which currency?",faq3_a:"Payment is a yearly subscription in Armenian dram (֏). Prices are shown in USD/EUR/RUB for reference only; the currency calculator is informational.",
+        faq4_q:"What if I'm not satisfied?",faq4_a:"Tell us and we'll make it right — the before/after report is there precisely so expectations and results are clear. Terms and conditions are transparent.",
+        faq5_q:"I live in Yerevan — is this service still for me?",faq5_a:"Yes. Many local clients simply don't have time for regular visits — we handle the schedule for you, including a one-time visit before a memorial date.",
+        faq6_q:"What equipment and products do you use?",faq6_a:"Our care team uses professional-grade tools and cleaning products chosen specifically for natural stone — never abrasive or acidic chemicals that could damage the memorial over time.",
+        cta_title:"The care that matters",cta_sub:"Book a free first visit — tell us a little, and a care coordinator will call you within one business day.",cta_btn:"Book a free first visit",
+        foot_about:"Premium care and cleaning of family graves in Armenia, with photo &amp; video reports. The care that matters.",
+        foot_contact:"Contact",foot_area:"Coverage",foot_area_p:"Starting in Yerevan, Central Cemetery. Expanding across Armenia."},
+
+      ru:{skip:"К содержанию",nav_how:"Как работает",nav_pricing:"Тарифы",nav_trust:"Доверие",nav_faq:"Вопросы",cta_short:"Записаться",
+        hero_title:"Мы ухаживаем за их покоем — чтобы вам было спокойно",
+        hero_sub:"Регулярный уход, уборка и профилактика в Армении — для тех, кто далеко, и для тех, кому просто не хватает времени приезжать так часто, как хочется. Фото- и видеоотчёт, GPS и дата — после каждого визита.",
+        hero_cta1:"Записаться на бесплатный визит",hero_cta2:"Как это работает",hero_m1:"Фото- и видеоподтверждение каждого визита",hero_m2:"Геометка и дата в каждом отчёте",hero_m3:"Обученная команда, профессиональное оборудование",
+        hero_chip:"<b>Отчёт отправлен</b><br>31.07.2026 · 40.1872, 44.5152",
+        prob_title:"Заботиться о родных на расстоянии тяжело. Вы не одни.",
+        prob_text:"Расстояние или занятость мешают самому ухаживать за могилой близких — и это тяготит сердце. MemoryCare берёт эту заботу на себя и показывает, что она выполнена.",
+        how_tag:"Процесс",how_title:"Как это работает",how_sub:"Прозрачный путь — от подписки до отчёта, которому можно доверять.",
+        how1_t:"Подписка",how1_p:"Выбираете тариф и оформляете подписку онлайн из любой точки мира.",
+        how2_t:"Регулярные визиты",how2_p:"Наша обученная команда ухаживает за могилой и убирает её с профессиональным оборудованием и безопасными для камня средствами, по графику тарифа.",
+        how3_t:"Фото- и видеоотчёт",how3_p:"После каждого визита — фото и видео с GPS-геометкой и датой в личном кабинете.",
+        price_tag:"Тарифы",price_title:"Забота по подписке",price_sub:"Выберите валюту для справочной цены — оплата в армянских драмах (֏).",
+        plan1_name:"Экспресс",plan1_visits:"1 визит в год (разовый)",plan1_f1:"Разовый выезд и полная уборка участка",plan1_f2:"Фото- и видеоотчёт с GPS и датой",plan1_f3:"Идеально, чтобы попробовать",plan1_f4:"Профессиональное оборудование и безопасные для камня средства",
+        plan2_name:"Оптимальный",plan2_visits:"6 визитов в год",plan2_f1:"Всё из «Экспресс»",plan2_f2:"6 визитов — примерно раз в 2 месяца",plan2_f3:"Сезонный уход за цветами и растениями",plan2_f4:"Приоритетная поддержка",
+        plan3_name:"Максимум",plan3_visits:"12 визитов в год",plan3_f1:"Всё из «Оптимального»",plan3_f2:"12 визитов — ежемесячный уход",plan3_f3:"Полный уход круглый год",plan3_f4:"Отчёт по запросу в любой день",
+        per:"/ год",best:"Бестселлер",plan_btn:"Выбрать",rate_note:"Оплата в драмах (֏). Суммы в других валютах — справочные, по курсу ≈ 365 ֏ за $1.",
+        trust_tag:"Доверие и верификация",trust_title:"Доказательства, а не обещания",trust_sub:"Будь вы за тысячи километров или просто редко бываете на месте — вы платите за работу, которую не видите каждый день. Поэтому мы строим сервис вокруг доказательств, а не обещаний.",
+        trust1_t:"Подтверждено каждый раз",trust1_p:"Каждый визит подтверждён фото, видео, GPS-координатами и датой — не на словах.",
+        trust2_t:"Реальная компания",trust2_p:"Memory Care LLC — зарегистрирована в Армении: реальные люди, реальный адрес и телефон, по которому можно позвонить.",
+        trust3_t:"Понятные условия, вся история",trust3_p:"Прозрачные цены и условия, полная история отчётов в личном кабинете — для всей семьи.",
+        trust4_t:"Обученная команда, профессиональное оборудование",trust4_p:"Каждый визит выполняет обученная команда с профессиональным оборудованием и средствами для чистки, безопасными для натурального камня — никакой агрессивной химии, способной повредить памятник.",
+        gal_tag:"Фотоотчёты",gal_title:"До и после",gal_sub:"Перетащите ползунок. В каждом отчёте — дата и GPS-геометка.",before:"До",after:"После",geo_place:"Ереван · Центральное кладбище",
+        rev_title:"Что говорят семьи",
+        rev1:"«Впервые за годы сплю спокойно. Я вижу, что о могиле мамы действительно заботятся.»",rev1_r:"Дочь · Лос-Анджелес",
+        rev2:"«Фото и видео после каждого визита. Никаких сомнений — я просто вижу, что сделано.»",rev2_r:"Сын · Париж",
+        rev3:"«Я работаю допоздна прямо здесь, в Ереване, и просто не успевал ездить сам. Теперь после каждого визита — видео, будто я сам там был.»",rev3_r:"Сын · Ереван",
+        faq_tag:"Вопросы",faq_title:"Частые вопросы",
+        faq1_q:"Что именно входит в визит?",faq1_a:"Уборка и приведение в порядок могилы и участка, сезонный уход за цветами и растениями, мелкое обслуживание — и фото- и видеоотчёт с GPS и датой после каждого визита.",
+        faq2_q:"Как я получаю отчёт?",faq2_a:"В личном кабинете после каждого визита: фото и видео с геометкой и датой. Доступ можно дать всей семье.",
+        faq3_q:"Как и в какой валюте оплата?",faq3_a:"Оплата — годовая подписка в армянских драмах (֏). Цены в USD/EUR/RUB — только справочно; калькулятор валют информационный.",
+        faq4_q:"А если мне не понравится?",faq4_a:"Скажите нам — и мы всё исправим. Отчёт «до/после» существует именно для того, чтобы ожидания и результат были ясны. Условия прозрачны.",
+        faq5_q:"Я живу в Ереване — этот сервис вообще для меня?",faq5_a:"Да. Многие локальные клиенты просто не успевают выделить время на регулярные визиты — мы берём уход на себя по расписанию, которое удобно вам, включая разовый визит перед памятной датой.",
+        faq6_q:"Каким оборудованием и средствами вы пользуетесь?",faq6_a:"Наша команда использует профессиональное оборудование и чистящие средства, подобранные специально для натурального камня — никаких абразивных или кислотных составов, которые могут повредить памятник со временем.",
+        cta_title:"Уход, который по-настоящему важен",cta_sub:"Запишитесь на бесплатный визит — расскажите немного, и координатор перезвонит в течение рабочего дня.",cta_btn:"Записаться на бесплатный визит",
+        foot_about:"Премиальный уход и уборка семейных захоронений в Армении с фото- и видеоотчётами. Уход, который по-настоящему важен.",
+        foot_contact:"Контакты",foot_area:"География",foot_area_p:"Старт — Ереван, Центральное кладбище. Расширяемся по Армении."},
+
+      hy:{skip:"Անցնել բովանդակությանը",nav_how:"Ինչպես է աշխատում",nav_pricing:"Սակագներ",nav_trust:"Վստահություն",nav_faq:"Հարցեր",cta_short:"Գրանցվել",
+        hero_title:"Մենք հոգ ենք տանում նրանց հանգստի մասին, որ դուք հանգիստ լինեք",
+        hero_sub:"Կանոնավոր խնամք, մաքրում և պահպանում Հայաստանում՝ նրանց համար, ովքեր հեռու են, և նրանց համար, ովքեր պարզապես ժամանակ չունեն հաճախ գալու։ Ֆոտո և տեսահաշվետվություն, GPS և ամսաթիվ՝ ամեն այցից հետո։",
+        hero_cta1:"Ամրագրել անվճար այց",hero_cta2:"Ինչպես է աշխատում",hero_m1:"Ֆոտո և տեսա հաստատում ամեն այցի",hero_m2:"Գեոպիտակ և ամսաթիվ ամեն հաշվետվությունում",hero_m3:"Վերապատրաստված թիմ, պրոֆեսիոնալ սարքավորում",
+        hero_chip:"<b>Հաշվետվությունն ուղարկված է</b><br>31.07.2026 · 40.1872, 44.5152",
+        prob_title:"Հեռվից հարազատների մասին հոգ տանելը դժվար է։ Դուք մենակ չեք։",
+        prob_text:"Հեռավորությունը կամ զբաղվածությունը խանգարում են ինքներդ խնամել հարազատների գերեզմանը, և դա ծանրանում է սրտին։ MemoryCare-ն ստանձնում է այդ հոգսը և ցույց տալիս, որ այն կատարված է։",
+        how_tag:"Գործընթաց",how_title:"Ինչպես է աշխատում",how_sub:"Թափանցիկ ուղի՝ բաժանորդագրությունից մինչև հաշվետվություն, որին կարելի է վստահել։",
+        how1_t:"Բաժանորդագրություն",how1_p:"Ընտրում եք սակագին և բաժանորդագրվում առցանց՝ աշխարհի ցանկացած կետից։",
+        how2_t:"Կանոնավոր այցեր",how2_p:"Մեր վերապատրաստված թիմը խնամում և մաքրում է գերեզմանը՝ պրոֆեսիոնալ սարքավորումներով և քարի համար անվտանգ միջոցներով, ըստ սակագնի ժամանակացույցի։",
+        how3_t:"Ֆոտո և տեսահաշվետվություն",how3_p:"Ամեն այցից հետո՝ լուսանկարներ և տեսանյութ՝ GPS-ով և ամսաթվով անձնական էջում։",
+        price_tag:"Սակագներ",price_title:"Խնամք բաժանորդագրությամբ",price_sub:"Ընտրեք արժույթը՝ տեղեկատվական գնի համար։ Վճարումը՝ հայկական դրամով (֏)։",
+        plan1_name:"Էքսպրես",plan1_visits:"Տարեկան 1 այց (միանվագ)",plan1_f1:"Միանվագ այց և տարածքի լրիվ մաքրում",plan1_f2:"Ֆոտո և տեսահաշվետվություն GPS-ով և ամսաթվով",plan1_f3:"Հարմար է փորձելու համար",plan1_f4:"Պրոֆեսիոնալ սարքավորումներ և քարի համար անվտանգ մաքրող միջոցներ",
+        plan2_name:"Օպտիմալ",plan2_visits:"Տարեկան 6 այց",plan2_f1:"Ամեն ինչ «Էքսպրես»-ից",plan2_f2:"6 այց՝ մոտ 2 ամիսը մեկ",plan2_f3:"Ծաղիկների սեզոնային խնամք",plan2_f4:"Առաջնահերթ աջակցություն",
+        plan3_name:"Մաքսիմում",plan3_visits:"Տարեկան 12 այց",plan3_f1:"Ամեն ինչ «Օպտիմալ»-ից",plan3_f2:"12 այց՝ ամսական խնամք",plan3_f3:"Լիարժեք խնամք ամբողջ տարին",plan3_f4:"Հաշվետվություն ըստ պահանջի",
+        per:"/ տարի",best:"Բեսթսելլեր",plan_btn:"Ընտրել",rate_note:"Վճարումը դրամով (֏)։ Այլ արժույթները՝ տեղեկատվական, ≈ 365 ֏ / $1 փոխարժեքով։",
+        trust_tag:"Վստահություն և ստուգում",trust_title:"Ապացույց, ոչ խոստում",trust_sub:"Անկախ նրանից՝ դուք հազարավոր կիլոմետրեր հեռու եք, թե պարզապես հազվադեպ եք գնում այնտեղ, դուք վճարում եք աշխատանքի համար, որը ամեն օր չեք տեսնում։ Դրա համար էլ մեր ծառայությունը կառուցված է ապացույցների, ոչ թե խոստումների վրա։",
+        trust1_t:"Հաստատված ամեն անգամ",trust1_p:"Ամեն այց հաստատված է լուսանկարով, տեսանյութով, GPS-կոորդինատներով և ամսաթվով, ոչ թե խոսքով։",
+        trust2_t:"Իրական, գրանցված ընկերություն",trust2_p:"Memory Care LLC — գրանցված Հայաստանում՝ իրական մարդիկ, հասցե և հեռախոս, որով կարելի է զանգել։",
+        trust3_t:"Հստակ պայմաններ, ամբողջ պատմություն",trust3_p:"Թափանցիկ գներ ու պայմաններ և հաշվետվությունների ամբողջ պատմությունը անձնական էջում՝ ողջ ընտանիքի համար։",
+        trust4_t:"Վերապատրաստված թիմ, պրոֆեսիոնալ սարքավորում",trust4_p:"Ամեն այցն իրականացնում է վերապատրաստված թիմը՝ պրոֆեսիոնալ սարքավորումներով և քարի համար անվտանգ մաքրող միջոցներով, ոչ թե ագրեսիվ քիմիայով, որը կարող է վնասել հուշարձանը։",
+        gal_tag:"Ֆոտոհաշվետվություններ",gal_title:"Առաջ և հետո",gal_sub:"Քաշեք սահիչը։ Ամեն հաշվետվություն՝ ամսաթվով և GPS-պիտակով։",before:"Առաջ",after:"Հետո",geo_place:"Երևան · Կենտրոնական գերեզմանատուն",
+        rev_title:"Ի՞նչ են ասում ընտանիքները",
+        rev1:"«Տարիներ անց առաջին անգամ հանգիստ եմ քնում։ Տեսնում եմ, որ մոր գերեզմանն իսկապես խնամված է։»",rev1_r:"Դուստր · Լոս Անջելես",
+        rev2:"«Լուսանկար և տեսանյութ ամեն այցից հետո։ Ոչ մի կասկած՝ ուղղակի տեսնում եմ, որ արված է։»",rev2_r:"Որդի · Փարիզ",
+        rev3:"«Ես աշխատում եմ մինչ ուշ ժամեր հենց Երևանում ու պարզապես ժամանակ չէի հասցնում ինքս գնալ։ Հիմա ամեն այցից հետո տեսանյութ եմ ստանում՝ կարծես ինքս այնտեղ եմ եղել։»",rev3_r:"Որդի · Երևան",
+        faq_tag:"Հարցեր",faq_title:"Հաճախ տրվող հարցեր",
+        faq1_q:"Ի՞նչ է ներառում այցը։",faq1_a:"Գերեզմանի և տարածքի մաքրում ու կարգի բերում, ծաղիկների սեզոնային խնամք, մանր սպասարկում, և ֆոտո/տեսահաշվետվություն GPS-ով ու ամսաթվով ամեն այցից հետո։",
+        faq2_q:"Ինչպե՞ս եմ ստանում հաշվետվությունը։",faq2_a:"Անձնական էջում՝ ամեն այցից հետո՝ լուսանկարներ և տեսանյութ՝ գեոպիտակով և ամսաթվով։ Հասանելիությունը կարելի է տալ ողջ ընտանիքին։",
+        faq3_q:"Ինչպե՞ս և ի՞նչ արժույթով է վճարումը։",faq3_a:"Վճարումը տարեկան բաժանորդագրություն է՝ դրամով (֏)։ USD/EUR/RUB-ը միայն տեղեկատվական է։",
+        faq4_q:"Իսկ եթե ինձ դու՞ր չգա։",faq4_a:"Ասեք մեզ, և մենք կուղղենք։ «Առաջ/հետո» հաշվետվությունը հենց դրա համար է՝ որ ակնկալիքն ու արդյունքը պարզ լինեն։ Պայմանները թափանցիկ են։",
+        faq5_q:"Ես ապրում եմ Երևանում․ այս ծառայությունը իմ համար է՞։",faq5_a:"Այո։ Շատ տեղացի հաճախորդներ պարզապես ժամանակ չունեն կանոնավոր այցերի համար․ մենք ստանձնում ենք խնամքը ձեզ հարմար ժամանակացույցով, ներառյալ միանվագ այցը հիշատակի օրվա նախօրեին։",
+        faq6_q:"Ի՞նչ սարքավորումներ և միջոցներ եք օգտագործում։",faq6_a:"Մեր թիմն օգտագործում է պրոֆեսիոնալ գործիքներ և հատուկ քարի համար ընտրված մաքրող միջոցներ՝ երբեք աբրազիվ կամ թթվային նյութեր, որոնք ժամանակի ընթացքում կարող են վնասել հուշարձանը։",
+        cta_title:"Խնամքը, որը կարևոր է",cta_sub:"Ամրագրեք անվճար այց. պատմեք մի փոքր, և համակարգողը կզանգի մեկ աշխատանքային օրվա ընթացքում։",cta_btn:"Ամրագրել անվճար այց",
+        foot_about:"Ընտանեկան գերեզմանների պրեմիում խնամք և մաքրում Հայաստանում՝ ֆոտո և տեսահաշվետվություններով։ Խնամքը, որը կարևոր է։",
+        foot_contact:"Կապ",foot_area:"Աշխարհագրություն",foot_area_p:"Մեկնարկ՝ Երևան, Կենտրոնական գերեզմանատուն։ Ընդլայնում ողջ Հայաստանով։"},
+
+      fr:{skip:"Aller au contenu",nav_how:"Fonctionnement",nav_pricing:"Tarifs",nav_trust:"Confiance",nav_faq:"FAQ",cta_short:"Prendre RDV",
+        hero_title:"Nous veillons sur leur repos, pour que vous ayez l'esprit tranquille",
+        hero_sub:"Entretien, nettoyage et soin réguliers en Arménie — que vous soyez à l'étranger ou que vous manquiez simplement de temps pour venir aussi souvent que vous le voudriez. Un rapport photo et vidéo, géolocalisé et daté, après chaque visite.",
+        hero_cta1:"Réserver une première visite gratuite",hero_cta2:"Comment ça marche",hero_m1:"Preuve photo et vidéo de chaque visite",hero_m2:"Géotag et date sur chaque rapport",hero_m3:"Équipe formée, équipement professionnel",
+        hero_chip:"<b>Rapport envoyé</b><br>31.07.2026 · 40.1872, 44.5152",
+        prob_title:"Prendre soin des siens de loin est difficile. Vous n'êtes pas seul.",
+        prob_text:"La distance ou le manque de temps vous empêchent d'entretenir la tombe de ceux que vous aimez — et cela pèse sur le cœur. MemoryCare prend ce soin en charge et vous prouve qu'il a été accompli.",
+        how_tag:"Processus",how_title:"Comment ça marche",how_sub:"Un parcours clair et transparent — de l'abonnement à un rapport fiable.",
+        how1_t:"Abonnement",how1_p:"Choisissez une formule et abonnez-vous en ligne, où que vous soyez.",
+        how2_t:"Visites régulières",how2_p:"Notre équipe formée entretient et nettoie la tombe avec un équipement professionnel et des produits sans danger pour la pierre, selon le rythme de votre formule.",
+        how3_t:"Rapport photo et vidéo",how3_p:"Après chaque visite — photos et vidéo avec géotag GPS et date, dans votre espace personnel.",
+        price_tag:"Formules",price_title:"Le soin par abonnement",price_sub:"Choisissez une devise pour le prix indicatif — le paiement se fait en drams arméniens (֏).",
+        plan1_name:"Express",plan1_visits:"1 visite / an (ponctuelle)",plan1_f1:"Visite ponctuelle et nettoyage complet",plan1_f2:"Rapport photo et vidéo avec GPS et date",plan1_f3:"Idéal pour essayer le service",plan1_f4:"Équipement professionnel et produits sans danger pour la pierre",
+        plan2_name:"Optimal",plan2_visits:"6 visites / an",plan2_f1:"Tout d'Express",plan2_f2:"6 visites — environ tous les 2 mois",plan2_f3:"Entretien saisonnier des fleurs",plan2_f4:"Support prioritaire",
+        plan3_name:"Maximum",plan3_visits:"12 visites / an",plan3_f1:"Tout d'Optimal",plan3_f2:"12 visites — entretien mensuel",plan3_f3:"Entretien complet toute l'année",plan3_f4:"Rapport sur demande à tout moment",
+        per:"/ an",best:"Le plus choisi",plan_btn:"Choisir",rate_note:"Le paiement se fait en drams (֏). Les autres devises sont indicatives, au taux de ≈ 365 ֏ pour 1 $.",
+        trust_tag:"Confiance et vérification",trust_title:"Des preuves, pas des promesses",trust_sub:"Que vous soyez à des milliers de kilomètres ou que vous vous y rendiez simplement rarement, vous payez pour un travail que vous ne voyez pas chaque jour. C'est pourquoi ce service repose sur des preuves, et non sur des promesses.",
+        trust1_t:"Vérifié à chaque fois",trust1_p:"Chaque visite est confirmée par des photos, une vidéo, des coordonnées GPS et une date — jamais de simples mots.",
+        trust2_t:"Une société réelle et enregistrée",trust2_p:"Memory Care LLC — enregistrée en Arménie : de vraies personnes, une adresse et un téléphone.",
+        trust3_t:"Conditions claires, historique complet",trust3_p:"Des prix et conditions transparents, et tout l'historique des rapports dans votre espace — pour toute la famille.",
+        trust4_t:"Une équipe formée, un équipement adapté",trust4_p:"Chaque visite est réalisée par une équipe formée, avec un équipement professionnel et des produits d'entretien choisis pour être sans danger pour la pierre naturelle — jamais de produits agressifs pouvant endommager le monument.",
+        gal_tag:"Rapports photo",gal_title:"Avant / après",gal_sub:"Faites glisser le curseur. Chaque rapport porte une date et un géotag GPS.",before:"Avant",after:"Après",geo_place:"Erevan · Cimetière central",
+        rev_title:"Ce que disent les familles",
+        rev1:"« Pour la première fois depuis des années, je dors sereinement. Je vois que la tombe de ma mère est vraiment entretenue. »",rev1_r:"Fille · Los Angeles",
+        rev2:"« Photos et vidéo après chaque visite. Aucun doute — je vois simplement que c'est fait. »",rev2_r:"Fils · Paris",
+        rev3:"« Je travaille tard ici, à Erevan, et je n'arrivais jamais à trouver le temps d'y aller moi-même. Maintenant, je reçois une vidéo après chaque visite — comme si j'y étais. »",rev3_r:"Fils · Erevan",
+        faq_tag:"Questions",faq_title:"Questions fréquentes",
+        faq1_q:"Qu'est-ce qui est inclus dans une visite ?",faq1_a:"Nettoyage et entretien de la tombe et de la parcelle, soin saisonnier des fleurs, petites réparations — et un rapport photo et vidéo avec GPS et date après chaque visite.",
+        faq2_q:"Comment je reçois le rapport ?",faq2_a:"Dans votre espace personnel, après chaque visite : photos et vidéo, avec géotag et date. L'accès peut être partagé avec toute la famille.",
+        faq3_q:"Comment et en quelle devise payer ?",faq3_a:"Le paiement est un abonnement annuel en drams arméniens (֏). Les prix en USD/EUR/RUB sont indicatifs ; le calculateur est informatif.",
+        faq4_q:"Et si je ne suis pas satisfait ?",faq4_a:"Dites-le-nous et nous corrigerons — le rapport avant/après existe justement pour que les attentes et le résultat soient clairs. Conditions transparentes.",
+        faq5_q:"J'habite à Erevan — ce service est-il fait pour moi ?",faq5_a:"Oui. Beaucoup de clients locaux manquent simplement de temps pour des visites régulières — nous prenons en charge le calendrier qui vous convient, y compris une visite ponctuelle avant une date de commémoration.",
+        faq6_q:"Quels équipements et produits utilisez-vous ?",faq6_a:"Notre équipe utilise des outils professionnels et des produits d'entretien choisis spécifiquement pour la pierre naturelle — jamais de produits abrasifs ou acides qui pourraient l'endommager avec le temps.",
+        cta_title:"Le soin qui compte",cta_sub:"Réservez une première visite gratuite — dites-nous l'essentiel, un coordinateur vous rappelle sous un jour ouvré.",cta_btn:"Réserver une première visite gratuite",
+        foot_about:"Entretien et nettoyage premium des tombes familiales en Arménie, avec rapports photo et vidéo. Le soin qui compte.",
+        foot_contact:"Contact",foot_area:"Couverture",foot_area_p:"Débuts à Erevan, Cimetière central. Extension dans toute l'Arménie."}
+    };
+
+    var COORDS = ["40.1872, 44.5152","40.1869, 44.5148","40.1875, 44.5157"];
+    var TONES = [["#bcbdb1","#a0a394","#ccd4ba","#a7b886"],["#c0bcb0","#a29d91","#c6d1b2","#a1b483"],["#b9b8ad","#9c9a8f","#cbceb0","#a4b287"]];
+
+    function buildGallery(dict){
+      var grid=document.getElementById('gallery-grid'); grid.innerHTML='';
+      for(var i=0;i<3;i++){
+        var t=TONES[i];
+        var fig=document.createElement('figure'); fig.className='ba';
+        fig.innerHTML=
+          '<div class="ba-stage" data-ba>'+
+          '<div class="ba-img ba-before" style="background:linear-gradient(160deg,'+t[0]+','+t[1]+')"></div>'+
+          '<div class="ba-img ba-after" style="background:linear-gradient(160deg,'+t[2]+','+t[3]+')"></div>'+
+          '<span class="ba-label l">'+dict.before+'</span><span class="ba-label r">'+dict.after+'</span>'+
+          '<div class="ba-handle"></div></div>'+
+          '<figcaption class="geo">'+
+          '<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 21s-6-5.2-6-10a6 6 0 1112 0c0 4.8-6 10-6 10z" stroke="#5E6A3A" stroke-width="1.5"/><circle cx="12" cy="11" r="2.2" stroke="#5E6A3A" stroke-width="1.5"/></svg>'+
+          '<span>'+dict.geo_place+'</span><span class="coord">'+COORDS[i]+'</span></figcaption>';
+        grid.appendChild(fig);
+      }
+      initSliders();
+    }
+    function initSliders(){
+      document.querySelectorAll('[data-ba]').forEach(function(stage){
+        var after=stage.querySelector('.ba-after'),handle=stage.querySelector('.ba-handle');
+        function set(p){p=Math.max(0,Math.min(100,p));after.style.clipPath='inset(0 0 0 '+p+'%)';handle.style.left=p+'%';}
+        function ev(e){var r=stage.getBoundingClientRect();var x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;set(x/r.width*100);}
+        var d=false;
+        stage.addEventListener('pointerdown',function(e){d=true;ev(e);});
+        window.addEventListener('pointermove',function(e){if(d)ev(e);});
+        window.addEventListener('pointerup',function(){d=false;});
+        set(50);
+      });
+    }
+
+    function applyLang(lang){
+      var d=I18N[lang]; if(!d) return;
+      document.documentElement.lang=lang;
+      document.querySelectorAll('[data-i18n]').forEach(function(el){var v=d[el.getAttribute('data-i18n')];if(v!=null)el.innerHTML=v;});
+      document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-lang')===lang));});
+      buildGallery(d);
+    }
+    document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){applyLang(b.getAttribute('data-lang'));});});
+
+    var RATES={AMD:1,USD:365,EUR:395,RUB:4.05},SYM={AMD:'֏',USD:'$',EUR:'€',RUB:'₽'};
+    function fmt(amd,cur){var v=amd/RATES[cur];if(cur==='AMD')return '֏'+Math.round(v).toLocaleString('en-US');if(cur==='RUB')return '₽'+(Math.round(v/50)*50).toLocaleString('en-US');return SYM[cur]+Math.round(v).toLocaleString('en-US');}
+    function applyCurrency(cur){
+      document.querySelectorAll('[data-amd]').forEach(function(el){el.textContent=fmt(+el.getAttribute('data-amd'),cur);});
+      document.querySelectorAll('[data-amd-alt]').forEach(function(el){var a=+el.getAttribute('data-amd-alt');el.textContent=(cur==='AMD')?('≈ '+fmt(a,'USD')+' / '+fmt(a,'EUR')):('≈ '+fmt(a,'AMD'));});
+      document.querySelectorAll('.cur-switch button').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-cur')===cur));});
+    }
+    document.querySelectorAll('.cur-switch button').forEach(function(b){b.addEventListener('click',function(){applyCurrency(b.getAttribute('data-cur'));});});
+
+    applyLang('en');
+    applyCurrency('AMD');
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Large audit screenshot bundles — kept locally, not in git history
+*.zip
+mc-audit-screenshots/
+state.json
+*.env
+node_modules/

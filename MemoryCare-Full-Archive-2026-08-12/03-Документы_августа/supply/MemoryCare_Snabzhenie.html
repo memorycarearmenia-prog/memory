@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MemoryCare — снабжение: химия и инструмент</title>
+<style>
+:root{
+  --olive:#5E6A3A; --olive-l:#7d8a52; --anthracite:#33373C; --paper:#FAFAF7;
+  --line:#e3e1d8; --muted:#6f7268; --danger:#9b3226; --danger-bg:#fbecea;
+  --ok:#3f6b4a; --ok-bg:#eaf2ec; --warn:#8a6b1f; --warn-bg:#fdf5e3;
+  --card:#ffffff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--anthracite);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+header{background:var(--anthracite);color:#fff;padding:48px 0 40px;margin-bottom:36px}
+header .wrap{padding-bottom:0}
+h1{font-size:31px;line-height:1.25;margin:0 0 10px;font-weight:600;letter-spacing:-.4px}
+.sub{color:#b8bcb4;font-size:15px;margin:0}
+h2{font-size:23px;margin:56px 0 6px;font-weight:600;letter-spacing:-.3px;padding-top:8px}
+h2 .num{color:var(--olive-l);font-weight:400;margin-right:10px}
+h3{font-size:17px;margin:32px 0 12px;font-weight:600;color:var(--olive)}
+p{margin:0 0 14px}
+a{color:var(--olive);text-decoration:none;border-bottom:1px solid rgba(94,106,58,.3)}
+a:hover{border-bottom-color:var(--olive)}
+.lead{font-size:17px;color:#4a4e54}
+.rule{height:1px;background:var(--line);margin:8px 0 22px}
+
+.keybox{background:#fff;border:1px solid var(--line);border-left:3px solid var(--olive);
+  padding:20px 22px;margin:22px 0;border-radius:2px}
+.keybox p:last-child{margin-bottom:0}
+.keybox.red{border-left-color:var(--danger);background:var(--danger-bg)}
+.keybox.warn{border-left-color:var(--warn);background:var(--warn-bg)}
+
+.strategy{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:24px 0}
+.st{background:#fff;border:1px solid var(--line);border-radius:3px;padding:18px 20px}
+.st .n{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:8px}
+.st h4{margin:0 0 8px;font-size:17px;font-weight:600}
+.st p{font-size:14.5px;color:#55595e;margin:0}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 24px;position:sticky;top:0;
+  background:var(--paper);padding:12px 0;z-index:10;border-bottom:1px solid var(--line)}
+.fbtn{border:1px solid var(--line);background:#fff;color:var(--anthracite);
+  padding:7px 14px;border-radius:20px;font-size:13.5px;cursor:pointer;font-family:inherit}
+.fbtn:hover{border-color:var(--olive-l)}
+.fbtn.on{background:var(--olive);color:#fff;border-color:var(--olive)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:18px 20px;
+  display:flex;flex-direction:column}
+.card.no{border-color:#e6c9c4;background:#fdf7f6}
+.card .name{font-weight:600;font-size:16px;margin-bottom:2px;line-height:1.35}
+.card .brand{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.card .desc{font-size:14.5px;color:#4f5359;margin-bottom:12px;flex-grow:1}
+.spec{font-size:13.5px;color:#5a5e63;border-top:1px solid var(--line);padding-top:10px;margin-top:auto}
+.spec div{display:flex;justify-content:space-between;gap:12px;padding:2px 0}
+.spec .k{color:var(--muted)}
+.spec .v{text-align:right;font-variant-numeric:tabular-nums}
+.price{font-weight:600;color:var(--anthracite)}
+.amd{color:var(--muted);font-weight:400;font-size:12.5px}
+
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.tag{font-size:11.5px;padding:2.5px 8px;border-radius:3px;letter-spacing:.02em;font-weight:500}
+.t-ok{background:var(--ok-bg);color:var(--ok)}
+.t-no{background:var(--danger-bg);color:var(--danger)}
+.t-warn{background:var(--warn-bg);color:var(--warn)}
+.t-n{background:#eef0ec;color:#5c6155}
+
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px;background:#fff}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f2f1ea;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#54584d}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:3px}
+
+.total{background:var(--anthracite);color:#fff}
+.total td{border-bottom:none;font-weight:600}
+
+ul{margin:0 0 14px;padding-left:20px}
+li{margin-bottom:7px}
+
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--muted)}
+@media(max-width:640px){
+  h1{font-size:25px} h2{font-size:20px}
+  .wrap{padding:0 16px 60px}
+  header{padding:34px 0 28px}
+  .cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Снабжение: профессиональная химия и инструмент</h1>
+    <p class="sub">MemoryCare · 11 августа 2026 · что покупать, где, почём и как довезти до Еревана</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<p class="lead">Исследование по профессиональной химии и инструменту для ухода за памятниками: гранит, лалвар, базальт и туф. Проверены специализированные поставщики США и Европы, немецкие и российские магазины, маркетплейсы и армянская розница. Отдельно проработана логистика: что реально доедет до Армении, а что откажутся везти.</p>
+
+<div class="keybox">
+  <p><strong>Главный вывод.</strong> Побеждает разделение на три канала. Инструмент, мойки, баки и средства защиты — покупать в Ереване. Специализированную химию для камня — везти из Москвы наземкой: Армения и Россия в одном таможенном союзе, значит нет пошлин, нет НДС на границе и нет обязанности самим получать сертификацию. Авиа-форвардерами возить только неопасные позиции — щётки, компрессы, тест-полоски.</p>
+</div>
+
+<div class="keybox red">
+  <p><strong>Фильтр, по которому отобрана вся химия ниже:</strong> без хлора и без кислот. Оба разрушают туф через кристаллизацию солей внутри камня, а кислота вдобавок необратимо травит травертин и даёт железные разводы на базальте. Несколько самых раскрученных «средств для памятников» этот фильтр не прошли — они вынесены в отдельный список запрещённых.</p>
+</div>
+
+<h2><span class="num">1</span>Стратегия закупки</h2>
+<div class="rule"></div>
+
+<div class="strategy">
+  <div class="st">
+    <div class="n">Канал 1 · Ереван</div>
+    <h4>Покупаем на месте</h4>
+    <p>Мойки Kärcher, баки для воды, опрыскиватели, вёдра, перчатки, очки, наколенники, бытовая химия. Нулевое трение, гарантия, правильное напряжение 220 В.</p>
+  </div>
+  <div class="st">
+    <div class="n">Канал 2 · Москва → наземка</div>
+    <h4>Специализированная химия</h4>
+    <p>Профессиональные составы для камня. Внутри ЕАЭС: без таможни, без пошлин, без сертификации — она уже есть у российского поставщика. Onex наземкой 1 000 драм за кг.</p>
+  </div>
+  <div class="st">
+    <div class="n">Канал 3 · Авиа-форвардер</div>
+    <h4>Только неопасное</h4>
+    <p>Щётки без металла, порошки для компрессов, pH-полоски, готовые наборы. Жидкую химию авиа почти не пропускают — проверять паспорт безопасности.</p>
+  </div>
+</div>
+
+<h2><span class="num">2</span>Химия</h2>
+<div class="rule"></div>
+<p>Цены в долларах пересчитаны в драмы по курсу 365, заложенному в нашей финмодели, — как ориентир, а не как факт на день покупки. Отметка «безопасно для туфа» стоит там, где производитель прямо заявляет отсутствие хлора, кислот и щелочей.</p>
+
+<div class="filters" id="chemFilters">
+  <button class="fbtn on" data-f="all">Все</button>
+  <button class="fbtn" data-f="bio">Биоциды</button>
+  <button class="fbtn" data-f="clean">Очистители</button>
+  <button class="fbtn" data-f="rust">Ржавчина</button>
+  <button class="fbtn" data-f="prot">Защита</button>
+  <button class="fbtn" data-f="ru">Есть в России</button>
+</div>
+
+<div class="cards" id="chemCards">
+
+  <div class="card" data-c="bio">
+    <div class="tags"><span class="tag t-ok">эталон отрасли</span><span class="tag t-ok">без хлора и кислот</span></div>
+    <div class="name">D/2 Biological Solution</div>
+    <div class="brand">D/2 Bio · США</div>
+    <div class="desc">Тот самый состав, которым обрабатывают памятники на военных кладбищах США. Победил в сравнительном испытании Службы национальных парков. pH 9,2, четвертичные аммониевые соединения. Применяется неразбавленным.</div>
+    <div class="spec">
+      <div><span class="k">Расход</span><span class="v">5–10 м²/л</span></div>
+      <div><span class="k">1 галлон (3,78 л)</span><span class="v price">$45,95 <span class="amd">≈16 800 ֏</span></span></div>
+      <div><span class="k">5 галлонов</span><span class="v price">$208 <span class="amd">≈75 900 ֏</span></span></div>
+      <div><span class="k">Европа (UK)</span><span class="v">£60,99 за галлон</span></div>
+      <div><span class="k">Доставка в AM</span><span class="v">запросить у <a href="https://d2bio.co.uk/shop">d2bio.co.uk</a></span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="bio">
+    <div class="tags"><span class="tag t-ok">безопасно для туфа</span><span class="tag t-ok">pH нейтральный</span></div>
+    <div class="name">Algae and Moss Remover LONGLIFE</div>
+    <div class="brand">AKEMI · Германия</div>
+    <div class="desc">Лучшее техническое совпадение с нашей задачей в Европе. Производитель прямо пишет: без хлора, кислот, щелочей и растворителей, рекомендован для кислоточувствительных камней. Действие до года.</div>
+    <div class="spec">
+      <div><span class="k">Заявлен для</span><span class="v">мрамор, гранит, песчаник, сланец, бетон</span></div>
+      <div><span class="k">1 л</span><span class="v price">$35,99 <span class="amd">≈13 100 ֏</span></span></div>
+      <div><span class="k">5 л</span><span class="v price">€74,99</span></div>
+      <div><span class="k">Важно</span><span class="v">брать LONGLIFE, не POWER</span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="bio">
+    <div class="tags"><span class="tag t-ok">без хлора и кислот</span><span class="tag t-n">лучший расход</span></div>
+    <div class="name">ALLEX Grünbelagentferner</div>
+    <div class="brand">Lithofin · Германия</div>
+    <div class="desc">Нейтральный, без хлора и кислот. Самый выгодный по площади: до 200 м² с литра при разведении через опрыскиватель. Для террас, дорожек, стен и природного камня.</div>
+    <div class="spec">
+      <div><span class="k">Расход</span><span class="v">до 200 м²/л</span></div>
+      <div><span class="k">1 л</span><span class="v price">€19,80</span></div>
+      <div><span class="k">5 л</span><span class="v price">€50,42</span></div>
+      <div><span class="k">Доставка в AM</span><span class="v">не заявлена</span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="bio">
+    <div class="tags"><span class="tag t-ok">без хлора и кислот</span><span class="tag t-n">бюджет</span></div>
+    <div class="name">Grünbelag-Entferner 1:3</div>
+    <div class="brand">HOTREGA · Германия</div>
+    <div class="desc">Самый дешёвый из безопасных. Действующее вещество — четвертичное аммониевое соединение, 2,99 г на 100 г. Концентрат разводится втрое.</div>
+    <div class="spec">
+      <div><span class="k">Расход</span><span class="v">100–350 м² с 5 л</span></div>
+      <div><span class="k">5 л концентрата</span><span class="v price">€18,78</span></div>
+      <div><span class="k">Осторожно</span><span class="v">H314, H400 — СИЗ обязательны</span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="bio ru">
+    <div class="tags"><span class="tag t-ok">без хлора</span><span class="tag t-ok">доедет наземкой</span></div>
+    <div class="name">Типром А</div>
+    <div class="brand">Типром · Россия</div>
+    <div class="desc">Самый логистически реальный вариант для нас: водный биоцид без хлора и тяжёлых металлов, продаётся в России, значит едет наземкой без таможни. Для минеральных материалов, включая природный камень.</div>
+    <div class="spec">
+      <div><span class="k">Расход</span><span class="v">5–30 м²/л</span></div>
+      <div><span class="k">5 л</span><span class="v price">2 400–3 600 ₽</span></div>
+      <div><span class="k">1 л</span><span class="v price">688 ₽</span></div>
+      <div><span class="k">Нюанс</span><span class="v">даёт зеленоватый оттенок — тест на светлом туфе</span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="bio">
+    <div class="tags"><span class="tag t-warn">pH не опубликован</span></div>
+    <div class="name">Endurance Gravestone &amp; Monument Cleaner</div>
+    <div class="brand">Atlas Preservation · США</div>
+    <div class="desc">Специализированный состав для памятников, идёт в комплекте с их наборами. Четвертичные аммониевые соединения, без хлора и кислот по описанию, но pH производитель не публикует — запросить паспорт.</div>
+    <div class="spec">
+      <div><span class="k">1 галлон</span><span class="v price">$34,95 <span class="amd">≈12 800 ֏</span></span></div>
+      <div><span class="k">Ящик 4 галлона</span><span class="v price">$134,95</span></div>
+      <div><span class="k">Доставка</span><span class="v">за пределы США — по запросу</span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="clean">
+    <div class="tags"><span class="tag t-ok">музейный уровень</span><span class="tag t-ok">для хрупкого туфа</span></div>
+    <div class="name">Vulpex Liquid Soap</div>
+    <div class="brand">Picreator · Великобритания</div>
+    <div class="desc">Реставрационное мыло музейного класса. Некислотное, непенящееся, некоррозионное. Разводится один к шести-семи. Лучший выбор там, где нужен самый мягкий из возможных ПАВ — резной туф, старые хачкары.</div>
+    <div class="spec">
+      <div><span class="k">100 мл</span><span class="v price">$34,50</span></div>
+      <div><span class="k">250 мл</span><span class="v price">$69,95</span></div>
+      <div><span class="k">1 л</span><span class="v price">$124,95 <span class="amd">≈45 600 ֏</span></span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="clean">
+    <div class="tags"><span class="tag t-ok">кислоты нет</span></div>
+    <div class="name">MN Power-Clean</div>
+    <div class="brand">Lithofin · Германия</div>
+    <div class="desc">Щелочной концентрат глубокой очистки без кислоты и растворителей, малопахнущий. Заявлен для всех природных камней, включая полированный мрамор.</div>
+    <div class="spec">
+      <div><span class="k">Расход</span><span class="v">10–30 м²/л</span></div>
+      <div><span class="k">5 л</span><span class="v price">€46,99</span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="clean ru">
+    <div class="tags"><span class="tag t-ok">есть в России</span></div>
+    <div class="name">Ultra Stripper</div>
+    <div class="brand">Bellinzoni · Италия</div>
+    <div class="desc">Щелочной очиститель глубокого действия, продавец заявляет безопасность для любых натуральных камней. Выгоден в большой таре.</div>
+    <div class="spec">
+      <div><span class="k">1 л</span><span class="v price">2 550 ₽</span></div>
+      <div><span class="k">5 л</span><span class="v price">9 041 ₽</span></div>
+      <div><span class="k">25 л</span><span class="v price">40 354 ₽</span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="rust">
+    <div class="tags"><span class="tag t-ok">pH нейтральный</span><span class="tag t-ok">безопасно для всех наших пород</span></div>
+    <div class="name">Marble Rust Remover</div>
+    <div class="brand">AKEMI · Германия</div>
+    <div class="desc">Единственное найденное средство от ржавчины, безопасное для всех четырёх наших пород: нейтральное, водное, без кислоты. Заявлено для кислоточувствительных камней и прямо упоминает надгробия. Работает по поверхностной ржавчине.</div>
+    <div class="spec">
+      <div><span class="k">500 мл</span><span class="v price">$34,95 <span class="amd">≈12 800 ֏</span></span></div>
+      <div><span class="k">5 л</span><span class="v price">$149,95</span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="rust">
+    <div class="tags"><span class="tag t-warn">осторожно с известковым камнем</span></div>
+    <div class="name">TeRust — порошок для компресса</div>
+    <div class="brand">Tenax · Италия</div>
+    <div class="desc">Хелатный состав, не кислотная ванна: смешивается с водой в пасту, выдержка сутки-двое. Продавец предупреждает, что кальциевые камни может протравить — держим для гранита, лалвара и базальта.</div>
+    <div class="spec">
+      <div><span class="k">227 г</span><span class="v price">$14,50 <span class="amd">≈5 300 ֏</span></span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="prot ru">
+    <div class="tags"><span class="tag t-ok">для туфа</span><span class="tag t-ok">есть в России</span></div>
+    <div class="name">Типром У / У1</div>
+    <div class="brand">Типром · Россия</div>
+    <div class="desc">Силан-силоксановый гидрофобизатор глубокого проникновения. Самый доступный вариант защиты пористого туфа от влаги. Применять только по решению — плёнкообразующие составы туфу противопоказаны, этот проникающий.</div>
+    <div class="spec">
+      <div><span class="k">Типром У, 5 л</span><span class="v price">5 000–5 800 ₽</span></div>
+      <div><span class="k">Типром У1, 5 л</span><span class="v price">3 647 ₽</span></div>
+    </div>
+  </div>
+
+  <div class="card" data-c="prot">
+    <div class="tags"><span class="tag t-ok">на воде, без растворителя</span></div>
+    <div class="name">STAINSTOP &gt;W&lt;</div>
+    <div class="brand">Lithofin · Германия</div>
+    <div class="desc">Водный пропиточный состав без растворителей для впитывающих поверхностей. Матовый, без запаха — предпочтительнее сольвентных версий при работе в замкнутых оградах.</div>
+    <div class="spec">
+      <div><span class="k">Расход</span><span class="v">10–20 м²/л</span></div>
+      <div><span class="k">Цена</span><span class="v">не подтверждена</span></div>
+    </div>
+  </div>
+
+</div>
+
+<h3>Не покупать ни при каких условиях</h3>
+<p>Все позиции ниже содержат активный хлор. На туфе это приговор с отсрочкой в одну-пять зим.</p>
+
+<div class="cards">
+  <div class="card no">
+    <div class="tags"><span class="tag t-no">хлор, pH 12,2–13,2</span></div>
+    <div class="name">MELLERUD Grabstein Reiniger</div>
+    <div class="brand">Германия · €7,69 за 0,5 л</div>
+    <div class="desc">Самое раскрученное немецкое «средство для надгробий» — и при этом хлорный отбеливатель с pH выше двенадцати. Именно его чаще всего советуют в интернете. Не брать.</div>
+  </div>
+  <div class="card no">
+    <div class="tags"><span class="tag t-no">хлор</span></div>
+    <div class="name">AKEMI Algae &amp; Moss Remover POWER</div>
+    <div class="brand">Германия · $43,20 за 1 л</div>
+    <div class="desc">Щелочной состав на активном хлоре. Легко перепутать с безопасным LONGLIFE от того же производителя — при заказе смотреть на название внимательно.</div>
+  </div>
+  <div class="card no">
+    <div class="tags"><span class="tag t-no">хлор</span></div>
+    <div class="name">Lithofin MN Outdoor Cleaner</div>
+    <div class="brand">Германия</div>
+    <div class="desc">Производитель прямо называет его хлорсодержащим. При этом ALLEX того же бренда — безопасен. Разные продукты одной марки, не путать.</div>
+  </div>
+  <div class="card no">
+    <div class="tags"><span class="tag t-no">хлор</span></div>
+    <div class="name">NEOMID 600 · HMK R160 · Bellinzoni Sanychlor</div>
+    <div class="brand">Россия, Германия, Италия</div>
+    <div class="desc">Все три — растворы хлорсодержащих соединений. Встречаются в российской и немецкой рознице как «средства от плесени и биообрастания».</div>
+  </div>
+</div>
+
+<div class="keybox warn">
+  <p><strong>Отдельно про средства от высолов и цементных плёнок.</strong> Ни одного некислотного состава этого класса на рынке не нашлось — все до единого кислотные. Значит на туфе, травертине и мраморе их не применяем вообще. Высолы на туфе убираются только сухой щёткой, а причина ищется в путях влаги.</p>
+</div>
+
+<h2><span class="num">3</span>Инструмент</h2>
+<div class="rule"></div>
+
+<div class="keybox">
+  <p><strong>Ключевая находка.</strong> В США существует целая индустрия снабжения кладбищенской реставрации, и её наборы стоят копейки — от 15 до 120 долларов. В России и Германии ничего подобного нет: там продают только химию, но не инструмент. При этом главная позиция, которой нет в Ереване — <strong>щётки из тампико и тампафила на деревянной колодке без металлической обоймы</strong>. Металлическая обойма даёт ржавые следы на камне, поэтому обычные хозяйственные щётки нам не годятся.</p>
+</div>
+
+<h3>Щётки — первый приоритет импорта</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Позиция</th><th>Назначение</th><th class="num">Цена</th></tr></thead>
+<tbody>
+<tr><td><strong>Stone Cleaning Brush Set</strong>, Atlas — 7 щёток</td><td>Полный набор: две больших на деревянной колодке, две средних, детальная нейлоновая, для плитки, плоская. Лучшая покупка одним лотом</td><td class="num"><strong>$33,00</strong></td></tr>
+<tr><td>8&Prime; Fender Brush, тампафил</td><td>Основная мойка тела памятника, мягкий синтетик</td><td class="num">$5,25</td></tr>
+<tr><td>12&Prime; Fender Brush, тампико</td><td>Большие плоские грани, натуральное волокно агавы</td><td class="num">$6,85</td></tr>
+<tr><td><strong>Nylon Detail Brush</strong></td><td>Буквы и гравировка — критичная позиция</td><td class="num">$2,50</td></tr>
+<tr><td>Mini Brushes, 3 шт разного размера</td><td>Мелкая резьба, глубокие буквы</td><td class="num">$3,50</td></tr>
+<tr><td>Бамбуковые шпажки / деревянные палочки</td><td>Выборка грязи из канавок букв, нулевой риск царапин</td><td class="num">$0,15 / $1,20</td></tr>
+<tr><td>Bon Tool 11-218, тампико, деревянная ручка</td><td>Альтернатива из строительной розницы, дешевле</td><td class="num">$12,20</td></tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:14px;color:var(--muted)">Внимание: у тех же поставщиков в соседней строке продаётся щётка из нержавеющей стали за $1,84. Её брать нельзя ни при каких условиях.</p>
+
+<h3>Опрыскиватели и мойка низкого давления</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Позиция</th><th>Давление / объём</th><th class="num">Цена</th></tr></thead>
+<tbody>
+<tr><td>GLORIA prima 8, помповый</td><td>8 л, латунная форсунка</td><td class="num">€42,99</td></tr>
+<tr><td>GLORIA prima 5</td><td>5 л</td><td class="num">€25,89</td></tr>
+<tr><td><strong>Field King Pump Zero</strong>, аккумуляторный</td><td><strong>20 psi с регулятором</strong> — не перегрузить камень физически</td><td class="num">$109,95</td></tr>
+<tr><td>IK Multi 12, профессиональный</td><td>8 л, 3 бар, стойкий к агрессивным средствам</td><td class="num">£122,74</td></tr>
+<tr><td><strong>Kärcher OC 3</strong></td><td><strong>72 psi / 5 бар</strong> — единственная категорически безопасная даже на выветренном мраморе. Свой бак 6,8 л</td><td class="num">€140,43</td></tr>
+<tr><td>Kärcher OC 6-18</td><td>24 бар / 348 psi. <strong>Забирает воду из ведра или бака</strong> шлангом — то, что нужно на кладбище без водопровода</td><td class="num">€120,46</td></tr>
+<tr><td>WORX WG630 Hydroshot</td><td>350 psi, два режима, качает из любой ёмкости через шланг 6 м</td><td class="num">цена не подтверждена</td></tr>
+</tbody>
+</table>
+</div>
+<p>Практический вывод: OC 3 безопаснее всех, но привязан к своему баку. OC 6-18 и WORX укладываются в наш потолок 500 psi и умеют качать из бака — операционно это удобнее. Оба требуют широкой веерной насадки и дистанции.</p>
+
+<h3>Компрессы для выведения пятен</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Материал</th><th>Для чего</th><th class="num">Цена</th></tr></thead>
+<tbody>
+<tr><td><strong>Аттапульгитовая глина</strong>, pH 8,5</td><td>Профессиональная основа компресса под копоть, соли, ржавчину, органику. Считается одним из самых безопасных методов</td><td class="num">$24,70 / 2,3 кг</td></tr>
+<tr><td>Коллоидный каолин, pH 5–6</td><td>Основа там, где нужна нейтральность</td><td class="num">$13,78 / 1 кг</td></tr>
+<tr><td><strong>Микрокристаллическая целлюлоза Lattice NT-20</strong></td><td>Реставрационный стандарт: вытяжка растворимых солей, очистка. Именно то, чем работают по туфу</td><td class="num">$39,90 / 1 кг</td></tr>
+<tr><td>Tenax TeRust</td><td>Готовый порошок под ржавчину</td><td class="num">$14,50</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Контроль качества и съёмка</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Позиция</th><th>Зачем</th><th class="num">Цена</th></tr></thead>
+<tbody>
+<tr><td><strong>pH-полоски Macherey-Nagel pH-Fix 0–14</strong></td><td>Проверка, что камень отмыт до нейтральности. Индикатор химически связан с бумагой и не течёт — такую полоску можно сфотографировать в отчёт клиенту</td><td class="num">$18,95 / 100 шт</td></tr>
+<tr><td>Ulanzi MT-44, штатив для телефона</td><td>34–150 см, шаровая голова. Повторяемость ракурса «до и после» — то, на чём держится весь эффект отчёта</td><td class="num">$35,99</td></tr>
+<tr><td>Manfrotto Compact Action</td><td>155 см, надёжнее, без держателя телефона в комплекте</td><td class="num">$55,56</td></tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:14.5px">Для действительно повторяемого кадра нужны три вещи: отметка скотчем на секции штатива для фиксированной высоты, шнур в два метра с колышком у основания памятника для фиксированной дистанции, и приложение-уровень.</p>
+
+<h3>Готовые наборы</h3>
+<div class="cards">
+  <div class="card">
+    <div class="tags"><span class="tag t-ok">рекомендую как эталон</span></div>
+    <div class="name">Gravestone Cleaning Kit PROFESSIONAL</div>
+    <div class="brand">Cemetery Preservation Supply · США</div>
+    <div class="desc">Самый полный набор: D/2 галлон плюс распылитель, помповый опрыскиватель, четыре щётки включая детальную, два пластиковых скребка, палочки для букв, перчатки, ведро с крышкой, инструкция. По сути — готовый эталон рабочего места.</div>
+    <div class="spec"><div><span class="k">Цена</span><span class="v price">$98,24 <span class="amd">≈35 900 ֏</span></span></div>
+    <div><span class="k">Доставка</span><span class="v">только по США → через форвардера</span></div></div>
+  </div>
+  <div class="card">
+    <div class="tags"><span class="tag t-n">без химии в комплекте есть варианты</span></div>
+    <div class="name">Gravestone &amp; Monument Cleaning PRO Set</div>
+    <div class="brand">Atlas Preservation · США</div>
+    <div class="desc">Химия на 3 галлона, распылитель, шесть щёток, пять скребков разной ширины, палочки, инструкция. Версия с аккумуляторным опрыскивателем Field King — $224,95.</div>
+    <div class="spec"><div><span class="k">Цена</span><span class="v price">$119,95 <span class="amd">≈43 800 ֏</span></span></div>
+    <div><span class="k">Младшие версии</span><span class="v">$22,95 и $58,95</span></div></div>
+  </div>
+  <div class="card">
+    <div class="tags"><span class="tag t-n">бюджетный вход</span></div>
+    <div class="name">MB Stone Gravestone Cleaning Kit</div>
+    <div class="brand">MB Stone Care · США</div>
+    <div class="desc">Очиститель, опрыскиватель на 2 л, две щётки, пика для букв, скребок — всё в ведре. Дешевле, но набор щёток слабее.</div>
+    <div class="spec"><div><span class="k">Цена</span><span class="v price">$59,98</span></div></div>
+  </div>
+</div>
+
+<h2><span class="num">4</span>Что покупать в Ереване</h2>
+<div class="rule"></div>
+<p>Всё перечисленное здесь везти бессмысленно — есть локально, дешевле с учётом доставки, с гарантией и правильным напряжением.</p>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Позиция</th><th>Где</th><th class="num">Цена</th></tr></thead>
+<tbody>
+<tr><td>Kärcher K 2 Classic</td><td>karchershop.am</td><td class="num">34 500 ֏</td></tr>
+<tr><td><strong>Kärcher K 3</strong> — оптимальный вариант</td><td>karchershop.am</td><td class="num">51 000 ֏</td></tr>
+<tr><td>Kärcher RM 623 Stone &amp; Paving, pH ≈7</td><td>karchershop.am, zigzag.am</td><td class="num">7 800 ֏ / 5 л</td></tr>
+<tr><td>Баки для воды 50–200 л, пищевые</td><td>list.am</td><td class="num">локально</td></tr>
+<tr><td>Опрыскиватели садовые 5–8 л</td><td>Total Armenia, EMTOP, Hrashkaygi</td><td class="num">цены уточнить</td></tr>
+<tr><td>Перчатки, очки, наколенники, вёдра</td><td>Петак, строительные рынки, Vega</td><td class="num">локально</td></tr>
+<tr><td>Штатив для телефона</td><td>Zigzag, Vega</td><td class="num">локально</td></tr>
+<tr><td>Пластиковые шпатели</td><td>строительные магазины</td><td class="num">локально</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2><span class="num">5</span>Логистика: как довезти</h2>
+<div class="rule"></div>
+
+<h3>Тарифы Onex, подтверждено</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Откуда</th><th>Способ</th><th class="num">За кг</th><th>Срок</th></tr></thead>
+<tbody>
+<tr><td><strong>Россия</strong></td><td><strong>наземка</strong></td><td class="num"><strong>1 000 ֏</strong></td><td>минимум 4 000 ֏ до 4 кг</td></tr>
+<tr><td>Россия</td><td>авиа</td><td class="num">2 000 ֏</td><td>2–4 рабочих дня</td></tr>
+<tr><td>США</td><td>море</td><td class="num">1 500 ֏</td><td>минимум 15 000 ֏ до 10 кг</td></tr>
+<tr><td>США</td><td>авиа</td><td class="num">6 000 ֏</td><td>—</td></tr>
+<tr><td>Германия</td><td>наземка / авиа</td><td class="num">4 000 / 6 800 ֏</td><td>—</td></tr>
+<tr><td>Великобритания</td><td>авиа</td><td class="num">6 000 ֏</td><td>—</td></tr>
+<tr><td>ОАЭ</td><td>авиа</td><td class="num">5 000 ֏</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="keybox">
+  <p><strong>Важный пункт правил Onex.</strong> Пункт 4.5 запрещает опасные, взрывчатые и легковоспламеняющиеся вещества. Но пункт 4.7 говорит: всё, что запрещено к авиаперевозке, автоматически отправляется морем с уведомлением клиента. То есть тяжёлая нейтральная химия не уничтожается, а переставляется на морской маршрут по 1 500 драм за кило. Для пограничных позиций это рабочий путь — но не для кислот и растворителей, они запрещены безусловно.</p>
+</div>
+
+<h3>Кто что не повезёт</h3>
+<ul>
+  <li><strong>Globbing</strong> — самая жёсткая политика: запрещены химические вещества и даже обычный стиральный порошок. Для химии непригоден совсем.</li>
+  <li><strong>eBay</strong> — прямо запрещает кислоты, аммиак и отбеливатель на уровне правил площадки, ещё до вопроса о доставке.</li>
+  <li><strong>Amazon</strong> — товары с пометкой hazmat не экспортируются вообще, ни в какую страну и ни на какой адрес форвардера. Инструмент через Amazon — да, химию — нет.</li>
+  <li><strong>AliExpress и Temu</strong> — только авиа, жидкую химию не берут.</li>
+  <li><strong>Ozon и Wildberries</strong> — единственные, кто реально положит канистру концентрата вам в руки в Ереване: у обоих есть пункты выдачи, товар идёт по земле внутри ЕАЭС. Срок 10–14 дней.</li>
+</ul>
+
+<h3>Правило для закупщика</h3>
+<div class="keybox">
+  <p>Перед заказом любой химии запросить у поставщика паспорт безопасности и открыть <strong>раздел 14, Транспортная информация</strong>. Если написано «не является опасным грузом» — полетит. Если указан класс опасности или номер ООН — не полетит, значит везём наземкой из России или ищем в Ереване.</p>
+  <p style="margin-top:10px">Грубое правило, когда паспорта нет под рукой: если состав на воде, нейтральный или слабощелочной и не в баллончике под давлением — пройдёт. Всё, что растворяет цемент, снимает покрытия или пахнет растворителем — не пройдёт.</p>
+  <p style="margin-top:10px">И всегда брать концентрат, а не готовый раствор. Платим за килограммы, а готовое средство — это в основном вода. Концентрат один к двадцати сокращает стоимость доставки примерно на девяносто пять процентов.</p>
+</div>
+
+<h2><span class="num">6</span>Таможня и документы</h2>
+<div class="rule"></div>
+
+<p>Личные посылки: до 200 евро и 31 кг — беспошлинно. От 200 до 999 евро — пошлина 22,5 процента. Свыше — 30 процентов. При превышении лимитов работает ставка 10 процентов пошлины плюс 20 процентов НДС.</p>
+
+<p><strong>Но для товаров из стран ЕАЭС эти пороги не применяются вовсе</strong> — пошлины не взимаются. В этом и состоит структурное преимущество российского маршрута.</p>
+
+<div class="keybox warn">
+  <p><strong>Коммерческий ввоз меняет всё.</strong> Льгота в 200 евро на компанию не распространяется: любой товар для бизнеса облагается независимо от стоимости. Нужны контракт, инвойс, транспортные документы и паспорт безопасности на каждый состав, декларирование через брокера, 10 процентов пошлины и 20 процентов НДС. Плюс государственная регистрация химии по санитарным правилам ЕАЭС — это две-четыре недели на каждую новую позицию.</p>
+  <p style="margin-top:10px"><strong>Решающий момент:</strong> если покупать у российского поставщика, свидетельство о госрегистрации уже существует и действует на весь ЕАЭС, включая Армению. Вы его наследуете: ничего не регистрируете, ничего не растамаживаете. Если тот же итальянский состав везти напрямую из Италии или Турции — импортёром становитесь вы, со всеми пошлинами и месячным ожиданием регистрации.</p>
+</div>
+
+<h2><span class="num">7</span>Предлагаемый первый заказ</h2>
+<div class="rule"></div>
+<p>Импортная часть — то, чего нет в Армении. Локальная закупка идёт отдельно и в эту смету не входит.</p>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Позиция</th><th>Откуда</th><th class="num">Цена</th></tr></thead>
+<tbody>
+<tr><td>Gravestone Cleaning Kit PROFESSIONAL — эталонный набор</td><td>Cemetery Preservation Supply</td><td class="num">$98,24</td></tr>
+<tr><td>Stone Cleaning Brush Set — второй комплект щёток</td><td>Atlas</td><td class="num">$33,00</td></tr>
+<tr><td>Mini Brushes 3 шт × 3 набора</td><td>Atlas</td><td class="num">$10,50</td></tr>
+<tr><td>Пластиковые скребки × 10</td><td>Atlas</td><td class="num">$8,00</td></tr>
+<tr><td>Tenax TeRust × 2</td><td>Atlas</td><td class="num">$29,00</td></tr>
+<tr><td>Аттапульгитовая глина 2,3 кг</td><td>Conservation Support Systems</td><td class="num">$24,70</td></tr>
+<tr><td>Целлюлоза Lattice NT-20, 1 кг</td><td>TALAS</td><td class="num">$39,90</td></tr>
+<tr><td>pH-полоски Macherey-Nagel, 100 шт</td><td>Science Company</td><td class="num">$18,95</td></tr>
+<tr><td>AKEMI Marble Rust Remover, 500 мл</td><td>Atlas</td><td class="num">$34,95</td></tr>
+<tr class="total"><td>Итого товара</td><td>+ доставка форвардером</td><td class="num">≈ $297 · ≈ 108 000 ֏</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Отдельно, наземкой из Москвы: Типром А 5 литров как основной биоцид на объём — около 3 000 рублей, плюс доставка Onex по 1 000 драм за кило. Это закроет биоцидную потребность на первые месяцы, пока не решится вопрос с AKEMI или D/2.</p>
+
+<h2><span class="num">8</span>Что проверить руками</h2>
+<div class="rule"></div>
+<ul>
+  <li>Позвонить в Kärcher Armenia и спросить профессиональную линейку RM — на сайте её нет, но через филиал может быть доступна.</li>
+  <li>Написать в AKEMI и запросить армянского партнёра: Армения есть в их списке стран, значит запись о дистрибьюторе, скорее всего, существует.</li>
+  <li>Написать в d2bio.co.uk — это официальный дистрибьютор D/2 по Европе, спросить условия доставки в Армению.</li>
+  <li>Написать в Onex и получить письменный ответ, какие конкретно позиции они возьмут — с паспортами безопасности на руках.</li>
+  <li>Уточнить актуальный статус техрегламента ЕАЭС по безопасности химической продукции: его вступление в силу переносили несколько раз, и ориентировочный срок приходится ровно на эти месяцы.</li>
+  <li>Пройти по ереванским магазинам и записать реальные цены на опрыскиватели, баки и средства защиты — эти данные закрыты для автоматической проверки.</li>
+</ul>
+
+<footer>
+  <p>Цены собраны 11 августа 2026 и приведены как ориентир. Пересчёт долларов в драмы по курсу 365 из финансовой модели. Позиции, где цену подтвердить не удалось, отмечены явно. Amazon, Ozon, Wildberries и часть армянских сайтов закрывают страницы от автоматического чтения — их цены в документе не приводятся.</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('#chemFilters .fbtn');
+  var cards=document.querySelectorAll('#chemCards .card');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on');
+      var f=b.getAttribute('data-f');
+      cards.forEach(function(c){
+        var cat=c.getAttribute('data-c')||'';
+        c.style.display=(f==='all'||cat.indexOf(f)>-1)?'flex':'none';
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

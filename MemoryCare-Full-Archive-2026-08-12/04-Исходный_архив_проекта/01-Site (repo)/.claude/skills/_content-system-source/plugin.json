@@ -1,0 +1,12 @@
+{
+  "name": "content-system-georgii-rivera",
+  "version": "1.0.0",
+  "description": "Контент-система Георгия Риверы: 10 скиллов для Claude AI, которые передают работу по цепочке — от идеи до публикации. Директор, Разведчик, Архитектор, Хук-мастер, Сценарист, Мультипликатор, Дистрибьютор, Антидетектор, Магнит и Кузнец.",
+  "author": {
+    "name": "Георгий Ривера",
+    "url": "https://georgiirivera.ai"
+  },
+  "homepage": "https://georgiirivera.ai/content-skills/",
+  "license": "MIT",
+  "keywords": ["content", "smm", "youtube", "reels", "копирайтинг", "контент-система"]
+}

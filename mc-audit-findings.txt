@@ -1,0 +1,34 @@
+login wrong password [am] -> URL /am/account/login/ | error el: "Մուտքագրված տվյալները սխալ են" | text: "Մուտք անձնական գրասենյակ Մուտք Մուտքագրված տվյալները սխալ են Չունե՞ք հաշիվ` գրանցվեք կայքում Մոռացե՞լ եք գաղտնաբառը * պա"
+register partial [am] live-validation elements: "нет"
+/am/account/index/ guest -> HTTP 200 final /am/account/login/
+/am/account/objects/ guest -> HTTP 200 final /am/account/login/
+/am/account/mypackages/ guest -> HTTP 200 final /am/account/login/
+/am/account/payments/ guest -> HTTP 200 final /am/account/payments/
+/am/account/packages/add/1/ guest -> HTTP 200 final /am/account/login/
+login wrong password [ru] -> URL /ru/account/login/ | error el: "Введенные данные неверны" | text: "Вход в личный кабинет Вход Введенные данные неверны У вас нет аккаунта? Зарегистрируйтесь на сайте Забыли пароль? * обяз"
+register partial [ru] live-validation elements: "нет"
+/ru/account/index/ guest -> HTTP 200 final /am/account/login/
+/ru/account/objects/ guest -> HTTP 200 final /am/account/login/
+/ru/account/mypackages/ guest -> HTTP 200 final /am/account/login/
+/ru/account/payments/ guest -> HTTP 200 final /ru/account/payments/
+/ru/account/packages/add/1/ guest -> HTTP 200 final /am/account/login/
+login wrong password [en] -> URL /en/account/login/ | error el: "The entered data is incorrect" | text: "Login to account Enter The entered data is incorrect Don't have an account? Register on the website Forgot your password"
+register partial [en] live-validation elements: "нет"
+/en/account/index/ guest -> HTTP 200 final /am/account/login/
+/en/account/objects/ guest -> HTTP 200 final /am/account/login/
+/en/account/mypackages/ guest -> HTTP 200 final /am/account/login/
+/en/account/payments/ guest -> HTTP 200 final /en/account/payments/
+/en/account/packages/add/1/ guest -> HTTP 200 final /am/account/login/
+AOS [am] before 1/33 -> after 15/33
+AOS [ru] before 1/33 -> after 15/33
+AOS [en] before 1/33 -> after 15/33
+
+AOS [am] before 1/33 -> after 15/33
+AOS [ru] before 1/33 -> after 15/33
+AOS [en] before 1/33 -> after 15/33
+[am] objects view links: /am/account/objects/view/2/ /am/account/objects/view/1/ /am/account/objects/view/4/
+[am] personal-edit /am/account/personal-edit/4/, tooltips ⓘ: 1
+[ru] objects view links: /ru/account/objects/view/2/ /ru/account/objects/view/1/ /ru/account/objects/view/4/
+[ru] personal-edit /ru/account/personal-edit/4/, tooltips ⓘ: 1
+[en] objects view links: /en/account/objects/view/2/ /en/account/objects/view/1/ /en/account/objects/view/4/
+[en] personal-edit /en/account/personal-edit/4/, tooltips ⓘ: 1

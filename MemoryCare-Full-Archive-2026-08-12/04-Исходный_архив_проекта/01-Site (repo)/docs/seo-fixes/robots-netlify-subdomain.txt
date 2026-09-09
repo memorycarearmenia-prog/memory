@@ -1,0 +1,4 @@
+# Разместить ЭТОТ файл на netlify-поддомене (memorycarearmenia.netlify.app),
+# чтобы поисковики не индексировали дубль, пока боевой домен — memorycare.am.
+User-agent: *
+Disallow: /
