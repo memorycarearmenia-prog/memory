@@ -32,6 +32,7 @@ function render(tpl, ctx, depth = 0) {
 // pages: src/pages/<name>.html with a leading front-matter JSON block:  <!--{ "route": "/en/page/home/", "title": "…" }-->
 const pagesDir = join(SRC, 'pages');
 let count = 0;
+const sitemapRoutes = []; // public, indexable routes only — no /account/, no lang-stub pages
 for (const f of readdirSync(pagesDir)) {
   if (!f.endsWith('.html')) continue;
   const raw = readFileSync(join(pagesDir, f), 'utf8');
@@ -49,7 +50,19 @@ for (const f of readdirSync(pagesDir)) {
     writeFileSync(out, html);
     count++;
   }
+  if (/^\/en\/(page|contact|publications)\//.test(meta.route) && !meta.noindex) {
+    sitemapRoutes.push(meta.route);
+  }
 }
+
+// robots.txt + sitemap.xml — none of this existed before; both are near-zero
+// cost and directly help indexing/AI-answer extraction (see AUDIT-2026-09-12.md §8)
+const today = new Date().toISOString().slice(0, 10);
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapRoutes
+  .map(r => `  <url><loc>https://mc.makyan.com${r}</loc><lastmod>${today}</lastmod></url>`)
+  .join('\n')}\n</urlset>\n`;
+writeFileSync(join(DIST, 'sitemap.xml'), sitemapXml);
+writeFileSync(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /en/\nDisallow: /en/account/\nSitemap: https://mc.makyan.com/sitemap.xml\n`);
 copyDir(join(SRC, 'assets'), join(DIST, 'assets'));
 copyDir(join(SRC, 'vendor'), join(DIST, 'vendor'));
 copyDir(join(SRC, 'fonts'), join(DIST, 'fonts'));

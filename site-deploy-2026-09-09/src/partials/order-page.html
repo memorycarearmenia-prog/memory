@@ -1,0 +1,43 @@
+<main class="main">
+  <div class="container">
+    <div class="page-title"><p><a class="btnl" href="/en/page/home/#pricing">‹ Change plan</a></p><h1>Order: {{planTitle}}</h1><p class="lead">Tell us where the plot is. We confirm the visit date by phone or e-mail within one business day.</p></div>
+    <div class="account_wrap">
+        {{> account-nav}}
+        <section class="acontent">
+            <div class="package_selected{{#if planFeatured}} bs{{/if}}">
+                <div class="order-card">
+                  <div class="m_kicker" style="{{#if planFeatured}}color:rgba(255,255,255,.75){{/if}}">{{planKicker}}</div>
+                  <div class="ps_title">{{planTitle}}</div>
+                  <div class="ps_price num">{{planPriceText}} ֏</div>
+                  <div class="ps_description"><ul>{{planFeatures}}</ul></div>
+                </div>
+                <form id="package-order" class="order-form">
+                    <h3>About the plot</h3>
+                    <div class="row-2">
+                      <div class="field"><label for="o-cem">Cemetery <small>*</small></label><input type="text" name="cemetery" id="o-cem" placeholder="e.g. Davtashen, Yerevan"></div>
+                      <div class="field"><label for="o-sec">Section / row / plot <small>if known</small></label><input type="text" name="plot_location" id="o-sec" placeholder="Section 7, row 12"></div>
+                    </div>
+                    <div class="field"><label for="o-name">Name on the monument <small>*</small></label><input type="text" name="deceased_name" id="o-name" placeholder="Helps the caretaker find the plot"></div>
+                    <div class="row-2">
+                      <div class="field"><label for="o-date">Preferred date <small>optional, e.g. before a memorial day</small></label><input type="text" name="preferred_date" id="o-date" placeholder="dd.mm.yyyy"></div>
+                      <div class="field"><label for="o-mon">Monuments on the plot</label><input type="text" name="monuments" id="o-mon" placeholder="1–3 (more → Custom plan)"></div>
+                    </div>
+                    <div class="field"><label for="o-note">Anything we should know <small>optional</small></label><textarea name="note" id="o-note" placeholder="Fragile elements, a photo you can send later, access notes…"></textarea></div>
+                    <div class="order-summary"><span>{{planTitle}} · {{planPeriod}}</span><span class="num">{{planPriceText}} ֏</span></div>
+                    <label class="consent"><input type="checkbox" name="agree" value="1" required><span>I have read and agree to the <a href="/en/page/service-terms/">service provision terms</a>, the <a href="/en/page/refund/">refund &amp; cancellation policy</a> and the <a href="/en/page/terms/">Terms of Service</a>.{{#if planAnnual}} I understand this is a one-year plan paid once and delivered over 12 months.{{/if}}</span></label>
+                    <input type="hidden" name="cid" value="0">
+                    <input type="hidden" name="title" value="{{planTitle}}">
+                    <input type="hidden" name="p" value="{{planP}}">
+                    <input type="hidden" name="f" value="{{planF}}">
+                    <input type="hidden" name="price" value="{{planPrice}}">
+                    <input type="hidden" name="lang" value="en">
+                    <button class="btn btn--primary btn--lg" disabled>Confirm and continue to payment<span class="btn__cap" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></span></button>
+                    <p class="field__hint" style="margin-top:.5rem">Tick the box above to enable the button.</p>
+                    <p id="poresp"></p>
+                    <p class="required">Payment by Visa, Mastercard or ArCa in Armenian drams via Ameriabank. Nothing is charged until you confirm on the bank’s page.</p>
+                </form>
+            </div>
+        </section>
+    </div>
+  </div>
+</main>

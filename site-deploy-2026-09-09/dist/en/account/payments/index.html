@@ -10,7 +10,7 @@
    <link rel="alternate icon" href="/img/favicon.ico" type="image/x-icon">
    <meta name="author" content="MemoryCare LLC">
    <meta name="description" content="Payment history of your MemoryCare account.">
-   <meta name="ROBOTS" content="INDEX, FOLLOW">
+   <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
    <link rel="canonical" href="https://mc.makyan.com/en/account/payments/">
    <meta property="og:title" content="My payments — MemoryCare">
    <meta property="og:type" content="website">
@@ -22,6 +22,27 @@
    <meta property="og:site_name" content="MemoryCare">
    <meta property="og:description" content="Payment history of your MemoryCare account.">
    <meta name="theme-color" content="#F3F0E9">
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "LocalBusiness",
+     "name": "MemoryCare",
+     "legalName": "MEMORY CARE LLC",
+     "description": "Subscription care for family memorial plots in Yerevan cemeteries: professional cleaning, regular visits and a photo & video report with GPS and date after every visit.",
+     "image": "https://mc.makyan.com/assets/brand/og-image.jpg",
+     "telephone": "+37441188800",
+     "email": "info@memorycare.am",
+     "url": "https://mc.makyan.com/en/account/payments/",
+     "priceRange": "20000-200000 AMD",
+     "areaServed": { "@type": "City", "name": "Yerevan" },
+     "address": { "@type": "PostalAddress", "streetAddress": "Komitas Avenue 47/1, apt. 9", "addressLocality": "Yerevan", "addressCountry": "AM" },
+     "openingHoursSpecification": [
+       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" },
+       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "10:00", "closes": "15:00" }
+     ]
+   }
+   </script>
+   
    <link rel="preload" href="/fonts/GHEAMariamBld.otf" as="font" type="font/otf" crossorigin>
    <link rel="preload" href="/fonts/Montserratarm-Regular.otf" as="font" type="font/otf" crossorigin>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -56,8 +77,8 @@
          </nav>
          <div class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></div>
          <div class="lang" aria-label="Language">
-                     <a href="/am/page/home/" class="lang--soon" aria-disabled="true" title="Հայերեն տարբերակը շուտով" data-soon="Soon">ՀԱՅ</a>
-                     <a href="/ru/page/home/" class="lang--soon" aria-disabled="true" title="Русская версия скоро" data-soon="Soon">РУС</a>
+                     <a href="/am/page/home/" class="lang--soon" aria-disabled="true" tabindex="-1" title="Հայերեն տարբերակը շուտով" data-soon="Soon">ՀԱՅ</a>
+                     <a href="/ru/page/home/" class="lang--soon" aria-disabled="true" tabindex="-1" title="Русская версия скоро" data-soon="Soon">РУС</a>
                      <a href="/en/page/home/" class="is-active" aria-current="true">ENG</a>
          </div>
       </div>
@@ -65,9 +86,9 @@
 
 
 
-<div class="main">
+<main class="main">
   <div class="container">
-    <div class="page-title"><h2 class="h2-title" style="font-size:var(--fs-h1)">My payments</h2><p class="lead">Every card payment, with its receipt.</p></div>
+    <div class="page-title"><h1>My payments</h1><p class="lead">Every card payment, with its receipt.</p></div>
     <div class="account_wrap">
         <section class="navigation">
     <div class="pdata_wrap">
@@ -94,8 +115,8 @@
             <table>
               <thead><tr><th>Date</th><th>Plan</th><th>Amount</th><th>Card</th><th>Status</th><th></th></tr></thead>
               <tbody>
-                <tr><td class="num">22 Aug 2026</td><td>Optimal — annual</td><td class="num">160 000 ֏</td><td class="num">Visa •• 6411</td><td><span class="pill">Paid</span></td><td><a href="#">Receipt</a></td></tr>
-                <tr><td class="num">29 Mar 2026</td><td>Express — one visit</td><td class="num">60 000 ֏</td><td class="num">Mastercard •• 0187</td><td><span class="pill">Paid</span></td><td><a href="#">Receipt</a></td></tr>
+                <tr><td class="num">22 Aug 2026</td><td>Optimal — annual</td><td class="num">160&nbsp;000&nbsp;֏</td><td class="num">Visa •• 6411</td><td><span class="pill">Paid</span></td><td><span class="small muted">Coming soon</span></td></tr>
+                <tr><td class="num">29 Mar 2026</td><td>Express — one visit</td><td class="num">60&nbsp;000&nbsp;֏</td><td class="num">Mastercard •• 0187</td><td><span class="pill">Paid</span></td><td><span class="small muted">Coming soon</span></td></tr>
               </tbody>
             </table>
           </div>
@@ -106,10 +127,10 @@
         </section>
     </div>
   </div>
-</div>
+</main>
 
 
-   <div class="footer">
+   <footer class="footer">
     <div class="footeri">
         <div class="footer__brand">
             <img src="/assets/brand/logo-mark.png" class="flogo" alt="MemoryCare">
@@ -124,7 +145,7 @@
             <div><h3>Legal</h3><p><a href="/en/page/terms/">Terms of Service</a></p><p><a href="/en/page/service-terms/">Service provision terms</a></p><p><a href="/en/page/refund/">Refund &amp; cancellation</a></p><p><a href="/en/page/privacy/">Privacy &amp; cookies</a></p></div>
         </div>
         <div class="footer__bottom">
-            <div class="footer__copy">© 2026 MEMORY CARE LLC. All rights reserved. <span class="footer__fonts">Armenian fonts by <a href="https://fonter.am" title="Free Armenian Unicode Fonts" rel="noopener" target="_blank">fonter.am</a></span></div>
+            <div class="footer__copy">© 2026 MEMORY CARE LLC. All rights reserved. <span class="footer__fonts">Armenian fonts by <a href="https://fonter.am" title="Free Armenian Unicode Fonts" rel="noopener" target="_blank">fonter.am<span class="sr-only"> (opens in new tab)</span></a></span></div>
             <div class="footer__pay" aria-label="Accepted payment systems">
                 <span class="pay pay--visa" title="Visa">VISA</span>
                 <span class="pay pay--mc" title="Mastercard"><i></i><i></i></span>
@@ -140,7 +161,7 @@
             </ul>
         </div>
     </div>
-</div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/vendor/menu.js?20260909"></script>

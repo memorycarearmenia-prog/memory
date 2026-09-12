@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /en/
+Disallow: /en/account/
+Sitemap: https://mc.makyan.com/sitemap.xml

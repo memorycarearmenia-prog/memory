@@ -10,7 +10,7 @@
    <link rel="alternate icon" href="/img/favicon.ico" type="image/x-icon">
    <meta name="author" content="MemoryCare LLC">
    <meta name="description" content="Sign in to your MemoryCare account to see visit reports, plans and payments.">
-   <meta name="ROBOTS" content="INDEX, FOLLOW">
+   <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
    <link rel="canonical" href="https://mc.makyan.com/en/account/login/">
    <meta property="og:title" content="Sign in — MemoryCare">
    <meta property="og:type" content="website">
@@ -22,6 +22,27 @@
    <meta property="og:site_name" content="MemoryCare">
    <meta property="og:description" content="Sign in to your MemoryCare account to see visit reports, plans and payments.">
    <meta name="theme-color" content="#F3F0E9">
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "LocalBusiness",
+     "name": "MemoryCare",
+     "legalName": "MEMORY CARE LLC",
+     "description": "Subscription care for family memorial plots in Yerevan cemeteries: professional cleaning, regular visits and a photo & video report with GPS and date after every visit.",
+     "image": "https://mc.makyan.com/assets/brand/og-image.jpg",
+     "telephone": "+37441188800",
+     "email": "info@memorycare.am",
+     "url": "https://mc.makyan.com/en/account/login/",
+     "priceRange": "20000-200000 AMD",
+     "areaServed": { "@type": "City", "name": "Yerevan" },
+     "address": { "@type": "PostalAddress", "streetAddress": "Komitas Avenue 47/1, apt. 9", "addressLocality": "Yerevan", "addressCountry": "AM" },
+     "openingHoursSpecification": [
+       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" },
+       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "10:00", "closes": "15:00" }
+     ]
+   }
+   </script>
+   
    <link rel="preload" href="/fonts/GHEAMariamBld.otf" as="font" type="font/otf" crossorigin>
    <link rel="preload" href="/fonts/Montserratarm-Regular.otf" as="font" type="font/otf" crossorigin>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -56,8 +77,8 @@
          </nav>
          <div class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></div>
          <div class="lang" aria-label="Language">
-                     <a href="/am/page/home/" class="lang--soon" aria-disabled="true" title="Հայերեն տարբերակը շուտով" data-soon="Soon">ՀԱՅ</a>
-                     <a href="/ru/page/home/" class="lang--soon" aria-disabled="true" title="Русская версия скоро" data-soon="Soon">РУС</a>
+                     <a href="/am/page/home/" class="lang--soon" aria-disabled="true" tabindex="-1" title="Հայերեն տարբերակը շուտով" data-soon="Soon">ՀԱՅ</a>
+                     <a href="/ru/page/home/" class="lang--soon" aria-disabled="true" tabindex="-1" title="Русская версия скоро" data-soon="Soon">РУС</a>
                      <a href="/en/page/home/" class="is-active" aria-current="true">ENG</a>
          </div>
       </div>
@@ -65,19 +86,25 @@
 
 
 
-<div class="main">
+<main class="main">
   <div class="auth">
     <div class="auth__panel">
       <div class="auth__card">
+        <h1 class="sr-only">Sign in to MemoryCare</h1>
         <fieldset>
           <legend>Sign in</legend>
           <p class="lead">Your visit reports, plans and payments — in one place.</p>
           <form id="login">
-            <label class="field__hint" for="l-email" style="font-weight:600;color:var(--anthracite-2);font-size:.82rem">E-mail *</label>
-            <input type="text" name="email" id="l-email" placeholder="you@example.com" class="txt" autocomplete="username" inputmode="email">
-            <label class="field__hint" for="lpf" style="font-weight:600;color:var(--anthracite-2);font-size:.82rem">Password *</label>
-            <div class="pw-row">
-              <input type="password" name="password" placeholder="••••••••" class="txtt" id="lpf" autocomplete="current-password"><div class="pt" onclick="togglePassword('lpf', this)" role="button" aria-label="Show or hide password"><img src="/img/icons/nsee.svg" alt=""></div>
+            <div class="field" data-validate="email">
+              <label for="l-email">E-mail <small>*</small></label>
+              <input type="email" name="email" id="l-email" placeholder="you@example.com" class="txt" autocomplete="username" inputmode="email">
+              <span class="field__error">That doesn’t look like an e-mail address.</span>
+            </div>
+            <div class="field">
+              <label for="lpf">Password <small>*</small></label>
+              <div class="pw-row">
+                <input type="password" name="password" placeholder="••••••••" class="txtt" id="lpf" autocomplete="current-password"><div class="pt" onclick="togglePassword('lpf', this)" role="button" tabindex="0" aria-label="Show or hide password"><img src="/img/icons/nsee.svg" alt=""></div>
+              </div>
             </div>
             <input type="hidden" name="lang" value="en">
             <button class="btn btn--primary" style="margin-top:0;">Sign in<span class="btn__cap" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></span></button>
@@ -94,10 +121,10 @@
       <div><h2>Every visit, documented.</h2><p>Photos, video, GPS and date after each visit — so you never have to wonder.</p></div>
     </div>
   </div>
-</div>
+</main>
 
 
-   <div class="footer">
+   <footer class="footer">
     <div class="footeri">
         <div class="footer__brand">
             <img src="/assets/brand/logo-mark.png" class="flogo" alt="MemoryCare">
@@ -112,7 +139,7 @@
             <div><h3>Legal</h3><p><a href="/en/page/terms/">Terms of Service</a></p><p><a href="/en/page/service-terms/">Service provision terms</a></p><p><a href="/en/page/refund/">Refund &amp; cancellation</a></p><p><a href="/en/page/privacy/">Privacy &amp; cookies</a></p></div>
         </div>
         <div class="footer__bottom">
-            <div class="footer__copy">© 2026 MEMORY CARE LLC. All rights reserved. <span class="footer__fonts">Armenian fonts by <a href="https://fonter.am" title="Free Armenian Unicode Fonts" rel="noopener" target="_blank">fonter.am</a></span></div>
+            <div class="footer__copy">© 2026 MEMORY CARE LLC. All rights reserved. <span class="footer__fonts">Armenian fonts by <a href="https://fonter.am" title="Free Armenian Unicode Fonts" rel="noopener" target="_blank">fonter.am<span class="sr-only"> (opens in new tab)</span></a></span></div>
             <div class="footer__pay" aria-label="Accepted payment systems">
                 <span class="pay pay--visa" title="Visa">VISA</span>
                 <span class="pay pay--mc" title="Mastercard"><i></i><i></i></span>
@@ -128,7 +155,7 @@
             </ul>
         </div>
     </div>
-</div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/vendor/menu.js?20260909"></script>

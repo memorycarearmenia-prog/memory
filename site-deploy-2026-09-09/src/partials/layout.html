@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>{{title}} — MemoryCare</title>
+   <base href="/">
+   <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+   <link rel="alternate icon" href="/img/favicon.ico" type="image/x-icon">
+   <meta name="author" content="MemoryCare LLC">
+   <meta name="description" content="{{description}}">
+   <meta name="ROBOTS" content="{{#if noindex}}NOINDEX, NOFOLLOW{{else}}INDEX, FOLLOW{{/if}}">
+   <link rel="canonical" href="https://mc.makyan.com{{route}}">
+   <meta property="og:title" content="{{title}} — MemoryCare">
+   <meta property="og:type" content="website">
+   <meta property="og:image" content="https://mc.makyan.com/assets/brand/og-image.jpg">
+   <meta property="og:url" content="https://mc.makyan.com{{route}}">
+   <meta property="og:locale" content="en_US">
+   <meta property="og:locale:alternate" content="hy_AM">
+   <meta property="og:locale:alternate" content="ru_RU">
+   <meta property="og:site_name" content="MemoryCare">
+   <meta property="og:description" content="{{description}}">
+   <meta name="theme-color" content="#F3F0E9">
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "LocalBusiness",
+     "name": "{{siteName}}",
+     "legalName": "{{legalName}}",
+     "description": "Subscription care for family memorial plots in Yerevan cemeteries: professional cleaning, regular visits and a photo & video report with GPS and date after every visit.",
+     "image": "https://mc.makyan.com/assets/brand/og-image.jpg",
+     "telephone": "{{phoneHref}}",
+     "email": "{{email}}",
+     "url": "https://mc.makyan.com{{route}}",
+     "priceRange": "20000-200000 AMD",
+     "areaServed": { "@type": "City", "name": "Yerevan" },
+     "address": { "@type": "PostalAddress", "streetAddress": "Komitas Avenue 47/1, apt. 9", "addressLocality": "Yerevan", "addressCountry": "AM" },
+     "openingHoursSpecification": [
+       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" },
+       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "10:00", "closes": "15:00" }
+     ]
+   }
+   </script>
+   {{#if isHome}}
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "FAQPage",
+     "mainEntity": [
+       { "@type": "Question", "name": "How do I know the visit really happened?", "acceptedAnswer": { "@type": "Answer", "text": "Every visit produces a report in your account: photos before and after, a short video, the GPS coordinates of the plot and the exact date and time. Nothing is invoiced as done without a report." } },
+       { "@type": "Question", "name": "Do you use pressure washers on old stone? Is that safe?", "acceptedAnswer": { "@type": "Answer", "text": "We use Kärcher equipment in low-pressure mode together with professional pH-neutral chemistry designed for natural stone. Granite, marble and tuff are cleaned without abrasion; fragile or damaged surfaces are cleaned by hand with soft brushes." } },
+       { "@type": "Question", "name": "What if the plot is larger than 16 m² or has more than 3 monuments?", "acceptedAnswer": { "@type": "Answer", "text": "Choose the Custom option and describe the plot — we will quote a personal price within one business day. Everything else stays the same: the same equipment, the same reports." } },
+       { "@type": "Question", "name": "I live in Yerevan — is this service still for me?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many local clients simply do not have time for regular visits. We handle the schedule for you, including a one-time visit before a memorial date." } },
+       { "@type": "Question", "name": "How and when do I pay?", "acceptedAnswer": { "@type": "Answer", "text": "By bank card (Visa, Mastercard, ArCa) in Armenian drams through Ameriabank's secure payment page. One-time visits are paid before the visit; annual plans are paid once for the whole year and delivered over 12 months." } },
+       { "@type": "Question", "name": "Can I cancel an annual plan?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can cancel at any time from your account or by writing to us; unused visits are refunded pro rata according to the refund and cancellation policy." } },
+       { "@type": "Question", "name": "Do you need documents or permission to access the plot?", "acceptedAnswer": { "@type": "Answer", "text": "For cleaning and care of an existing plot no special permission is required in Yerevan cemeteries. We only ask you to confirm that you are a relative or authorised by the family, and to give us the plot location." } },
+       { "@type": "Question", "name": "What happens if you find damage?", "acceptedAnswer": { "@type": "Answer", "text": "We photograph it, describe it in the report and suggest what can be done. Minor repairs can be quoted separately; we never carry out work you have not approved." } }
+     ]
+   }
+   </script>
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "HowTo",
+     "name": "How MemoryCare grave care works",
+     "step": [
+       { "@type": "HowToStep", "name": "Choose a plan", "text": "Create an account, tell us where the plot is and pick a plan — from a single inspection to a full year of care." },
+       { "@type": "HowToStep", "name": "We inspect first", "text": "A caretaker visits, documents the current state of the stone and the plot, and agrees the work with you if anything unusual is needed." },
+       { "@type": "HowToStep", "name": "We care for the place", "text": "Deep cleaning with professional equipment and stone-safe chemistry; fresh flowers at the end of every visit." },
+       { "@type": "HowToStep", "name": "You receive proof", "text": "The same day a photo and video report with GPS and date appears in your account — wherever you are." }
+     ]
+   }
+   </script>
+   {{/if}}
+   <link rel="preload" href="/fonts/GHEAMariamBld.otf" as="font" type="font/otf" crossorigin>
+   <link rel="preload" href="/fonts/Montserratarm-Regular.otf" as="font" type="font/otf" crossorigin>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+   <link rel="stylesheet" href="/vendor/popup.css">
+   <link rel="stylesheet" href="/vendor/aos.css">
+   <link rel="stylesheet" href="/css/tokens.css?{{assetVersion}}">
+   <link rel="stylesheet" href="/css/main.css?{{assetVersion}}">
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body class="page-{{pageClass}}" data-aos-easing="ease-out-quart" data-aos-duration="500" data-aos-delay="0">
+   <div id="ploader_wrap" style="display: none;"><span class="ploader"></span></div>
+   {{> header}}
+
+{{content}}
+
+   {{> footer}}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/vendor/menu.js?{{assetVersion}}"></script>
+<script src="/vendor/popup.js"></script>
+<script src="/vendor/aos.js"></script>
+<script src="/vendor/BeerSlider.js"></script>
+<script src="/vendor/init.js?{{assetVersion}}"></script>
+<script src="/js/site.js?{{assetVersion}}"></script>
+<script>
+    $(window).on('load', function()
+    {
+        AOS.init({
+          duration: 600,
+          easing: 'ease-out-quart',
+          once: true,
+          offset: 60
+        });
+    });
+</script>
+</body>
+</html>
