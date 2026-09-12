@@ -31,6 +31,18 @@
       "skillPath": "skills/apple-design/SKILL.md",
       "computedHash": "8b94db67cb9edaad5f1501010804caa610131f1d2dfda0a27664b2e858deade3"
     },
+    "apply-design-system": {
+      "source": "edenspiekermann/Skills",
+      "sourceType": "github",
+      "skillPath": "skills/apply-design-system/SKILL.md",
+      "computedHash": "5ef5f8d018b3a306338350a54afca53d11e43a52777310e9633794afba5a41a1"
+    },
+    "audit-design-system": {
+      "source": "edenspiekermann/Skills",
+      "sourceType": "github",
+      "skillPath": "skills/audit-design-system/SKILL.md",
+      "computedHash": "d51dd9ce19e86f3b72b2f9a9d0127c763f40443171fa8f2241725e43addd38e2"
+    },
     "banner-design": {
       "source": "nextlevelbuilder/ui-ux-pro-max-skill",
       "sourceType": "github",
@@ -138,6 +150,12 @@
       "sourceType": "github",
       "skillPath": "eu-ai-act-reviewer/skills/eu-ai-act-reviewer/SKILL.md",
       "computedHash": "03bd305d3e8b70525de1734f819f8af7c0b305c210f2ff8bdf5bfd2ba8bee815"
+    },
+    "fix-design-system-finding": {
+      "source": "edenspiekermann/Skills",
+      "sourceType": "github",
+      "skillPath": "skills/fix-design-system-finding/SKILL.md",
+      "computedHash": "2319d8cc217ba4db9d59ec0a73df0e2ea0ebddd67a889277775c51420dcc2d24"
     },
     "frontend-design": {
       "source": "anthropics/skills",
