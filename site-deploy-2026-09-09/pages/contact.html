@@ -1,0 +1,47 @@
+<!--{ "route": "/en/contact/", "title": "Contact us", "description": "Contact MemoryCare — phone, e-mail, office address in Yerevan and a free consultation request form.", "pageClass": "contact" }-->
+<div class="main">
+  <div class="container">
+    <div class="page-title">
+      <h1 class="h2-title" style="font-size:var(--fs-h1)">Contact us</h1>
+      <p class="lead">Ask our specialists anything — about a specific plot, a memorial date, or how the reports work. We reply within one business day.</p>
+    </div>
+    <div class="contact_wrapper">
+      <div class="contact_wrapper_info" data-aos="fade-up">
+        <div class="contact-tile">
+          <div class="contact-tile__icon"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div>
+          <div><h3>Phone &amp; messengers</h3><p><a href="tel:{{phoneHref}}">{{phone}}</a></p><p class="small muted">WhatsApp, Viber, Telegram on the same number</p></div>
+        </div>
+        <div class="contact-tile">
+          <div class="contact-tile__icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></div>
+          <div><h3>E-mail</h3><p><a href="mailto:{{email}}">{{email}}</a></p></div>
+        </div>
+        <div class="contact-tile">
+          <div class="contact-tile__icon"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div><h3>Office</h3><p>{{address}}</p><p class="small muted">{{legalName}}</p></div>
+        </div>
+        <div class="contact-tile">
+          <div class="contact-tile__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><h3>Working hours</h3><p><strong>Monday–Friday</strong>: 9:00 – 19:00</p><p><strong>Saturday</strong>: 10:00 – 15:00</p><p><strong>Sunday</strong>: closed</p></div>
+        </div>
+      </div>
+      <div class="contact_wrapper_form" id="form" data-aos="fade-up" data-aos-delay="120">
+        <h2 style="font-size:1.6rem">Free consultation</h2>
+        <p class="muted" style="margin-bottom:1.4rem">Leave your details and a few words about the plot. Feel free to ask our specialists any questions you may have and we will be happy to answer them.</p>
+        <form method="post" id="cform">
+          <div class="field" data-validate="required"><label for="c-name">Name Surname <small>*</small></label><input type="text" name="namesurname" id="c-name" placeholder="Anna Petrosyan" autocomplete="name"><span class="field__error">Please tell us your name.</span></div>
+          <div class="field" data-validate="email"><label for="c-email">E-mail <small>*</small></label><input type="text" name="email" id="c-email" placeholder="you@example.com" autocomplete="email" inputmode="email"><span class="field__error">That doesn’t look like an e-mail address.</span></div>
+          <div class="field" data-validate="phone"><label for="c-phone">Phone <small>optional, with country code</small></label><input type="text" name="phone" id="c-phone" placeholder="+374 …" autocomplete="tel" inputmode="tel"><span class="field__error">Please check the phone number.</span></div>
+          <div class="field" data-validate="required"><label for="c-msg">Message <small>*</small></label><textarea name="message" id="c-msg" placeholder="Which cemetery, roughly what the plot looks like, and what you would like us to do."></textarea><span class="field__error">A few words help us prepare an answer.</span></div>
+          <input type="hidden" name="lang" value="en">
+          <button class="btn btn--primary">Send<span class="btn__cap" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></span></button>
+          <div id="respct"></div>
+          <p class="required">* required fields. By sending the form you agree to our <a href="/en/page/privacy/">privacy policy</a>.</p>
+        </form>
+      </div>
+      <div class="contact_wrapper_map" data-aos="fade-up">
+        <iframe src="https://maps.google.com/maps?q=40.2033,44.4881&hl=en&z=16&output=embed" width="100%" height="370" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Map: MemoryCare office, Komitas Avenue 47/1, Yerevan"></iframe>
+        <div class="map-fallback"><div><b>{{address}}</b><br>Map could not be loaded — open in <a href="https://maps.google.com/?q=Komitas+Avenue+47%2F1,+Yerevan" target="_blank" rel="noopener">Google Maps</a>.</div></div>
+      </div>
+    </div>
+  </div>
+</div>

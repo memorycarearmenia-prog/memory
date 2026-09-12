@@ -1,0 +1,41 @@
+<!--{ "route": "/en/account/objects/view/2/", "aliases": ["/en/account/objects/view/1/", "/en/account/objects/view/4/"], "title": "Visit report", "description": "Visit report with before/after photos, video, GPS and date.", "pageClass": "account" }-->
+<div class="main">
+  <div class="container">
+    <div class="page-title"><h2 class="h2-title" style="font-size:var(--fs-h1)">Petrosyan family plot</h2><p class="lead">Yerevan — Davtashen cemetery, section 7, row 12 · <a href="/en/account/objects/">all plots</a></p></div>
+    <div class="account_wrap">
+        {{> account-nav}}
+        <section class="acontent">
+            <h3>Report № 1 <span class="vt p">Express visit</span></h3>
+            <div class="report-meta">
+              <div>Date &amp; time<b class="num">14 May 2026 · 09:40</b></div>
+              <div>GPS<b class="num">40.2118° N, 44.4903° E</b></div>
+              <div>Caretaker<b>Team A · 2 people</b></div>
+              <div>Duration<b class="num">1 h 25 min</b></div>
+            </div>
+            <div class="beaf_wrapper">
+                <div class="igallery">
+                    <a href="/assets/img/before.jpg" data-label="Before"><img src="/assets/img/before.jpg" alt="Before the visit"></a>
+                </div>
+                <div>
+                    <iframe title="Location on the map" src="https://maps.google.com/maps?q=40.2118,44.4903&amp;hl=en&amp;z=16&amp;output=embed"></iframe>
+                </div>
+                <div class="igallery">
+                    <a href="/assets/img/after.jpg" data-label="After"><img src="/assets/img/after.jpg" alt="After the visit"></a>
+                </div>
+                <div>
+                    <iframe title="Location on the map, wide" src="https://maps.google.com/maps?q=40.2118,44.4903&amp;hl=en&amp;z=13&amp;output=embed"></iframe>
+                </div>
+            </div>
+            <div class="video">
+                <video id="msv" controls webkit-playsinline playsinline poster="/assets/img/report-poster.jpg">
+                    <source src="/assets/img/hero.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="comments">
+                <h4>Caretaker’s notes</h4>
+                Monument and inscription washed with low-pressure Kärcher and pH-neutral cleaner; lichen on the north side removed. Border tiles washed, two loose tiles re-seated. Leaves and dry grass cleared, gravel raked. Fresh white chrysanthemums placed. Recommendation: the right corner of the border shows slight subsidence — worth a look next spring; no action needed now.
+            </div>
+        </section>
+    </div>
+  </div>
+</div>

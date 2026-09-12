@@ -1,0 +1,52 @@
+<!--{ "route": "/en/account/register/", "title": "Create an account", "description": "Create a MemoryCare account to order care for a family memorial plot in Yerevan and receive visit reports.", "pageClass": "register" }-->
+<div class="main">
+  <div class="auth">
+    <div class="auth__panel">
+      <div class="auth__card">
+        <fieldset>
+          <legend>Create an account</legend>
+          <p class="lead">It takes a minute. You will use it to order visits and to receive reports.</p>
+          <form id="register">
+            <div class="field field--info" data-validate="required">
+              <label for="r-name">Name Surname <small>*</small></label>
+              <div class="pw-row"><input type="text" name="fullname" id="r-name" placeholder="Anna Petrosyan" class="txtt" autocomplete="name"><div class="tltp">ⓘ<span class="tltptxt">Fill in your name as we should address you.</span></div></div>
+              <span class="field__error">Please enter your name.</span>
+            </div>
+            <div class="field field--info" data-validate="phone">
+              <label for="r-phone">Phone <small>* with country code</small></label>
+              <div class="pw-row"><input type="text" name="phone" id="r-phone" placeholder="+374 …" class="txtt" autocomplete="tel" inputmode="tel"><div class="tltp">ⓘ<span class="tltptxt">Enter a real phone number — we use it only to agree visit dates.</span></div></div>
+              <span class="field__error">Please check the phone number.</span>
+            </div>
+            <div class="field field--info" data-validate="email">
+              <label for="r-email">E-mail <small>*</small></label>
+              <div class="pw-row"><input type="text" name="email" id="r-email" placeholder="you@example.com" class="txtt" autocomplete="email" inputmode="email"><div class="tltp">ⓘ<span class="tltptxt">Please enter a real e-mail address — the activation link and reports are sent there.</span></div></div>
+              <span class="field__error">That doesn’t look like an e-mail address.</span>
+            </div>
+            <div class="field field--info">
+              <label for="rp">Password <small>*</small></label>
+              <div class="pw-row"><input type="password" name="password" id="rp" placeholder="At least 8 characters" class="txtt" autocomplete="new-password"><div class="tltp" onclick="togglePasswords('rp', this)" role="button" aria-label="Show or hide password">ⓘ<span class="tltptxt"><ul><li>The password must contain at least 8 characters</li><li>Only Latin letters, numbers, and the specified special characters are allowed</li><li>It must contain at least 1 lowercase letter</li><li>It must contain at least 1 uppercase letter</li><li>It must contain at least 1 number (0-9)</li><li>It must contain at least 1 special character: @ $ ! % * ? &amp;</li></ul></span></div></div>
+              <ul class="pw-checklist" aria-label="Password requirements">
+                <li data-rule="len">8+ characters</li>
+                <li data-rule="upper">an uppercase letter</li>
+                <li data-rule="lower">a lowercase letter</li>
+                <li data-rule="digit">a number</li>
+                <li data-rule="special">one of @ $ ! % * ? &amp;</li>
+                <li data-rule="latin">Latin letters only</li>
+              </ul>
+            </div>
+            <input type="hidden" name="lang" value="en">
+            <label class="consent"><input type="checkbox" name="agree_terms" value="1" required><span>I agree to the <a href="/en/page/terms/">Terms of Service</a> and the <a href="/en/page/privacy/">Privacy Policy</a>.</span></label>
+            <button class="btn btn--primary" style="margin-top:0;">Create account<span class="btn__cap" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></span></button>
+            <p id="lres"></p>
+            <p class="reglink"><a href="/en/account/login/">Already have an account? Sign in</a></p>
+            <p class="required">* required fields</p>
+          </form>
+        </fieldset>
+      </div>
+    </div>
+    <div class="auth__aside">
+      <img src="/assets/img/about-hands-flower.jpg" alt="">
+      <div><h2>Care you can see.</h2><p>Order a single inspection or a full year of visits — and follow every one of them from your account.</p></div>
+    </div>
+  </div>
+</div>

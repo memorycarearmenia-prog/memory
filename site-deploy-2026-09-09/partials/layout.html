@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>{{title}} — MemoryCare</title>
+   <base href="/">
+   <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+   <link rel="alternate icon" href="/img/favicon.ico" type="image/x-icon">
+   <meta name="author" content="MemoryCare LLC">
+   <meta name="description" content="{{description}}">
+   <meta name="ROBOTS" content="INDEX, FOLLOW">
+   <link rel="canonical" href="https://mc.makyan.com{{route}}">
+   <meta property="og:title" content="{{title}} — MemoryCare">
+   <meta property="og:type" content="website">
+   <meta property="og:image" content="https://mc.makyan.com/assets/brand/og-image.jpg">
+   <meta property="og:url" content="https://mc.makyan.com{{route}}">
+   <meta property="og:locale" content="en_US">
+   <meta property="og:locale:alternate" content="hy_AM">
+   <meta property="og:locale:alternate" content="ru_RU">
+   <meta property="og:site_name" content="MemoryCare">
+   <meta property="og:description" content="{{description}}">
+   <meta name="theme-color" content="#F3F0E9">
+   <link rel="preload" href="/fonts/GHEAMariamBld.otf" as="font" type="font/otf" crossorigin>
+   <link rel="preload" href="/fonts/Montserratarm-Regular.otf" as="font" type="font/otf" crossorigin>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+   <link rel="stylesheet" href="/vendor/popup.css">
+   <link rel="stylesheet" href="/vendor/aos.css">
+   <link rel="stylesheet" href="/css/tokens.css?{{assetVersion}}">
+   <link rel="stylesheet" href="/css/main.css?{{assetVersion}}">
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body class="page-{{pageClass}}" data-aos-easing="ease-out-quart" data-aos-duration="500" data-aos-delay="0">
+   <div id="ploader_wrap" style="display: none;"><span class="ploader"></span></div>
+   {{> header}}
+
+{{content}}
+
+   {{> footer}}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/vendor/menu.js?{{assetVersion}}"></script>
+<script src="/vendor/popup.js"></script>
+<script src="/vendor/aos.js"></script>
+<script src="/vendor/BeerSlider.js"></script>
+<script src="/vendor/init.js?{{assetVersion}}"></script>
+<script src="/js/site.js?{{assetVersion}}"></script>
+<script>
+    $(window).on('load', function()
+    {
+        AOS.init({
+          duration: 600,
+          easing: 'ease-out-quart',
+          once: true,
+          offset: 60
+        });
+    });
+</script>
+</body>
+</html>
