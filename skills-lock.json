@@ -115,6 +115,12 @@
       "skillPath": "skills/claude-api/SKILL.md",
       "computedHash": "9bfcfccd687695f0fae23c37f63d768d9ce3e9b1ab3dc409ab4de0943178bd2f"
     },
+    "context-engineering-collection": {
+      "source": "muratcankoylan/Agent-Skills-for-Context-Engineering",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "1a2dbf15cf46137bae376d83c933068c72ddb96d5275e38cdf384b35793502e8"
+    },
     "deploy-to-vercel": {
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",
