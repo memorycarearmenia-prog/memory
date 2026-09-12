@@ -175,6 +175,12 @@
       "skillPath": "hungarian-humanizer/skills/hungarian-humanizer/SKILL.md",
       "computedHash": "529ee9f96ef5a21bf2623b36cf0d65e7ee8a6f8aca4d368ba1c3736105a07b07"
     },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "a80e96114cca1a7324c3b5b72586b93687a12a2a05302563fa81e1e30987a049"
+    },
     "insurgent-campaign": {
       "source": "bencium/bencium-marketplace",
       "sourceType": "github",
