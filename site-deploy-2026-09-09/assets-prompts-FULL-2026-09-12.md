@@ -14,8 +14,9 @@
 отставленный инструмент, деталь). Убраны три повтора мотива «руки+цветы» и
 два повтора «инвентарь оборудования». Добавлена армянская культурная
 специфика, которой не хватало (стол со скамейками, лампада, резной бордюр,
-джезве). **Один пункт (forgetmenot.jpg) ждёт решения владельца бренда** —
-см. флаг в разделе 6, промпт ниже — временный безопасный вариант.
+джезве). По forgetmenot.jpg владелец бренда принял решение — незабудка
+остаётся (см. раздел 6), но теперь сопровождается явным текстом на странице,
+называющим её символом памяти о Геноциде армян, а не безмолвной декорацией.
 
 **Сквозной арт-дирекшн бренда** (уже встроен в каждый промпт): люди
 армянской внешности; форма — оливковая/тёмно-оливковая; всё оборудование
@@ -405,17 +406,15 @@ polished.
 
 ## 6. «Что рассказали семьи» (фон секции)
 
-### forgetmenot.jpg ⚠️ ЖДЁТ ВАШЕГО РЕШЕНИЯ — REPLACE (временно на безопасный вариант)
+### forgetmenot.jpg — РЕШЕНО владельцем: оставляем незабудку осознанно
 Модель: `soul_location` · Пропорции: 21:9
 
-**Контекст:** оригинальная концепция использовала макро-незабудки как
-декоративный фон. Незабудка — официальный символ 100-летия Геноцида армян
-(2015), и использовать её как красивую декорацию под свайпером с отзывами
-рискует читаться как эксплуатация памяти о геноциде в коммерческом контексте.
-Ниже — безопасная замена (белая гвоздика/бессмертник). **Если вы сознательно
-хотите оставить именно незабудку как культурное высказывание бренда** —
-скажите, и я верну оригинальный промпт, но пересмотрю его размещение (не
-фоном под отзывами).
+**Решение владельца бренда (13.09.2026):** незабудка остаётся. Условие,
+на котором это решение принято — она перестаёт быть просто декоративным
+фоном: на странице рядом с ней теперь стоит явный текст, называющий цветок
+символом памяти о Геноциде армян и объясняющий, почему бренд выбрал его
+сознательно (добавлено в `home.html`, секция Voices, второй абзац
+`voices__source`). Сам кадр — оригинальная макро-концепция, без изменений.
 
 ```
 Professional macro photograph, shot as if on a 90mm macro lens wide open
@@ -429,16 +428,16 @@ macro backlight technique. Exposure biased toward slight overexposure in the
 out-of-focus highlight areas for a soft, dreamy glow, while keeping the
 in-focus droplets and petal edges crisp with detail. Composition: the sharp
 focal band sits roughly one-third up from the bottom of the wide 21:9 frame,
-a loose diagonal scatter of white blooms leading the eye gently left to
-right, generous soft negative space above for section-heading text to sit
-over in the final web layout. Subject: a macro field of white carnations (or
-immortelle/bessmertnik, the traditional "everlasting" graveside flower) at
-dawn, fine dew droplets on the petal surfaces and stems, thin grass stalks
-softly woven through. Colour grade: soft ivory-white petals, warm golden
-backlight glow, muted green in the soft-focus stems, gentle overall pastel
-quality. Finish: fine grain, natural light bloom around the brightest
-highlights, no artificial lens-flare overlays. No people, no text, no
-lettering or logos anywhere, no man-made objects visible.
+a loose diagonal scatter of blue petals leading the eye gently left to right,
+generous soft negative space above for section-heading text to sit over in
+the final web layout. Subject: a macro field of forget-me-not flowers at
+dawn, small five-petalled blue blooms with fine dew droplets on the petal
+surfaces and stems, thin grass stalks softly woven through. Colour grade:
+soft powder-blue petals, warm golden backlight glow, muted green in the
+soft-focus stems, gentle overall pastel quality. Finish: fine grain, natural
+light bloom around the brightest highlights, no artificial lens-flare
+overlays. No people, no text, no lettering or logos anywhere, no man-made
+objects visible.
 ```
 
 ---
@@ -770,6 +769,6 @@ logos anywhere, headstone surface blank and polished with no inscriptions.
 - [ ] Ни одного лица, повёрнутого прямо в камеру крупным планом; в новых «процессных» заменах человек либо не показан, либо снят со спины/в силуэте
 - [ ] Единая цветовая палитра выдержана: приглушённый оливковый + айвори + тёплый серый
 - [ ] Свет и характер объектива визуально согласуются между кадрами одной секции
-- [ ] **Решение по forgetmenot.jpg принято** (незабудка vs гвоздика/бессмертник) — см. раздел 6
+- [x] **Решение по forgetmenot.jpg принято владельцем** — незабудка остаётся, текст-пояснение добавлен в home.html (раздел 6)
 - [ ] `og-image.jpg` сгенерирован и добавлен в `src/assets/brand/`
 - [ ] Готовые файлы положены в `site-deploy-2026-09-09/src/assets/img/` (фото) и `src/assets/brand/` (og-image), после чего прислать их мне — я заменю плейсхолдеры и пересоберу сайт
