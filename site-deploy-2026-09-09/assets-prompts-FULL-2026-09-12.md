@@ -1,4 +1,5 @@
 # MemoryCare — полный список промптов для генерации медиаконтента (Higgsfield)
+### v2 — 13 сентября 2026, после разбора концепций пятью ревьюерами (см. `PHOTO-CONCEPT-REVIEW-2026-09-13.md`)
 
 Для вашей **локальной** сессии Claude Code (там, где Higgsfield авторизован).
 Каждый промпт самодостаточен и написан на уровне брифа для профессионального
@@ -6,19 +7,28 @@
 композиция, цветокоррекция, постобработка. Копируйте по одному, ничего
 дописывать не нужно.
 
-**Сквозной арт-дирекшн бренда** (уже встроен в каждый промпт, но держите в
-голове при отборе кадров): люди армянской внешности; форма — оливковая/
-тёмно-оливковая; всё оборудование жёлто-чёрное в стиле Kärcher **без единой
-видимой надписи, логотипа или бренд-маркировки**; на камнях — **только
-гладкая полированная поверхность без надписей**; никаких портретов крупным
-планом в объектив; документальный, спокойный, приглушённый тон; общая
-цветовая формула — приглушённый оливковый + айвори + тёплый серый, лёгкое
-утреннее рассеянное освещение, ощущение 35-мм плёнки, а не студийной съёмки.
+**Что изменилось в v2** (полный разбор решений — в `PHOTO-CONCEPT-REVIEW-2026-09-13.md`):
+основной сдвиг оптики — с «покажем процесс работы» на «покажем последствие
+заботы»: большинство кадров, где человек снят в момент действия (моет,
+фотографирует, смотрит в телефон), заменены на кадры-улики (чистый камень,
+отставленный инструмент, деталь). Убраны три повтора мотива «руки+цветы» и
+два повтора «инвентарь оборудования». Добавлена армянская культурная
+специфика, которой не хватало (стол со скамейками, лампада, резной бордюр,
+джезве). **Один пункт (forgetmenot.jpg) ждёт решения владельца бренда** —
+см. флаг в разделе 6, промпт ниже — временный безопасный вариант.
 
-⚠️ **Три позиции уже один раз генерировались с браком** (паразитные
-псевдо-надписи на камне/оборудовании): `hero-still.jpg`, `about-tools.jpg`,
-`news-team.jpg`. Для них в промпте усилен негативный блок — проверяйте
-результат крупным планом перед тем как принимать кадр.
+**Сквозной арт-дирекшн бренда** (уже встроен в каждый промпт): люди
+армянской внешности; форма — оливковая/тёмно-оливковая; всё оборудование
+жёлто-чёрное в стиле Kärcher **без единой видимой надписи, логотипа или
+бренд-маркировки**; на камнях — **только гладкая полированная (для гранита)
+или чистая матовая (для туфа) поверхность без надписей**; никаких портретов
+крупным планом в объектив; документальный, спокойный, приглушённый тон;
+общая цветовая формула — приглушённый оливковый + айвори + тёплый серый,
+лёгкое утреннее рассеянное освещение, ощущение 35-мм плёнки.
+
+⚠️ **about-tools.jpg и news-team.jpg** уже один раз генерировались с браком
+(паразитные псевдо-надписи) — теперь у них полностью новые концепции, но
+негативный блок на надписи оставлен усиленным на всякий случай.
 
 Модели и стоимость: `soul_location` 0.12 кр (места/объекты) ·
 `text2image_soul_v2` 0.12 кр (люди/руки, 2k) · `nano_banana_2` 2 кр (edit
@@ -29,79 +39,80 @@ before→after по референсу) · `kling3_0_turbo` image-to-video 5 с�
 
 ## 1. Главная страница — hero (видео-фон)
 
-### hero-still.jpg ⚠️ (постер hero, постер видео-отчёта, стартовый кадр видео)
+### hero-still.jpg — REPLACE: последствие, а не процесс
 Модель: `soul_v2` · Пропорции: 16:9
 
 ```
 Professional documentary photograph, shot as if on a full-frame mirrorless
-camera with a 35mm f/1.4 prime lens, aperture around f/2 for a shallow but not
-extreme depth of field that keeps both caretakers sharp while the cypress
-background softens into gentle bokeh. Golden-hour morning backlight coming
-from low camera-left, roughly 20 degrees above the horizon, filtered through
-thin ground mist so the light wraps softly around the subjects instead of
-casting hard shadows; a faint warm rim-light traces the edge of the near
-caretaker's shoulder and the water spray. Exposure metered for the skin tones
-and olive fabric, letting the mist and sky highlights bloom slightly toward
-overexposure for an airy, hopeful feel; shutter speed fast enough to freeze
-individual water droplets in the spray as small sharp highlights against the
-softer mist. Composition: the main caretaker is positioned on the right third
-of the frame following the rule of thirds, headstone occupying the lower-right
-quadrant, his colleague kneeling further back on the left third creating depth
-through foreground-midground-background layering; camera height at the
-caretaker's chest level, slight low angle looking very slightly upward to give
-the figure quiet dignity without heroic exaggeration. Subject: an Armenian man
-in his thirties, olive-green field jacket, deep-olive trousers, grey nitrile
-work gloves, both hands steady on a yellow-and-black pressure-washer wand,
-directing a fan-pattern spray across a weathered pink tuff headstone; a second
-Armenian team member in matching olive uniform kneels a few metres behind him
-with a soft-bristle brush and an unlabelled stone-cleaner spray bottle.
-Environment: a quiet Yerevan cemetery alley, mature cypress trees flanking the
-path, low mountains dissolving into haze on the horizon, wet gravel underfoot
-catching soft reflected light. Colour grade: desaturated, olive-green and warm
-grey midtones, ivory highlights, lifted black point for a gentle filmic
-contrast curve, subtle warm-cool split (warm highlights, slightly cool
-shadows). Finish: visible but fine 35mm film grain, a touch of halation around
-the brightest mist highlights, no digital sharpening halos, no HDR look. No
-text overlays, no lettering or logos anywhere. The headstone surface must be
-completely blank and polished — absolutely no inscriptions, engraved text, or
-pseudo-letters of any kind, even partially obscured. All equipment must be
-plain yellow and black with zero visible branding, model numbers or lettering.
-No faces looking directly at camera.
+camera with a 35mm f/1.4 prime lens, aperture around f/2.2 for a shallow
+depth of field that keeps the wet stone surface and foreground gravel crisp
+while the receding cypress alley softens into gentle bokeh. Golden-hour
+morning backlight from low camera-left, roughly 20 degrees above the
+horizon, filtered through thin ground mist so light wraps softly around
+every surface with no hard shadow edges; a faint warm rim-light catches the
+wet sheen on the stone and the individual droplets still clinging to its
+lower edge. Exposure metered for the stone's mid-tones, letting the mist and
+sky highlights bloom slightly toward overexposure for an airy, resolved
+feeling — the work is already done, the light is calm. Shutter speed fast
+enough to render each hanging water droplet as a small, sharp highlight.
+Composition: the clean, wet granite headstone sits on the right third of
+frame following the rule of thirds, catching the low sun directly on its
+polished face; a plain yellow-and-black pressure-washer wand rests, switched
+off, on the gravel beside it rather than being held; a soft-bristle brush
+leans against the stone's base; on the left third, a single caretaker in an
+olive uniform is seen from behind at a shallow depth, mid-stride, already
+walking away down the alley — present but not performing an action, implying
+the visit just concluded. Camera height at knee-to-waist level, a very
+slight low angle toward the stone to give it quiet presence without
+theatricality. Environment: a quiet Yerevan cemetery alley, mature cypress
+trees flanking the path, low mountains dissolving into haze on the horizon,
+wet gravel underfoot catching soft reflected light. Colour grade: desaturated
+olive-green and warm grey midtones, ivory highlights, lifted black point for
+gentle filmic contrast, subtle warm-cool split (warm highlights, slightly
+cool shadows). Finish: visible but fine 35mm film grain, a touch of halation
+around the brightest mist highlights, no digital sharpening halos, no HDR
+look. No text overlays, no lettering or logos anywhere. The headstone is
+granite with a natural polished sheen — completely blank, no inscriptions,
+engraved text or pseudo-letters of any kind, even partially obscured. All
+equipment must be plain yellow and black with zero visible branding, model
+numbers or lettering. No faces looking directly at camera; the departing
+caretaker is seen only from behind or in deep three-quarter profile.
 ```
 
-### hero.mp4 (фоновый луп в hero-секции)
-Модель: `kling3_0_turbo`, image-to-video от `hero-still.jpg` · 5 сек · 1080p · 16:9
+### hero.mp4 — REPLACE: созерцательный проезд без людей
+Модель: `kling3_0_turbo`, image-to-video · 5 сек · 1080p · 16:9
 
 ```
-Slow, continuous cinematic push-in from the exact framing of the reference
-still, as if on a motorized slider moving roughly 15–20 cm total over 5
-seconds — subtle enough to read as ambient camera breathing rather than a
-deliberate dolly move, no visible acceleration or deceleration jump. Simulated
-lens: 35mm-equivalent, f/2, matching the reference photo's depth of field
-exactly so the transition from still to motion is seamless; frame rate feel of
-24fps with natural motion blur on fast-moving elements (the water spray) and
-crisp clarity on slow ones (the caretakers). Lighting stays continuous with
-the reference frame: soft golden-hour backlight from camera-left, mist
-drifting laterally through the beam at a slow, even drift speed, catching and
-releasing highlights as it moves. Action: the lead caretaker's wrist and
-forearm move in a smooth, even side-to-side arc as the wand sweeps the spray
-pattern across the stone in a realistic cleaning rhythm — not mechanical
-repetition, slight natural variation in speed; his colleague's brushing hand
-moves in small, gentle circular strokes; a few cypress branches at the frame
-edges sway very slightly in a light breeze, out of sync with each other for
-naturalism. Camera holds level, no handheld shake, no whip pans, no jump cuts,
-no speed ramping. Colour and grain must stay identical to the reference frame
-throughout — no drift in white balance or contrast across the 5 seconds. Keep
-the headstone surface blank throughout — no text or inscriptions should
-appear or become readable at any single frame of the motion. Equipment stays
-plain yellow and black with no lettering visible at any point in the loop.
+A slow, continuous, contemplative camera glide down the centre of a cypress-
+lined cemetery alley, as if on a motorized slider moving forward at a gentle,
+even pace over the full 5 seconds — no acceleration, no deceleration jump,
+the feeling of quiet breathing rather than a deliberate cinematic move.
+Simulated lens: 35mm-equivalent, f/2.8, moderate depth of field keeping the
+gravel path and nearest tree trunks sharp while the alley's far end
+dissolves into soft morning haze. Frame rate feel of 24fps, no motion blur
+artefacts, no handheld shake, camera held perfectly level throughout — no
+whip pans, no jump cuts, no speed ramping. Lighting: soft, even early-morning
+light filtering through the cypress canopy from camera-left, creating gentle,
+slowly shifting dapples of light and shadow on the gravel as the camera
+moves forward past each tree; thin ground mist drifts laterally through the
+frame at a slow, even pace, catching soft highlights as it crosses patches of
+light. No people anywhere in frame — the alley is empty and calm. Very
+subtle, natural movement only: cypress branches at the frame edges sway
+gently and independently of each other in a light breeze; mist drifts;
+nothing else moves. Colour grade stays completely consistent throughout the
+5 seconds — muted olive-green foliage, warm ivory gravel, soft grey haze, no
+drift in white balance or contrast. Finish: fine 35mm film grain maintained
+consistently, soft natural vignette at the corners, no HDR look, no
+digital-zoom softness. No text, no lettering or logos anywhere, no readable
+inscriptions on any stone surface visible at the edges of frame (keep any
+stones at the very periphery, softly out of focus).
 ```
 
 ---
 
 ## 2. Секция «Why» (главная) + History / Values / Reset
 
-### alley.jpg (секция Why, слайд Moments, боковая панель Reset)
+### alley.jpg — TWEAK: добавлен стол со скамейками
 Модель: `soul_location` · Пропорции: 3:2
 
 ```
@@ -117,179 +128,193 @@ producing hard-edged sunbeams. Exposure balanced for the midtones of the
 gravel and foliage, sky allowed to be a soft, slightly overexposed pale band
 at the top of frame for an airy feel. Composition: the gravel path acts as a
 strong diagonal leading line entering from the bottom-right corner and
-receding toward a vanishing point in the upper-left third, cypress trees
-forming a loose vertical rhythm on both sides that frames the path without
-fully enclosing it, rose bushes as soft colour accents along the lower edge of
-frame; camera height at approximately 1.5m (standing eye-level), lens held
-level with no tilt. Environment: a well-kept alley inside a Yerevan cemetery,
-tuff memorial stones visible only as soft, unreadable shapes well out of focus
-in the middle distance, Armenian mountains faintly resolved through haze at
-the horizon. Colour grade: muted olive greens in the foliage, warm ivory and
-grey in the gravel and mist, gently lifted shadows, restrained overall
-saturation. Finish: fine film grain, soft natural vignette at the corners, no
-HDR halos, no oversharpened edges. No people, no text, no lettering or logos
-anywhere, no readable inscriptions on any visible stone surfaces even at a
-distance.
+receding toward a vanishing point in the upper-left third; midway along the
+path, set slightly back among the plots, a simple metal table with two
+attached benches — the traditional graveside memorial-meal furniture found at
+Armenian and wider Caucasus cemeteries — sits quietly in soft focus, a
+recognisable but unobtrusive cultural anchor, not a focal subject; cypress
+trees forming a loose vertical rhythm on both sides, rose bushes as soft
+colour accents along the lower edge of frame; camera height at approximately
+1.5m (standing eye-level), lens held level with no tilt. Environment: a
+well-kept alley inside a Yerevan cemetery, tuff memorial stones visible only
+as soft, unreadable shapes well out of focus in the middle distance, Armenian
+mountains faintly resolved through haze at the horizon. Colour grade: muted
+olive greens in the foliage, warm ivory and grey in the gravel, mist and
+metal table, gently lifted shadows, restrained overall saturation. Finish:
+fine film grain, soft natural vignette at the corners, no HDR halos, no
+oversharpened edges. No people, no text, no lettering or logos anywhere, no
+readable inscriptions on any visible stone surfaces even at a distance.
 ```
 
-### step-flowers.jpg (Why-секция «стопкой», «Что входит в визит»)
+### step-flowers.jpg — TWEAK: без рук, добавлена лампада
 Модель: `soul_v2` · Пропорции: 4:3
 
 ```
-Professional macro-documentary photograph, shot as if on a 100mm macro lens
-at roughly f/2.8, close enough to fill the frame with the hands and the base
-of the stone while still keeping the yellow-and-black unit in the background
-recognisable but very soft (heavy bokeh, three to four stops out of focus).
-Soft, diffused window-quality daylight from camera-left, low in contrast,
-wrapping gently around the fingers and the flower petals with no harsh
-specular highlights; a faint warm bounce-light from below (implied reflection
-off the pale stone) lifts the shadow side of the hand just enough to keep
-detail. Exposure balanced for the mid-tone skin and ivory cloth, letting the
-white chrysanthemum petals hold detail rather than clip to pure white.
-Composition: the hands and flowers occupy the lower two-thirds of frame in a
-diagonal placement from bottom-left to centre, the polished stone edge running
-along the base of frame as a stable horizontal anchor, generous negative space
-in the upper third for calm breathing room. Subject: gloved hands belonging to
-an Armenian caretaker, wearing an olive-green jacket sleeve visible at the
-wrist, gently placing a small, loosely tied bunch of fresh white
-chrysanthemums and blue forget-me-nots at the clean base of a polished granite
-headstone, an ivory-coloured cotton cloth resting nearby ready for a final
-wipe. Colour grade: warm neutral skin tones, muted olive sleeve, soft ivory
-and white in the flowers and cloth, gentle grey in the stone. Finish: fine
-grain, no digital noise reduction smoothing, natural micro-texture retained on
-the petals and fabric. No text overlays, no lettering or logos anywhere,
-headstone surface completely blank and polished with no inscriptions,
-equipment in the background plain yellow and black without any brand
-lettering. No faces visible in frame.
+Professional documentary macro-still-life photograph, shot as if on a 100mm
+macro lens at roughly f/2.8, close enough to fill the frame with the base of
+the stone and the objects resting against it, the yellow-and-black unit in
+the deep background reduced to soft, unrecognisable warm-toned bokeh four to
+five stops out of focus. Soft, diffused window-quality daylight from
+camera-left, low in contrast, wrapping gently around the flowers and the
+small brass oil lamp with no harsh specular highlights; a faint warm
+bounce-light from below (implied reflection off the pale stone) lifts the
+shadow side just enough to retain detail. Exposure balanced for the mid-tone
+stone base, letting the white chrysanthemum petals hold full detail rather
+than clipping to pure white. Composition: a small, loosely tied bunch of
+fresh white chrysanthemums and blue forget-me-nots rests already placed at
+the clean base of a polished granite headstone, occupying the lower two-
+thirds of frame on a gentle diagonal; beside it, a small traditional brass
+oil lamp (կանթեղ) sits lit with a tiny, steady flame — the everyday ritual
+detail of ongoing care; an ivory cotton cloth lies folded neatly nearby.
+No hands, no human presence in frame at all — this is a still-life of care
+already given, not an action. Generous negative space in the upper third for
+calm breathing room. Colour grade: warm neutral stone tones, soft ivory and
+white in the flowers and cloth, a small warm amber glow from the lamp flame
+as the only saturated colour accent in the frame. Finish: fine grain, no
+digital noise-reduction smoothing, natural micro-texture retained on the
+petals, cloth and lamp's tarnished brass surface. No text overlays, no
+lettering or logos anywhere, headstone surface completely blank and polished
+with no inscriptions, equipment in the far background plain yellow and black
+without any brand lettering.
 ```
 
 ---
 
 ## 3. «Что входит в Express-визит» / «Как это работает»
 
-### step-clean.jpg (используется дважды: «Что входит», шаг 3 «Как это работает»)
+### step-clean.jpg — TWEAK: результат, а не процесс
 Модель: `soul_v2` · Пропорции: 4:3
 
 ```
-Professional documentary close-up, shot as if on an 85mm macro-capable lens at
-around f/2.5, tight enough that the granite surface and foam texture fill most
-of the frame while the pressure washer in the background dissolves into soft,
-warm-toned bokeh roughly four stops out of focus. Soft, even overcast daylight
-from directly above and slightly camera-left, producing gentle, low-contrast
-modelling on the foam bubbles and brush bristles without harsh specular
-glare — the kind of soft box-like quality a bright cloudy sky gives outdoors.
-Exposure balanced to preserve highlight detail in the white foam while keeping
-the dark granite from crushing to pure black; a touch of lifted shadow detail
-for a documentary, unpolished feel. Composition: the brush and foam-covered
-stone surface run diagonally through the frame from lower-left to upper-right,
-the gloved hand entering from the left edge at roughly the lower third,
-leaving open negative space in the upper-right for the softly blurred
-equipment. Subject: gloved hands working pH-neutral cleaning foam over a dark
-granite headstone surface with a natural-bristle brush, small clusters of foam
-bubbles visible catching the light individually, an olive-coloured sleeve cuff
-just visible at the edge of frame; a yellow-and-black pressure washer
-softly blurred behind. Colour grade: cool-neutral granite grey, warm olive
-sleeve accent, bright but not blown-out white foam, muted background yellow.
-Finish: fine film grain, natural micro-contrast on the wet stone texture, no
-oversharpening. No text overlays, no lettering or logos anywhere, headstone
-surface blank and polished with no inscriptions, equipment plain yellow and
+Professional documentary macro photograph, shot as if on an 85mm macro lens
+at around f/2.2, tight enough that a single large water droplet on the
+polished granite surface fills a meaningful portion of the frame, the
+pressure-washer resting in the background dissolving into soft, warm-toned
+bokeh roughly four stops out of focus. Soft, even overcast daylight from
+directly above and slightly camera-left, producing gentle, low-contrast
+modelling with no harsh specular glare — the quality a bright cloudy sky
+gives outdoors. Exposure balanced to preserve the tiny, sharp highlight
+inside the droplet itself (acting as a miniature lens reflecting a soft,
+inverted image of the cypress trees above) while keeping the dark granite
+around it rich and detailed, not crushed to pure black. Composition: the
+droplet sits just off-centre on the polished stone surface, positioned using
+the rule of thirds, with the reflective sheen of the freshly cleaned granite
+stretching diagonally through the frame from lower-left to upper-right,
+generous negative space in the upper-right where the softly blurred
+equipment barely registers as a warm colour shape, not a recognisable object.
+Subject: a macro close-up of a single water droplet resting on an already-
+clean, polished dark granite headstone surface — no hands, no brush, no
+visible cleaning action, only the evidence of a finished, careful job.
+Colour grade: cool-neutral granite grey, a small warm highlight inside the
+droplet, muted background yellow far out of focus. Finish: fine film grain,
+natural micro-contrast on the wet stone texture, no oversharpening. No text
+overlays, no lettering or logos anywhere, headstone surface blank and
+polished with no inscriptions, equipment in the background plain yellow and
 black without any brand lettering.
 ```
 
-### plot-1.jpg (шаг 1 «Как это работает», демо-объект «Petrosyan family plot»)
+### plot-1.jpg — TWEAK: добавлена резьба на бордюре
 Модель: `soul_location` · Пропорции: 4:3
 
 ```
 Professional documentary photograph, shot as if on a 35mm lens at around f/5.6
 for a moderate, even depth of field that keeps both headstones and the
 immediate border sharp while the cypress trees in the background soften
-gently. Soft, directional early-morning light from camera-left at a low angle,
-grazing across the tile border and gravel to reveal texture, with delicate,
-elongated shadows falling to the right; light haze in the air softens contrast
-slightly without flattening the image. Exposure balanced for the mid-grey
-granite and pale tile border, sky (where visible) allowed to read as a soft,
-slightly bright neutral band. Composition: the two headstones sit just off
-centre on the right two-thirds of frame following the rule of thirds, the tile
-border forming a clean horizontal line roughly one-third up from the bottom of
-frame, small trimmed shrubs providing a soft vertical counterpoint on the
-left; camera at standing eye-level, lens held level with no convergence
-distortion. Environment: a well-kept family memorial plot in the Davtashen
-cemetery area of Yerevan — two clean, polished granite headstones side by
-side, a neat low tile border in pale stone, small manicured shrubs beside the
-stones, cypress trees softly out of focus in the background. Colour grade:
-neutral cool granite grey balanced against warm ivory tile and muted olive
-foliage, restrained overall saturation, gentle filmic contrast. Finish: fine
-grain, soft natural vignette, no HDR look. No people, no text, no lettering or
-logos anywhere, headstone surfaces completely blank and polished with no
+gently. Soft, directional early-morning light from camera-left at a low
+angle, grazing across the tile border to reveal a simple carved rope-and-leaf
+ornamental pattern along its edge, and across the gravel to reveal texture,
+with delicate, elongated shadows falling to the right; light haze in the air
+softens contrast slightly without flattening the image. Exposure balanced for
+the mid-grey granite and pale tile border, sky (where visible) allowed to
+read as a soft, slightly bright neutral band. Composition: the two
+headstones sit just off centre on the right two-thirds of frame following
+the rule of thirds, the carved tile border forming a clean horizontal line
+roughly one-third up from the bottom of frame with its ornamental detail
+clearly legible in the raking light, small trimmed shrubs providing a soft
+vertical counterpoint on the left; camera at standing eye-level, lens held
+level with no convergence distortion. Environment: a well-kept family
+memorial plot in the Davtashen cemetery area of Yerevan — two clean, polished
+granite headstones side by side, a neat low tile border with simple carved
+ornament in pale stone, small manicured shrubs beside the stones, cypress
+trees softly out of focus in the background. Colour grade: neutral cool
+granite grey balanced against warm ivory tile and muted olive foliage,
+restrained overall saturation, gentle filmic contrast. Finish: fine grain,
+soft natural vignette, no HDR look. No people, no text, no lettering or logos
+anywhere, headstone surfaces completely blank and polished with no
 inscriptions.
 ```
 
-### step-inspect.jpg (шаг 2 «Как это работает»)
+### step-inspect.jpg — REPLACE: тень и старая фотография вместо планшета
 Модель: `soul_v2` · Пропорции: 4:3
 
 ```
-Professional documentary photograph, shot as if on a 50mm lens at around f/2.2
-for a shallow depth of field that keeps the caretaker and tablet crisply sharp
-while the cypress trees behind fall into soft, warm bokeh. Soft side-lighting
-from camera-left, roughly 45 degrees, mid-morning quality with gentle
-directionality that models the folds of the olive uniform and the curve of the
-tablet without harsh shadow edges; a faint cool skylight fill from
-camera-right keeps the shadow side of her face and uniform from going fully
-dark. Exposure balanced for the olive uniform's mid-tones, tablet screen
-slightly underexposed relative to the scene to avoid a distracting glow.
-Composition: the caretaker stands just right of centre following the rule of
-thirds, holding the tablet up at chest-to-shoulder height as she photographs
-the headstone which sits just outside the left edge of frame (implied, not
-fully shown), the plain yellow-and-black case at her feet anchoring the lower
-third; camera at a slightly lower angle than her eye-line, looking up just
-enough to give a quiet, respectful read without heroicising her. Subject: an
-Armenian woman caretaker in an olive-green uniform, hair tied back simply,
-holding a tablet and photographing a blank polished grey granite headstone for
-an inspection report, her expression calm and focused, not directed at
-camera. Colour grade: muted olive uniform, warm grey stone tones, soft ivory
-ambient light, restrained saturation throughout. Finish: fine grain, gentle
-natural vignette, no digital sharpening artefacts. No text overlays, no
-lettering or logos anywhere, headstone surface blank and polished with no
-inscriptions, equipment case plain yellow and black without any brand
-lettering.
+Professional documentary photograph, shot as if on a 50mm lens at around f/4
+for a moderate depth of field keeping both the stone surface and the small
+photograph niche crisply sharp while the cypress trees behind fall into
+soft, warm bokeh. Soft side-lighting from camera-left, roughly 45 degrees,
+mid-morning quality with gentle directionality that casts a clear, long,
+recognisably human-shaped shadow — an Armenian caretaker in an olive uniform,
+implied by silhouette only — falling diagonally across the lower portion of
+the polished stone. Exposure balanced for the stone's mid-tones, allowing the
+shadow to read as a soft, warm-toned dark shape rather than crushed black.
+Composition: the shadow enters from the bottom-right corner and stretches
+diagonally toward the upper-left third of frame, where a small weathered
+photograph — an old, sepia-toned family portrait — rests tucked into a
+shallow carved niche in the stone's base, catching a soft highlight of its
+own; the caretaker's gloved hand is visible only at the very edge of frame,
+fingertips just touching the corner of the photograph to straighten it, not
+performing any documentation action; camera at a slightly low angle toward
+the stone. Subject: a caretaker's shadow falling across a blank polished
+granite headstone, a small old family photograph tucked in a niche at its
+base being gently straightened by a gloved hand at the frame's edge — the
+idea of inspection reframed as an act of tending to memory, not a technical
+QA process. Colour grade: muted olive shadow tone, warm sepia accent from
+the old photograph, soft grey stone, restrained saturation throughout.
+Finish: fine grain, gentle natural vignette, no digital sharpening
+artefacts. No text overlays, no lettering or logos anywhere, headstone
+surface blank and polished with no inscriptions beyond the small tucked
+photograph itself, no modern equipment visible in frame.
 ```
 
-### step-report.jpg (шаг 4 «Как это работает», боковая панель Login)
+### step-report.jpg — TWEAK: распечатанное фото вместо экрана, армянская деталь
 Модель: `soul_v2` · Пропорции: 4:3
 
 ```
 Professional documentary interior photograph, shot as if on a 35mm lens at
-around f/2 for a shallow depth of field that keeps the woman and her phone
-sharp while the kitchen background softens into gentle, warm bokeh. Soft
-window light from camera-left, mid-morning quality filtered through a sheer
-curtain implied off-frame, producing a gentle gradient of light across her
-face and the table — brighter near the window side, softly falling off toward
-camera-right; a warm practical light source (implied kitchen lamp, off-frame)
-adds a subtle golden fill to prevent the shadow side from going flat. Exposure
-balanced for her skin tones and the pale ceramic coffee cup, letting the
-window itself read as a soft, slightly overexposed bright patch for a natural
-interior feel. Composition: she sits at roughly a three-quarter angle to
-camera, positioned on the left third of frame, the phone held at a
-comfortable, natural angle in her hands on the lower-right third, the coffee
-cup nearby as a small warm accent; camera at seated eye-level, no downward
-angle, to keep the moment intimate rather than observational. Subject: an
-Armenian woman in her fifties, seated at a kitchen table abroad, a cup of
-coffee within reach, calmly looking at a phone screen that shows two small,
-softly rendered photographs of the same memorial plot and an abstract map-pin
-icon — no legible text or UI labels, just soft shapes suggesting a report
-interface. Colour grade: warm, homely tones — soft amber window light, muted
+around f/2 for a shallow depth of field that keeps the tabletop objects sharp
+while the kitchen background softens into gentle, warm bokeh. Soft window
+light from camera-left, mid-morning quality filtered through a sheer curtain
+implied off-frame, producing a gentle gradient of light across the table —
+brighter near the window side, softly falling off toward camera-right; a
+warm practical light source (implied kitchen lamp, off-frame) adds a subtle
+golden fill. Exposure balanced for the pale printed photograph and the small
+ceramic djezve (Armenian coffee pot), letting the window itself read as a
+soft, slightly overexposed bright patch for a natural interior feel.
+Composition: a small printed photograph of a memorial plot — showing the
+polished stone and fresh flowers, GPS coordinates and a date printed in a
+plain caption beneath it — lies on the table at the centre of frame, occupying
+the lower two-thirds; a djezve and small demitasse cup sit just to the right
+as a specific, unmistakably Armenian domestic detail; a smartphone rests
+face-down and out of focus at the very edge of frame, deliberately
+de-emphasised rather than shown lit up; a woman's hand, resting gently at the
+photograph's edge, enters from the left. Camera at seated eye-level, a
+slightly high angle looking down at the table, keeping the moment intimate.
+Subject: an Armenian woman in her fifties, seated at a kitchen table abroad,
+her hand resting beside a printed photograph from a visit report and a small
+cup of Armenian coffee, calmly looking down at the photograph rather than at
+a screen. Colour grade: warm, homely tones — soft amber window light, muted
 neutral interior, gentle skin warmth, understated background desaturation.
 Finish: fine film grain, soft warm halation near the window highlight, no
-clinical digital sharpness. No text overlays, no visible logos or brand
-lettering anywhere, no readable text large enough to be legible on the phone
-screen itself.
+clinical digital sharpness. No lettering or logos anywhere; any text printed
+on the photograph's caption must remain small, generic and non-legible at
+normal viewing size (a date and coordinates only, not a paragraph).
 ```
 
 ---
 
 ## 4. Блок цен (фон секции)
 
-### texture-tuff.jpg (фоновая текстура секции Pricing)
+### texture-tuff.jpg — KEEP
 Модель: `soul_location` · Пропорции: 21:9
 
 ```
@@ -318,38 +343,40 @@ itself.
 
 ---
 
-## 5. Before/After сравнение (используется в hero-карточке, слайдере, отчётах)
+## 5. Before/After сравнение
 
-### before.jpg (слайдер before/after, hero report-card, все отчёты о визитах)
+### before.jpg — TWEAK: нейтральнее по тону, добавлена «улика»
 Модель: `soul_location` · Пропорции: 3:2
 
 ```
 Professional documentary photograph, shot as if on a 50mm lens at around f/5.6
 for even, front-to-back sharpness suitable for a precise before/after
-comparison — deliberately less shallow than the site's other lifestyle photos,
-because this frame must read as a neutral, evidentiary record rather than an
-artistic composition. Flat, soft overcast daylight from directly above with no
-strong directional shadows, mimicking a bright cloudy sky — the same
-lighting quality the "after" edit must match exactly. Exposure set for
-accurate, neutral colour rendition rather than mood — mid-grey card exposure,
-no crushed shadows or blown highlights, so the comparison reads honestly.
-Composition: strictly frontal, camera perpendicular to the headstone face at
-the same working distance and height that the after-photo edit will need to
-preserve pixel-for-pixel, headstone centred in frame with even margin on both
-sides, horizon-level camera with no tilt or convergence. Subject: a neglected
-family memorial plot — a dark granite headstone dulled by a fine layer of dust
-and patchy lichen, dry fallen leaves and dead grass scattered around the base,
-a cracked stone border with a few weeds growing through the gaps. Colour
-grade: deliberately desaturated and slightly cool-neutral, muted olive-grey in
-the lichen, warm dusty tones in the dead leaves, an overall slightly
-melancholic but respectful, clinical-documentary palette — not moody, just
-honest. Finish: fine grain, minimal contrast styling, no dramatic
-colour-grading, so it reads as a plain factual record. No people, no text, no
-lettering or logos anywhere, no readable inscriptions visible on the stone
-(keep any engraved area out of frame or angled away from camera).
+comparison — deliberately less shallow than the site's other lifestyle
+photos, because this frame must read as a neutral, evidentiary record rather
+than an artistic or emotionally charged composition. Flat, soft overcast
+daylight from directly above with no strong directional shadows, mimicking a
+bright cloudy sky — the same lighting quality the "after" edit must match
+exactly. Exposure set for accurate, neutral colour rendition rather than
+mood — mid-grey card exposure, no crushed shadows or blown highlights, so
+the comparison reads plainly and honestly, without dramatisation. Composition:
+strictly frontal, camera perpendicular to the headstone face at the same
+working distance and height that the after-photo edit will need to preserve
+pixel-for-pixel, headstone centred in frame with even margin on both sides,
+horizon-level camera with no tilt or convergence. Subject: a neglected family
+memorial plot — a dark granite headstone dulled by a fine layer of dust and
+patchy lichen, dry fallen leaves and dead grass scattered around the base, a
+cracked stone border with a few weeds growing through the gaps, and a small,
+faded plastic memorial wreath leaning against the base — the one unambiguous
+detail that marks this as a grave rather than a generic dirty courtyard or
+patio. Colour grade: neutral, plainly documentary — muted olive-grey in the
+lichen, warm dusty tones in the dead leaves, restrained contrast, deliberately
+not moody or melancholic — a factual record, not an emotional appeal. Finish:
+fine grain, minimal contrast styling, no dramatic colour-grading. No people,
+no text, no lettering or logos anywhere, no readable inscriptions visible on
+the stone (keep any engraved area out of frame or angled away from camera).
 ```
 
-### after.jpg (edit-версия before.jpg — тот же кадр после ухода)
+### after.jpg — TWEAK: синхронно с before.jpg
 Модель: `nano_banana_2` (image edit, референс: `before.jpg`) · Пропорции: 3:2 (сохранить кадрирование пиксель-в-пиксель)
 
 ```
@@ -358,56 +385,67 @@ length, lens perspective and crop pixel-identical to the reference image — do
 not shift, zoom, or re-angle the shot in any way. Preserve the reference's
 exact lighting direction, colour temperature and flat overcast exposure so the
 only visible difference between the two images is the physical condition of
-the plot, not the photography. Change only the condition of the scene: the
+the plot, not the photography. Change the condition of the scene: the
 granite headstone is now clean and evenly polished with a soft, consistent
-natural sheen across its whole surface, all lichen and dust fully removed with
-no residual patchiness; the dead leaves and weeds are gone and the ground
-beneath is now neatly raked fine gravel with visible rake-line texture; the
-stone border is washed clean and its crack repaired or tightly re-set so it
-reads as solid and level; a small, loosely tied bunch of fresh white flowers
-rests at the base of the headstone, placed naturally rather than staged
-dead-centre. Match grain structure and colour grade exactly to the reference
-so the pairing reads as one continuous documentary record, not two separate
-renders. No text, no lettering or logos anywhere, no inscriptions appear on
-the stone surface — it stays blank and polished.
+natural sheen across its whole surface, all lichen and dust fully removed
+with no residual patchiness; the dead leaves and weeds are gone and the
+ground beneath is now neatly raked fine gravel with visible rake-line
+texture; the stone border is washed clean and its crack repaired or tightly
+re-set so it reads as solid and level; the faded plastic wreath from the
+reference is replaced with a small, loosely tied bunch of fresh white
+flowers placed naturally rather than staged dead-centre. Match grain
+structure and colour grade exactly to the reference, keeping the same
+plainly documentary, non-dramatised tone — this is a factual record of care,
+not a before/after emotional reveal. No text, no lettering or logos
+anywhere, no inscriptions appear on the stone surface — it stays blank and
+polished.
 ```
 
 ---
 
 ## 6. «Что рассказали семьи» (фон секции)
 
-### forgetmenot.jpg (фон секции Voices, карточка новости)
+### forgetmenot.jpg ⚠️ ЖДЁТ ВАШЕГО РЕШЕНИЯ — REPLACE (временно на безопасный вариант)
 Модель: `soul_location` · Пропорции: 21:9
+
+**Контекст:** оригинальная концепция использовала макро-незабудки как
+декоративный фон. Незабудка — официальный символ 100-летия Геноцида армян
+(2015), и использовать её как красивую декорацию под свайпером с отзывами
+рискует читаться как эксплуатация памяти о геноциде в коммерческом контексте.
+Ниже — безопасная замена (белая гвоздика/бессмертник). **Если вы сознательно
+хотите оставить именно незабудку как культурное высказывание бренда** —
+скажите, и я верну оригинальный промпт, но пересмотрю его размещение (не
+фоном под отзывами).
 
 ```
 Professional macro photograph, shot as if on a 90mm macro lens wide open
 around f/2, producing an extremely shallow plane of focus — only a thin band
-of petals and dew droplets sharp, with the rest of the field dissolving almost
-immediately into soft, luminous, colour-blended bokeh. Backlit dawn light from
-low behind the flowers (camera pointed roughly toward the light source),
-causing each dew droplet to catch a small, bright specular highlight and the
-thin petals to glow slightly translucent at their edges — a classic macro
-backlight technique. Exposure biased toward slight overexposure in the
+of petals and dew droplets sharp, with the rest of the field dissolving
+almost immediately into soft, luminous, colour-blended bokeh. Backlit dawn
+light from low behind the flowers (camera pointed roughly toward the light
+source), causing each dew droplet to catch a small, bright specular highlight
+and the thin petals to glow slightly translucent at their edges — a classic
+macro backlight technique. Exposure biased toward slight overexposure in the
 out-of-focus highlight areas for a soft, dreamy glow, while keeping the
 in-focus droplets and petal edges crisp with detail. Composition: the sharp
 focal band sits roughly one-third up from the bottom of the wide 21:9 frame,
-a loose diagonal scatter of blue petals leading the eye gently left to right,
-generous soft negative space above for section-heading text to sit over in
-the final web layout. Subject: a macro field of forget-me-not flowers at dawn,
-small five-petalled blue blooms with fine dew droplets on the petal surfaces
-and stems, thin grass stalks softly woven through. Colour grade: soft
-powder-blue petals, warm golden backlight glow, muted green in the
-soft-focus stems, gentle overall pastel quality. Finish: fine grain, natural
-light bloom around the brightest highlights, no artificial lens-flare
-overlays. No people, no text, no lettering or logos anywhere, no man-made
-objects visible.
+a loose diagonal scatter of white blooms leading the eye gently left to
+right, generous soft negative space above for section-heading text to sit
+over in the final web layout. Subject: a macro field of white carnations (or
+immortelle/bessmertnik, the traditional "everlasting" graveside flower) at
+dawn, fine dew droplets on the petal surfaces and stems, thin grass stalks
+softly woven through. Colour grade: soft ivory-white petals, warm golden
+backlight glow, muted green in the soft-focus stems, gentle overall pastel
+quality. Finish: fine grain, natural light bloom around the brightest
+highlights, no artificial lens-flare overlays. No people, no text, no
+lettering or logos anywhere, no man-made objects visible.
 ```
 
 ---
 
 ## 7. «Моменты» (fade-слайдер на главной)
 
-### about-khachkar.jpg (слайд 1 «Moments», страница History)
+### about-khachkar.jpg — KEEP
 Модель: `soul_location` · Пропорции: 3:2
 
 ```
@@ -434,100 +472,100 @@ carved ornament itself, no separate readable inscriptions in Armenian or any
 other script beyond the traditional cross-stone ornamental pattern.
 ```
 
-### about-tools.jpg ⚠️ (слайд 2 «Moments», страница Values)
-Модель: `soul_location` · Пропорции: 3:2
+### about-tools.jpg ⚠️ — REPLACE: отъезд команды на рассвете вместо flat-lay
+Модель: `soul_v2` · Пропорции: 3:2
 
 ```
-Professional flat-lay product photograph, shot as if on a 35mm lens directly
-overhead on a copy-stand, aperture around f/8 for uniform, edge-to-edge sharp
-focus across the entire arrangement with zero perspective distortion. Soft,
-large-source even lighting from directly above (as if a large diffused
-softbox or bright open shade), producing gentle, non-directional shadows
-beneath each object just strong enough to convey shape and separation between
-items, with no glare or hotspot on any surface. Exposure balanced for the
-mid-tone olive canvas backdrop, letting the yellow equipment hold its full
-saturation without clipping. Composition: objects arranged with clear
-breathing room between each one following an implied grid, the pressure
-washer and steam cleaner as the two largest anchor shapes on the left and
-centre, smaller items (brushes, bottles, gloves, folded cloths, coiled hose)
-arranged in a loose supporting rhythm to the right and along the bottom edge,
-generous even margin of plain canvas around the whole arrangement. Subject: a
-flat-lay on olive-coloured canvas fabric — an upright yellow-and-black
-pressure washer unit, a yellow-and-black steam cleaner unit, a yellow drum
-vacuum unit, a compact petrol generator, several natural-bristle brushes of
-varying sizes, two plain white plastic cleaner bottles, grey work gloves,
-neatly folded ivory cloths, a coiled hose. Colour grade: bright, clean yellow
-and black equipment against a muted olive-green canvas, warm ivory cloth
-accents, natural unforced saturation. Finish: fine grain, crisp product-level
-clarity without artificial sharpening halos. CRITICAL: every single piece of
-equipment must be completely free of text, brand names, logos, model numbers,
-warning labels or any lettering whatsoever — plain yellow and black surfaces
-only, and plain unlabelled bottles. Double-check before accepting: zero
-readable characters anywhere in the frame.
+Professional documentary photograph, shot as if on a 28mm lens at around f/4
+for a moderate depth of field keeping the van and nearest team member sharp
+while the mountains in the background soften slightly with atmospheric haze.
+Soft, low golden-hour sidelight from camera-left, just after sunrise,
+producing long, warm-toned shadows across the ground and a gentle rim-light
+along the edge of the van's roofline; the quality of light suggests the very
+start of the working day, not a posed moment. Exposure balanced for the
+olive uniforms' mid-tones, sky allowed to hold a soft gradient from pale gold
+near the horizon to cooler blue above. Composition: a plain white service van
+sits on the left two-thirds of frame at a three-quarter angle, its side door
+open; one caretaker in an olive uniform is caught mid-motion stepping up into
+the van, seen from behind or in deep profile, not posed toward camera;
+mountains form a low, soft horizon line across the upper third; the
+composition reads as a candid, in-motion documentary moment — a team
+departing for the first visit of the day — rather than a static group
+portrait. Colour grade: warm gold morning light, muted olive uniforms, clean
+neutral white van body, cool pale sky, gentle filmic contrast. Finish: fine
+grain, soft natural vignette, no promotional gloss or HDR look. CRITICAL: the
+van must have no visible logo, company name, license plate text or any
+lettering on its body. Double-check before accepting: zero readable
+characters anywhere in the frame, including on the van itself. No face
+looking directly at camera.
 ```
+
+### alley.jpg (повторно, слайд 3 «Moments») — используйте промпт из раздела 2 выше
 
 ---
 
 ## 8. Страница Mission
 
-### about-hands-flower.jpg (Mission — фото рядом с текстом, боковая панель Register)
-Модель: `soul_v2` · Пропорции: 3:4
+### about-hands-flower.jpg — REPLACE: силуэт вместо ещё одних рук
+Модель: `soul_location` · Пропорции: 3:4
 
 ```
-Professional documentary studio-style photograph, shot as if on an 85mm lens
-at around f/2 for a shallow depth of field that keeps the hands and flowers
-crisply sharp while the plain background falls into a soft, smooth gradient of
-out-of-focus tone. Soft, large-source diffused light from camera-left at a
-gentle 45-degree angle (as if a large window with a sheer diffuser), wrapping
-smoothly around the curve of the hands with a soft shadow falling to the
-lower-right, no harsh specular highlights on the skin. Exposure balanced for
-the skin tone mid-greys, letting the pale blue petals hold delicate colour
-without washing out. Composition: the cupped hands sit slightly off-centre,
-positioned in the lower two-thirds of the vertical 3:4 frame following the
-rule of thirds, flowers nestled naturally in the palms rather than arranged
-symmetrically, generous soft negative space in the upper third for calm
-breathing room. Subject: two open hands cupped together, holding a small,
-loosely gathered cluster of blue forget-me-not flowers, an ivory linen sleeve
-visible at the wrist, no rings or identifying jewellery. Colour grade: warm
-neutral skin tones, soft powder-blue flowers, muted warm-grey background,
-gentle overall desaturation for a tender, quiet mood. Finish: fine grain, soft
-natural light falloff at the frame edges, no clinical digital sharpness. No
-text, no lettering or logos anywhere, no visible face, no jewellery or
-identifying details on the hands.
+Professional documentary photograph, shot as if on a 50mm lens at around f/4
+for a moderate depth of field keeping the silhouetted figure sharp against a
+softly resolved row of memorial plots behind. Soft, low early-morning
+backlight from directly behind the figure (camera facing toward the light
+source), producing a clean, warm-rimmed silhouette with gentle atmospheric
+haze softening the rows of headstones receding into the distance behind.
+Exposure biased for the sky and rim-light, allowing the figure itself to sit
+as a soft, warm-toned silhouette with just enough detail retained in the
+olive uniform's outline to read as human and caring, not ominous. Composition:
+the caretaker's silhouette stands in the lower third of the vertical 3:4
+frame, slightly off-centre, facing away from camera toward the rows of
+plots stretching into soft-focus distance — a composition about scale and
+quiet responsibility rather than a close, literal gesture. Generous open sky
+above for calm negative space. Subject: a single Armenian caretaker in an
+olive uniform, seen only as a backlit silhouette from behind, standing at the
+edge of a row of well-kept memorial plots stretching into the distance,
+early morning mist softening the furthest rows. Colour grade: warm golden
+backlight, muted olive-grey silhouette, soft desaturated background, gentle
+overall calm. Finish: fine grain, soft natural light bloom around the
+silhouette's rim, no clinical digital sharpness. No text, no lettering or
+logos anywhere, no visible face, no readable inscriptions on any distant
+stone.
 ```
 
 ---
 
-## 9. Страница Contact (резерв — на будущее, если решите ставить фото офиса/района)
+## 9. Страница Contact
 
-### contact-yerevan.jpg (резерв для страницы Contact)
+### contact-yerevan.jpg — REPLACE: вход на кладбище вместо городской улицы
 Модель: `soul_location` · Пропорции: 3:2
 
 ```
-Professional documentary street photograph, shot as if on a 35mm lens at
-around f/5.6 for even sharpness across the street scene from foreground
-pavement to the building facades in the middle distance. Soft, low
-golden-morning side-light from camera-left, raking gently along the tuff-stone
-building facades to reveal their texture, long soft shadows cast by the plane
-trees stretching across the empty street. Exposure balanced for the warm
-stone facades, sky allowed to read as a soft pale band without clipping.
-Composition: the tree-lined street recedes on a gentle diagonal from the
-lower-right corner toward a vanishing point in the upper-left third, building
-facades forming a loose frame along the right edge, plane tree canopy
-providing a dappled soft ceiling of light across the upper portion of frame.
-Environment: Komitas Avenue in Yerevan on a calm early morning — tuff-stone
-buildings, mature plane trees lining the street, near-empty pavement. Colour
-grade: warm honey-toned stone, muted olive-green foliage, soft neutral sky,
-restrained overall saturation for a calm, unhurried mood. Finish: fine grain,
-gentle natural vignette, no HDR look. No people, no vehicles with readable
-plates or logos, no readable shop signage or text of any kind.
+Professional documentary photograph, shot as if on a 35mm lens at around
+f/5.6 for even sharpness from the gate structure in the foreground to the
+cypress alley beyond. Soft, low golden-morning sidelight from camera-left,
+raking gently along the stone gate pillars to reveal their texture, long
+soft shadows stretching across the entrance path. Exposure balanced for the
+warm stone pillars, the alley beyond allowed to fall into a slightly softer,
+cooler tonal range for a sense of depth and quiet invitation. Composition:
+the cemetery's stone entrance gate/pillars frame the left and right edges of
+the composition, the cypress-lined alley receding through the centre of
+frame toward a soft, misty vanishing point, wrought-iron gate details visible
+but not the focal subject. Environment: the entrance to a Yerevan cemetery on
+a calm early morning — stone gate pillars, the start of a cypress-lined
+alley beyond, near-empty and quiet. Colour grade: warm honey-toned stone,
+muted olive-green cypress, soft neutral morning haze, restrained overall
+saturation for a calm, respectful mood. Finish: fine grain, gentle natural
+vignette, no HDR look. No people, no readable signage or text of any kind, no
+logos.
 ```
 
 ---
 
-## 10. Личный кабинет — демо-объекты (3 разных участка, у каждого свой отчёт)
+## 10. Личный кабинет — демо-объекты
 
-### plot-2.jpg («Grandparents' plot», Абовян)
+### plot-2.jpg — KEEP
 Модель: `soul_location` · Пропорции: 4:3
 
 ```
@@ -553,7 +591,7 @@ HDR look. No people, no text, no lettering or logos anywhere, headstone
 surface completely blank and polished with no inscriptions.
 ```
 
-### plot-3.jpg («Uncle Vahan's plot», Тохмах)
+### plot-3.jpg — KEEP (эталон детализации)
 Модель: `soul_location` · Пропорции: 4:3
 
 ```
@@ -567,10 +605,10 @@ in the black stone's shadow areas. Composition: the headstone and iron fence
 sit slightly left of centre, the traditional lantern positioned beside the
 stone as a small vertical accent on the right third, framed by the old
 section's mature trees at the very edges of frame for quiet enclosure without
-clutter; camera at standing eye-level, held level with no convergence. Subject
-environment: a family memorial plot in the old section of Tokhmakh cemetery,
-Yerevan — a black granite headstone with a soft polished sheen, a small
-wrought-iron fence around the plot showing gentle wear, a traditional
+clutter; camera at standing eye-level, held level with no convergence.
+Subject environment: a family memorial plot in the old section of Tokhmakh
+cemetery, Yerevan — a black granite headstone with a soft polished sheen, a
+small wrought-iron fence around the plot showing gentle wear, a traditional
 cemetery lantern beside the stone. Colour grade: deep neutral black granite
 with a cool undertone, warm muted grey-green in the surrounding foliage,
 restrained overall saturation, quiet and dignified mood. Finish: fine grain,
@@ -579,7 +617,7 @@ anywhere, headstone surface completely blank and polished with no
 inscriptions.
 ```
 
-### report-poster.jpg (постер видео на странице отчёта о визите)
+### report-poster.jpg — TWEAK: добавлена деталь-«улика»
 Модель: `soul_location` · Пропорции: 16:9
 
 ```
@@ -592,14 +630,16 @@ balanced for the polished stone's mid-tones, letting the gravel highlights
 lift slightly for an airy feel without clipping. Composition: the headstone
 sits just right of centre on the middle third of frame, freshly raked gravel
 filling the foreground with visible rake-line texture leading the eye toward
-the stone, the cypress tree positioned upper-left as a soft vertical anchor,
-generous sky-to-ground ratio suitable for a video poster frame with a
-play-button overlay in the final layout. Subject: a freshly cleaned family
-memorial plot in Yerevan — polished granite headstone catching soft light,
-neatly raked gravel, a small bunch of fresh flowers at the base, a cypress
-tree in the background. Colour grade: warm ivory and olive-grey palette,
-gentle filmic contrast, restrained saturation. Finish: fine grain, soft
-natural vignette, no HDR look. No people, no text, no lettering or logos
+the stone, a small lit brass oil lamp resting at the stone's base as the
+distinguishing "evidence" detail, the cypress tree positioned upper-left as a
+soft vertical anchor, generous sky-to-ground ratio suitable for a video
+poster frame with a play-button overlay in the final layout. Subject: a
+freshly cleaned family memorial plot in Yerevan — polished granite headstone
+catching soft light, neatly raked gravel, a small bunch of fresh flowers and
+a lit oil lamp at the base, a cypress tree in the background. Colour grade:
+warm ivory and olive-grey palette, gentle filmic contrast, restrained
+saturation, small warm amber accent from the lamp flame. Finish: fine grain,
+soft natural vignette, no HDR look. No people, no text, no lettering or logos
 anywhere, headstone surface completely blank and polished with no
 inscriptions.
 ```
@@ -608,70 +648,69 @@ inscriptions.
 
 ## 11. Страница News
 
-### news-team.jpg ⚠️ (карточка новости «Первый сезон»)
+### news-team.jpg ⚠️ — REPLACE: журнал визитов вместо построения у машины
 Модель: `soul_v2` · Пропорции: 3:2
 
 ```
-Professional documentary group photograph, shot as if on a 35mm lens at
-around f/4 for enough depth of field to keep all three team members and the
-van sharp while the cemetery gate softens slightly in the background. Soft,
-even early-morning light from camera-left, low and slightly warm, producing
-gentle, natural modelling on the olive uniforms without harsh shadows across
-faces; a light haze in the air softens overall contrast for a calm,
-unposed documentary feel rather than a promotional group shot. Exposure
-balanced for the mid-tone uniforms, van body allowed to hold clean, even
-white/neutral tone without blowing out. Composition: the three team members
-stand in a loose, naturally staggered line beside the van's open rear doors
-rather than a stiff symmetrical row, positioned across the centre and
-right-of-centre of frame, the open van doors and visible equipment cases
-occupying the left third, cemetery gate softly visible in the background
-providing context; camera at standing eye-level, held level. Subject: a
-three-person Armenian caretaker team in matching olive uniforms, standing
-beside a plain white service van with its rear doors open, showing open
-equipment cases inside holding plain yellow-and-black cleaning units, at the
-gate of a Yerevan cemetery in early morning light, expressions calm and
-unposed, not looking directly at camera. Colour grade: muted olive uniforms,
-clean neutral white van body, warm morning ambient light, restrained overall
-saturation for a professional but understated mood. Finish: fine grain, soft
-natural vignette, no promotional-style gloss or HDR look. CRITICAL: the van
-must have no visible logo, company name, license plate text or any lettering
-on its body; all equipment cases and units must be completely free of brand
-names, labels or lettering. Double-check before accepting: zero readable
-characters anywhere in the frame, including on the van itself.
+Professional documentary photograph, shot as if on a 50mm lens at around f/2.8
+for a shallow-to-moderate depth of field keeping the hands and open ledger
+book sharp while the van and second team member soften gently behind. Soft,
+warm early-morning sidelight from camera-left, low and golden, catching the
+page of an open paper ledger and casting a soft, warm glow across the scene;
+a light haze in the air keeps the background calm and unobtrusive. Exposure
+balanced for the pale ledger page, letting it hold bright, clean detail
+without clipping, while the olive uniforms and van sit comfortably in the
+mid-tones. Composition: a gloved hand writes into an open paper ledger
+resting on the open tailgate of a plain white service van, positioned on the
+lower-right third of frame; a second caretaker stands softly out of focus in
+the background near the van's open rear doors, visible but secondary; the
+cemetery gate is faintly visible in the deep background. Subject: an
+Armenian caretaker's hand entering the first visit of the new season into a
+simple paper ledger — date, plot, visit type — resting on the tailgate of the
+service van, a quiet act of record-keeping that stands in for the whole
+season's promise of documented care. Colour grade: warm golden morning
+light, muted olive uniform, clean neutral white van, restrained overall
+saturation. Finish: fine grain, soft natural vignette, no promotional gloss.
+CRITICAL: the van must have no visible logo, company name, license plate
+text or any lettering on its body; the ledger page must show only abstract
+handwriting marks, never legible words or numbers large enough to read.
+Double-check before accepting: zero legible characters anywhere in the
+frame, including on the van and the ledger page.
 ```
 
-### news-equipment.jpg (карточка новости «Почему низкое давление»)
+### news-equipment.jpg — REPLACE: регулятор давления вместо каталога техники
 Модель: `soul_location` · Пропорции: 3:2
 
 ```
-Professional documentary product-in-context photograph, shot as if on a 24mm
-lens at around f/6.3 for deep, even sharpness across the whole van interior
-from front to back. Soft, even daylight coming from outside the van
-(camera-side, diffused, as if an overcast sky), producing gentle, low-contrast
-illumination across the equipment with soft shadow fill inside the van's
-interior so no piece falls into unreadable darkness. Exposure balanced for the
-mid-tone equipment surfaces, van interior shadows lifted just enough to retain
-detail without looking artificially flat. Composition: camera positioned
-directly behind the open rear doors looking straight into the van, doors
-framing the left and right edges of the composition symmetrically, equipment
-arranged in an implied grid receding slightly toward the back of the van for a
-sense of depth, hose coiled in the foreground as a leading curved shape.
-Subject: looking into the open rear of a service van — a yellow-and-black
-pressure washer, a yellow-and-black steam cleaner, a yellow drum vacuum, a
-compact petrol generator, plastic equipment cases, a coiled hose, and
-unlabelled plastic canisters, arranged neatly. Colour grade: bright, clean
-yellow and black equipment against the neutral grey van interior, restrained
+Professional documentary macro-product photograph, shot as if on a 100mm
+macro lens at around f/3.2, close enough to fill the frame with the pressure
+regulator dial and the gloved hand adjusting it, the rest of the pressure
+washer unit softening into recognisable but out-of-focus yellow-and-black
+shape behind. Soft, even daylight from camera-left, diffused as if from an
+overcast sky, producing gentle, low-contrast modelling on the dial's texture
+and the glove's fabric with no harsh glare on the metal fittings. Exposure
+balanced for the mid-tone dial and glove, letting the small pressure-gauge
+needle read clearly against its backing. Composition: the regulator dial and
+the gloved hand turning it occupy the centre-right two-thirds of frame on a
+slight diagonal, the blurred body of the unit anchoring the left third,
+tight enough that the specific act of dialling down the pressure is the
+unmistakable subject of the image rather than the equipment as a whole.
+Subject: a close-up of a gloved hand carefully adjusting the pressure
+regulator dial on a plain yellow-and-black pressure-washer unit, illustrating
+the specific practice of using low pressure on delicate stone. Colour grade:
+bright, clean yellow and black equipment, neutral grey glove, restrained
 overall saturation, documentary rather than promotional colour treatment.
 Finish: fine grain, natural even clarity, no artificial product-shot gloss.
-Every piece of equipment must be completely free of text, brand names, logos
-or lettering — plain yellow and black surfaces only.
+The equipment must be completely free of text, brand names, logos, numbers
+or lettering beyond a small, abstract, non-legible pressure-gauge face —
+plain yellow and black surfaces only.
 ```
 
 ---
 
 ## 12. Языковые заглушки (ՀԱՅ / РУС «скоро») и страница 404
 
-### lang-stub.jpg (заглушка "coming soon" для am/ru, страница 404)
+### lang-stub.jpg — KEEP
 Модель: `soul_location` · Пропорции: 16:9
 
 ```
@@ -695,41 +734,42 @@ lettering or logos anywhere, no man-made structures visible.
 
 ---
 
-## 13. og:image — соцсети/мессенджеры (сейчас файла нет вообще!)
+## 13. og:image — соцсети/мессенджеры
 
-### og-image.jpg (превью сайта в соцсетях/мессенджерах — **этого файла пока нет вообще, нужно сделать в первую очередь**)
-Модель: `soul_v2` или композиция на основе `hero-still.jpg` · Пропорции: 1.91:1 (1200×630)
+### og-image.jpg — REPLACE: следует новой концепции hero-still
+Модель: `soul_v2` или композиция на основе нового `hero-still.jpg` · Пропорции: 1.91:1 (1200×630)
 
 ```
 Professional documentary photograph, shot as if on a full-frame camera with a
 35mm f/1.8 lens at around f/2.5, wide horizontal composition suitable for a
-social-media link preview. Soft golden-hour backlight from low camera-left
-through thin mist, matching the site's hero photograph in mood and lighting
-direction for brand consistency. Exposure balanced for the caretaker's olive
-uniform and the mist highlights, allowed to bloom slightly for an airy,
-inviting feel. Composition: the caretaker cleaning the headstone is placed on
-the lower-right two-thirds of frame, generous open negative space with soft,
-even mist tones across the upper third of the frame specifically left clear
-for a logo/wordmark to be overlaid separately by the design team — no visual
-clutter in that zone. Subject: an Armenian caretaker in an olive uniform
-gently cleaning a weathered pink tuff headstone with a yellow-and-black
-pressure washer, soft morning mist, cypress trees and a Yerevan cemetery alley
-in the background. Colour grade: muted olive-green, ivory and warm grey
-palette matching the site's brand exactly, gentle filmic contrast. Finish:
-fine grain, subtle halation in the mist highlights, no HDR look. No text baked
-into the image itself, no lettering or logos anywhere, headstone surface blank
-and polished with no inscriptions, equipment plain yellow and black without
-any brand lettering.
+social-media link preview, matching the site's new hero photograph in mood,
+lighting direction and story for brand consistency. Soft golden-hour backlight
+from low camera-left through thin mist. Exposure balanced for the clean, wet
+granite stone catching the light, mist highlights allowed to bloom slightly
+for an airy, resolved feel. Composition: a clean, freshly cared-for granite
+headstone occupies the lower-right two-thirds of frame, a caretaker seen only
+from behind, already walking away in the middle distance on the left third;
+generous open negative space with soft, even mist tones across the upper
+third of the frame specifically left clear for a logo/wordmark to be overlaid
+separately by the design team — no visual clutter in that zone. Subject: the
+quiet aftermath of a completed visit — a clean, polished headstone in soft
+morning mist, the caretaker who tended it departing in the background,
+cypress trees and a Yerevan cemetery alley around them. Colour grade: muted
+olive-green, ivory and warm grey palette matching the site's brand exactly,
+gentle filmic contrast. Finish: fine grain, subtle halation in the mist
+highlights, no HDR look. No text baked into the image itself, no lettering or
+logos anywhere, headstone surface blank and polished with no inscriptions.
 ```
 
 ---
 
 ## Чек-лист после генерации
 
-- [ ] На всех камнях — гладкая полированная поверхность, ни одной надписи
-- [ ] На всём оборудовании (washer/steam cleaner/vacuum/generator/van) — ноль надписей и логотипов
-- [ ] Ни одного лица, повёрнутого прямо в камеру крупным планом
+- [ ] На всех камнях — гладкая полированная (гранит) или чистая матовая (туф) поверхность, ни одной надписи
+- [ ] На всём оборудовании (washer/regulator/van) — ноль надписей и логотипов; в кадре ledger-книги (news-team.jpg) — только абстрактные пометки, не читаемый текст
+- [ ] Ни одного лица, повёрнутого прямо в камеру крупным планом; в новых «процессных» заменах человек либо не показан, либо снят со спины/в силуэте
 - [ ] Единая цветовая палитра выдержана: приглушённый оливковый + айвори + тёплый серый
-- [ ] Свет и характер объектива визуально согласуются между кадрами одной секции (не смешивать жёсткий студийный свет с мягким документальным)
-- [ ] `og-image.jpg` сгенерирован и добавлен в `src/assets/brand/` (сейчас файла нет вообще)
+- [ ] Свет и характер объектива визуально согласуются между кадрами одной секции
+- [ ] **Решение по forgetmenot.jpg принято** (незабудка vs гвоздика/бессмертник) — см. раздел 6
+- [ ] `og-image.jpg` сгенерирован и добавлен в `src/assets/brand/`
 - [ ] Готовые файлы положены в `site-deploy-2026-09-09/src/assets/img/` (фото) и `src/assets/brand/` (og-image), после чего прислать их мне — я заменю плейсхолдеры и пересоберу сайт
