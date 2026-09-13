@@ -115,4 +115,59 @@
     li.addEventListener('focusout', sync);
     li.addEventListener('click', () => setTimeout(sync));
   });
+
+  // --- Polish pass: pricing price count-up, refined reveal for testimonials/
+  // footer. Skipped entirely under prefers-reduced-motion — the values are
+  // already correct in the HTML, this only adds the count-up motion.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    // Pricing cards: animate the price counting up from 0 the first time a
+    // card enters view. Static, correct value is already in the markup, so
+    // this degrades safely if it never fires.
+    const easeOutExpo = t => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+    const formatAMD = n => Math.round(n).toLocaleString('en-US').replace(/,/g, ' ');
+    const priceEls = document.querySelectorAll('.m_price__num[data-count]');
+    if (priceEls.length) {
+      const countIO = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          countIO.unobserve(el);
+          const target = Number(el.dataset.count);
+          const duration = 900;
+          const start = performance.now();
+          const tick = now => {
+            const p = Math.min(1, (now - start) / duration);
+            el.textContent = formatAMD(target * easeOutExpo(p));
+            if (p < 1) requestAnimationFrame(tick);
+            else el.textContent = formatAMD(target);
+          };
+          requestAnimationFrame(tick);
+        });
+      }, { threshold: 0.4 });
+      priceEls.forEach(el => countIO.observe(el));
+    }
+
+    // Testimonial cards and footer columns: a slightly more considered
+    // reveal (blur + rise) than the flat AOS fade-up used elsewhere —
+    // reserved for these two spots so it reads as a deliberate accent,
+    // not a site-wide mannerism.
+    const polishIO = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-polished-in');
+        polishIO.unobserve(entry.target);
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.quote, .footer .ctts > div, .footer__brand').forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i, 6) * 60}ms`;
+      el.classList.add('is-polish-pending');
+      polishIO.observe(el);
+    });
+  } else {
+    // No IntersectionObserver, or reduced motion: leave these elements in
+    // their plain visible state — .is-polish-pending is never added, so the
+    // opacity:0 CSS rule (which only applies to that class) never triggers.
+  }
 })();
